@@ -86,7 +86,7 @@ function initializeSM(){
     deleteALLRows("SMTable");
     let data = cpu.getStaticData();
     let a=0;
-    let table = document.getElementById("DMTable");
+    let table = document.getElementById("SMTable");
     for(a=0; a<data.length; a++){
         var row = table.insertRow(-1);
         var cell1 = row.insertCell(0);
@@ -146,14 +146,12 @@ function refreshRegisters(){
     if(altered.length != 0){
         scrollTable("registerTable", "rTable", altered[0]);
     }
-    console.log('refresh');
 }
 
 function refreshIM(){
     clearTable("IMTable");
     let current = cpu.getCurrentInsAddr();
     current = parseInt(current, 2).toString(16);
-    console.log(current);
     let table = document.getElementById("IMTable");
     var i;
     for(i=1; i<table.rows.length; i++){

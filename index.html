@@ -15,6 +15,8 @@
     <script type="text/javascript" src="./js/Hardware.js"></script>
     <script type="text/javascript" src="js/TableDisplay.js"></script>
     <script type="text/javascript">
+        continuePlay = { theFlagData: 0};
+        playing = false;
         address = 0;
         instructionList = {}; // Store all instructions, including syscall
         instructionMap = {}; // Store mapping relationships between instructions and code mirror.
@@ -23,33 +25,32 @@
       insNum=0;
       stepNum=0;
       sourceIns=[];
-      operator= new Array();
+      operator= [];
       sequenceFlag = 0;
       getCPU = singleCycleCpu;
-      cpu = null;
-      compileSuccessFlag=false;
+      cpu = new getCPU();
     </script>
 </head>
-<body>
+<body style="background: linear-gradient(grey, white)">
 
     <!-- NavMenu -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-            <a class="navbar-brand" href="#">MIPS</a>
+            <a style="margin-left: 10%; font-weight:bold; font-size:2vw; font-family:'Papyrus',fantasy; letter-spacing: 3px" class="navbar-brand" href="#">MIPS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item" id="helpPage">
-                        <a class="nav-link" href="help.html">Help</a>
+                        <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="help.html">Help</a>
                     </li>
                     <li class="nav-item" id="demoPage">
-                        <a class="nav-link" href="#" id="demo">Demo</a>
+                        <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="#" id="demo">Demo</a>
                     </li>
                     </ul>
                 </div>
@@ -57,10 +58,11 @@
         </nav>
     </header>
     <main role="main">
+        <br/>
         <div class="container" style="overflow: hidden;">
             <div class="row">
-                <div class="card col-sm-12 col-md-9 col-lg-9" style="height: 70vh; overflow-y: scroll; overflow-x: scroll" v-html="log">
-                          <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%;" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
+                <div class="card col-sm-9 col-md-9 col-lg-9" style="height: 63vh; overflow-y: scroll; overflow-x: scroll" v-html="log">
+                          <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%; -moz-transform: scale(1.0); -moz-transform-origin: top left;" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
                                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg
                                 style=" display: inline-block;max-width: 200%;max-height: 200%;min-width: 100%;min-height:100%" 
@@ -1632,6 +1634,7 @@
                         <use
                                 xlink:href="#and"
                                 id="and1"
+                                class="CtlWire"
                                 width="13"
                                 height="13"
                                 x="319"
@@ -1842,6 +1845,13 @@
                                             cx="634.38879"
                                             cy="157.61679"
                                             r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data3_1"
+                                            class="dataCircle"
+                                            cx="148.26018"
+                                            cy="142.07948"
+                                            r="7.810112" />
                         <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
                             <body xmlns= "http://www.w3.org/1999/xhtml">
                             <div id="instructionTable" class="scrollable" style="width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
@@ -1859,141 +1869,13 @@
                         <foreignObject   width="204" height="260" x="720" y="200" fill="#e7e6e1">
                             <body xmlns= "http://www.w3.org/1999/xhtml">
                             <div id="registerTable" class="scrollable" style="width: 196px; height: 252px; overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
-                                <table bgcolor="white" id="rTable">
+                                <table bgcolor="white" id="rTable" style="min-height: border-box">
                                     <thead>
                                     <tr>
-                                        <th style="width: 40%">Register</th>
+                                        <th width=""40%>Register</th>
                                         <th>32-bits Data</th>
                                     </tr>
                                     </thead>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$zero</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$at</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$v0</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$v1</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$a0</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$a1</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$a2</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$a3</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t0</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t1</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t2</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t3</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t4</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t5</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t6</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t7</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s0</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s1</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s2</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s3</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s4</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s5</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s6</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$s7</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t8</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td contenteditable="false">$t9</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$k0</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$k1</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$gp</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$sp</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$fp</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
-                                    <tr bgcolor="#F9F9F9">
-                                        <td contenteditable="false">$ra</td>
-                                        <td contenteditable="false">00000000000000000000000000000000</td>
-                                    </tr>
                                 </table>
                             </div>
                             </body>
@@ -2011,30 +1893,32 @@
                             </body>
                         </foreignObject>
 
-                        <foreignObject   width="400" height="400" x="1046" y="156">
-                            <body xmlns= "http://www.w3.org/1999/xhtml">
+                        <foreignObject width="400" height="400" x="1046" y="156">
+                            <body  xmlns= "http://www.w3.org/1999/xhtml">
                             <div id="dynamicTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none">
                                 <table id="DMTable" bgcolor="white">
-                                    <thead>
-                                    <tr>
-                                        <th width="30%">Address</th>
-                                        <th>32-bits Data</th>
-                                    </tr>
-                                    </thead>
+                                    <tbody id="dm">
+                                        <tr>
+                                            <th width="30%">Address</th>
+                                            <th>32-bits Data</th>
+                                        </tr>
+                                    </tbody>
+
                                 </table>
                             </div>
                             </body>
                         </foreignObject>
-                        <foreignObject   width="400" height="400" x="646" y="460">
+                        <foreignObject width="400" height="400" x="646" y="460">
                             <body xmlns= "http://www.w3.org/1999/xhtml">
                             <div id="staticTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none">
                                 <table id="SMTable" bgcolor="white">
-                                    <thead>
-                                    <tr>
-                                        <th width="30%">Address</th>
-                                        <th>32-bits Data</th>
-                                    </tr>
-                                    </thead>
+                                    <tbody id="sm">
+                                        <tr>
+                                            <th width="30%">Address</th>
+                                            <th>32-bits Data</th>
+                                        </tr>
+                                    </tbody>
+
                                 </table>
                             </div>
                             </body>
@@ -2044,7 +1928,7 @@
 
                           </div>
                 </div>
-                <div class="card col-sm-12 col-md-3 col-lg-3" style="height: 70vh" v-html="log">
+                <div class="card col-sm-9 col-md-3 col-lg-3" style="height: 63vh" v-html="log">
                         <div class="card-body">
                         <input type="file" name="file" id="file" accept=".asm, .s, .txt" style="display:none">
                         <a type="button" id="uploadFileButton" class="fas fa-upload" title="upload"></a>
@@ -2052,23 +1936,22 @@
                         <a type="button" id="compile" class="fas fa-tools" title="compile"></a>
                         <a type="button" id="redo" class="fas fa-redo-alt" title="redo"></a>
                     </div>
-                    <textarea id="code" name="code" style="display: none;"></textarea>
+                    <textarea id="code" name="code" style="display: none;" ></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="card col-sm-12 col-md-12 col-lg-12" style="height: 30vh" v-html="log">
+                <div class="card col-sm-12 col-md-12 col-lg-12 shadow-sm p-3 mb-5 bg-white rounded" style="height: 30vh" v-html="log">
                     <p class="card-body">
-                        <a type="button" id="bw" class="fas fa-backward 1" title="one step backward"></a>
-                        <a type="button" id="fw" class="fas fa-forward 1" title="one step forward"></a>
+                        <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
                         <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
-                        <a type="button" id="play" class="fas fa-play" title="play"></a>
+                        <a type="button" id="play" class="fas fa-play-circle" title="play" ></a>
                         <a type="button" id="pause" class="fas fa-pause pause" title="pause"></a>
-                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed">0.5 x</a>
-                        <input id="playSpeed" readonly>
+                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px">0.5 x</a>
+                        <input id="playSpeed" style="text-align: center; width: 40px" readonly>
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed">2.0 x</a>
-                        <input id="dataInfo" name="dataInfo" readonly>
+                        <input id="dataInfo" name="dataInfo" style="margin-left: 7px" readonly>
                         </p><div id="superToggler" class="toggler"></div>
-                        <textarea id="displayArea"></textarea>
+                        <textarea id="displayArea" content="" readonly></textarea>
                     <p></p>
                 </div>
             </div>
@@ -2100,7 +1983,7 @@
     <script type="text/javascript" src="./published/js/hammer.min.js"></script>
     <!-- Hardware -- >
     <script type="text/javascript" src="./js/Hardware.js"></script>
-    <!-- Assembler -->
+    <!- Assembler -->
     <!--<script type="text/javascript" src="./js/Assembler/js/ArrayList.js"></script>
     <script type="text/javascript" src="./js/Assembler/js/Assembler.js"></script>
     <script type="text/javascript" src="./js/Assembler/js/BinaryAddition.js"></script>
@@ -2127,8 +2010,116 @@
 
     <script src="js/code_mirror/mode/mips/mips.js"></script>
      <script>
+         window.onload = function(){
+             let reg = ['$zero','$at','$v0','$v1','$a0','$a1','$a2','$a3','$t0','$t1','$t2','$t3','$t4','$t5','$t6','$t7','$s0','$s1','$s2','$s3','$s4','$s5','$s6','$s7','$t8','$t9','$k0','$k1','$gp','$sp','$fp','$ra'];
+            let table = document.getElementById('rTable');
+            for(let i=0; i<32; i++){
+                let row = table.insertRow(-1);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                cell1.innerHTML = reg[i];
+                cell2.innerHTML = '00000000000000000000000000000000';
+            }
+         }
+
+
         $(document).ready(function() {
+            $("#displayArea").val("");
+            Object.defineProperty(continuePlay, 'theFlagData', {
+                set:function(newValue){
+                    if(newValue != 0){
+                        highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
+                        if(cpu.Errormsg != ""){
+                            let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
+                            $("#displayArea").val(temp);
+                            return false;
+                        }
+                        let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
+                        cpu.oneClockCycle();
+                        address = cpu.getCurrentInsAddr();
+                        address = parseInt(address, 2).toString(16);
+                        if(instructionMap[address] == undefined){
+                            CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                            $('#uploadFileButton').css("pointer-events", "auto");
+                            $('#compile').css("pointer-events", "auto");
+                            $('#fw').css("pointer-events", "none");
+                            $('#play').css("pointer-events", "none");
+                            $('#pause').css("pointer-events", "none");
+                            $('#halfSpeed').css("pointer-events", "none");
+                            $('#doubleSpeed').css("pointer-events", "none");
+                            let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
+                            $("#displayArea").val(temp);
+                            continuePlay.theFlagData = 0;
+                            return;
+                        }
+                        if(instructionMap[a] == instructionMap[address]){
+                            let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
+                            $("#displayArea").val(temp);
+                        }
+                        else{
+                            let l = instructionMap[a];
+                            let temp = $("#displayArea").val() + "Line " + l + " animation finished."+ "\n" ;
+                            $("#displayArea").val(temp);
+                        }
+                        lineNum = instructionMap[address];
+                        highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                        if(instructionList[address] == "00000000000000000000000000001100"){
+                            console.log('syscall finished');
+                            continueToPlay();
+                        }
+                        else{
+                            playing = true;
+                            reverseCompileAndPlay(instructionList[address].substring(0,6));
+                        }
+                    }
+                }
+            })
         $('#playSpeed').val(parseFloat(speed).toFixed(2));
+        function continueToPlay(){
+            highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
+            if(cpu.Errormsg != ""){
+                let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
+                $("#displayArea").val(temp);
+                return false;
+            }
+            let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
+            cpu.oneClockCycle();
+            address = cpu.getCurrentInsAddr();
+            address = parseInt(address, 2).toString(16);
+            if(instructionMap[address] == undefined){
+                CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                $('#uploadFileButton').css("pointer-events", "auto");
+                $('#compile').css("pointer-events", "auto");
+                $('#fw').css("pointer-events", "none");
+                $('#play').css("pointer-events", "none");
+                $('#pause').css("pointer-events", "none");
+                $('#halfSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("pointer-events", "none");
+                let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
+                $("#displayArea").val(temp);
+                continuePlay.theFlagData = 0;
+                return;
+            }
+            if(instructionMap[a] == instructionMap[address]){
+                let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
+                $("#displayArea").val(temp);
+            }
+            else{
+                let l = instructionMap[a];
+                let temp = $("#displayArea").val() + "Line " + l + " animation finished."+ "\n" ;
+                $("#displayArea").val(temp);
+            }
+            lineNum = instructionMap[address];
+            highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+            if(instructionList[address] == "00000000000000000000000000001100"){
+                console.log('syscall finished');
+                continueToPlay();
+            }
+            else{
+                playing = true;
+                reverseCompileAndPlay(instructionList[address].substring(0,6));
+            }
+        }
 
         function highLight(lineNum, charNum, color) {
           CodeMirrorEditor.getDoc().markText({
@@ -2159,7 +2150,7 @@
 
             var length = sourceIns.length;
             for (i = 0; i < length; i++) {
-                if (sourceIns[i] == "" || patt.test(sourceIns[i]) || sourceIns[i].substring(sourceIns[i].length - 1, sourceIns[i].length) == ":") {
+                if (sourceIns[i] == "" || patt.test(sourceIns[i]) || sourceIns[i].substring(sourceIns[i].length - 1, sourceIns[i].length) == ":" || sourceIns[i].indexOf('.') != -1) {
                     operator[i] = "empty";
                 } else if(colon.test(sourceIns[i])){
                     posOfSpace = sourceIns[i].indexOf(":");
@@ -2186,9 +2177,13 @@
                         operator[i][1] = "ori";
                         operator[i][2] = "subu";
                     }
+                    else if(operator[i] == "la"){
+                        operator[i] = new Array();
+                        operator[i][0] = "lui";
+                        operator[i][1] = "ori";
+                    }
                 }
             }
-            console.log(sourceIns+"\n"+operator);
         }
 
         function reverseCompileAndPlay(opcode){
@@ -2255,14 +2250,17 @@
         }
 
 
-        $('.fas.fa-forward').click(function () { // 向前一步
-              console.log((insNum+1) + " current step");
+        $('.fas.fa-step-forward').click(function () { // 向前一步
               if(insNum == 0){ //如果上一条指令的动画全都运行完了，运行下一条指令
                   if(lineNum != -1){
+                      CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
+                      $('#uploadFileButton').css("pointer-events", "none");
+                      $('#compile').css("pointer-events", "none");
                       highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                   }
                   if(cpu.Errormsg != ""){
-                      $("#displayArea").val(cpu.Errormsg).change();
+                      let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
+                      $("#displayArea").val(temp);
                       return false;
                   }
                   cpu.oneClockCycle();
@@ -2270,23 +2268,30 @@
                   address = parseInt(address, 2).toString(16);
                   if(instructionMap[address] == undefined){
                       CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                      $('#uploadFileButton').css("pointer-events", "auto");
+                      $('#compile').css("pointer-events", "auto");
                       $('#fw').css("pointer-events", "none");
                       $('#play').css("pointer-events", "none");
                       $('#pause').css("pointer-events", "none");
                       $('#halfSpeed').css("pointer-events", "none");
                       $('#doubleSpeed').css("pointer-events", "none");
-                      $("#displayArea").val("Finished running.").change();
+                      let temp = $("#displayArea").val() + "Finished running." + "\n" ;
+                      $("#displayArea").val(temp);
                       return;
                   }
                   lineNum = instructionMap[address];
                   highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
-                  typeMatching(instructionList[address].substring(0,6));
+                  if(instructionList[address] == "00000000000000000000000000001100"){
+                      console.log('syscall finished');
+                  }
+                  else{
+                      typeMatching(instructionList[address].substring(0,6));
+                  }
               }
-            insNum++;
-            reverseCompileAndForward(instructionList[address].substring(0,6), insNum);
-
-            if(insNum == stepNum) { // 如果这条指令的动画都结束了，insNum变为0
-              insNum = 0;
+            if(instructionList[address] != "00000000000000000000000000001100"){
+                insNum++;
+                playing = true;
+                reverseCompileAndForward(instructionList[address].substring(0,6), insNum);
             }
           });
 
@@ -2316,41 +2321,17 @@
             }
 
 
-            $('.fas.fa-play').click(function(){
+            $('.fas.fa-play-circle').click(function(){
                 CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
+                $('#uploadFileButton').css("pointer-events", "none");
+                $('#compile').css("pointer-events", "none");
                 cpu.oneClockCycle();
                 address = cpu.getCurrentInsAddr();
                 address = parseInt(address, 2).toString(16);
                 lineNum = instructionMap[address];
                 highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                playing = true;
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
-
-            });
-
-            $("#displayArea").change(function(){
-                if($("#displayArea").val() == "line " + lineNum + " animation finished") {
-                    highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
-                    if(cpu.Errormsg != ""){
-                        $("#displayArea").val(cpu.Errormsg).change();
-                        return false;
-                    }
-                    cpu.oneClockCycle();
-                    address = cpu.getCurrentInsAddr();
-                    address = parseInt(address, 2).toString(16);
-                    if(instructionMap[address] == undefined){
-                        CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
-                        $('#fw').css("pointer-events", "none");
-                        $('#play').css("pointer-events", "none");
-                        $('#pause').css("pointer-events", "none");
-                        $('#halfSpeed').css("pointer-events", "none");
-                        $('#doubleSpeed').css("pointer-events", "none");
-                        $("#displayArea").val("Finished running.").change();
-                        return;
-                    }
-                    lineNum = instructionMap[address];
-                    highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
-                    reverseCompileAndPlay(instructionList[address].substring(0,6));
-                }
             });
 
             $(".dataCircle").hover(function(){
@@ -2433,6 +2414,7 @@
             $("#dynamicTable").click(function(){
                return false;
             });
+
             var codeBox = document.getElementById('code');
             var CodeMirrorEditor = CodeMirror.fromTextArea(codeBox, {
                 mode:"mips",
@@ -2487,16 +2469,26 @@
                 downloadFile('#downloadFileButton', 'demo.asm', CodeMirrorEditor.getValue());
             });
             $("#compile").click(function(){
+                continuePlay.theFlagData = 0;
+                address = 0;
+                instructionList = {}; // Store all instructions, including syscall
+                instructionMap = {}; // Store mapping relationships between instructions and code mirror.
+                lineNum=-1;
+                insNum=0;
+                stepNum=0;
+                sourceIns=[];
+                operator= [];
+                sequenceFlag = 0;
                 cpu = new getCPU();
                 cpu.Assemble(CodeMirrorEditor.getValue());
                 if(cpu.Errormsg != ""){
-                    $("#displayArea").val(cpu.Errormsg).change();
+                    let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
+                    $("#displayArea").val(temp);
                     return false;
                 }
                 getCode();
                 storeALLInstruction();
                 mapping();
-                sequenceFlag = 0;
                 initializeIM();
                 refreshRegisters();
                 initializeSM();
@@ -2507,7 +2499,6 @@
                 $('#halfSpeed').css("pointer-events", "auto");
                 $('#doubleSpeed').css("pointer-events", "auto");
             })
-
           });
 
 
@@ -2521,13 +2512,40 @@
             var blob = new Blob([content]);                
             aLink.download = fileName;
             aLink.href = URL.createObjectURL(blob);
-        }   
+        }
+
+        document.getElementById('captchaImg').addEventListener("DOMMouseScroll", function (event) {
+            let transform = $(this).css('-moz-transform');
+            let transformMatrix = transform.slice(7, transform.length - 1).split(', ');
+            let d = event.detail;
+            let current = transformMatrix[0] - (d/30);
+            if(current > 2.0){
+                current = 2.0;
+            }
+            else if(current < 0.8){
+                current = 0.8;
+            }
+            console.log(current + " current");
+            $(this).css('-moz-transform', 'scale(' + current + ')');
+        });
+        function getBrowserType() {
+            var ua = navigator.userAgent.toLowerCase();
+
+            var isChrome = ua.indexOf("chrome") != -1;
+
+            var isSafari = ua.indexOf("safari") != -1;
+
+            if(!isChrome && isSafari){
+                return 'safari';
+            }
+        }
         function MouseWheelHandler(o) {
-          $(o).css({'width':'auto','height':'auto','max-width':'1500px','max-height':'1500px'});
+            if(playing == true && getBrowserType() == 'safari'){
+                return false;
+            }
           var zoom=parseInt(o.style.zoom, 10)||100;
           zoom+=event.wheelDelta/12;
           if (zoom>0) {
-              console.log(zoom)
               if(zoom>200){
                 zoom = 200;
               }if(zoom<100){
@@ -2547,7 +2565,7 @@
     <style>
       .card-body a:hover:after {
         position: absolute;
-        left: 20px;
+        left: 40px;
         top: 1px;
         padding: 1px;
         background-color: #0095ff;
@@ -2555,7 +2573,7 @@
         color: #fff;
         content: attr(title);
         z-index: 2;
-        width: 120px;
+        width: 150px;
         text-align:center;
       }
         #displayArea{
@@ -2566,11 +2584,12 @@
             width: 50px;
             border: hidden;
         }
+
         ::-webkit-scrollbar{
           width: 10px;
           height: 10px;
         }
-     
+
         ::-webkit-scrollbar-thumb{
           border-radius: 1em;
           background-color: rgba(50,50,50,.3);
@@ -2580,24 +2599,7 @@
           border-radius: 1em;
           background-color: rgba(50,50,50,.1);
         }
-        /*footer {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        main {
-            height: 100vh;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-        #mainContent {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center
-        }*/
+
     </style>
 
 
