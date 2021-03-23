@@ -43,18 +43,18 @@ function BEQChecker() {
 
     else if ($('#pause').hasClass("fa-play")) {
 
-        if (stepNum == 1) {
+        if (insNum == 1) {
             $('#data1').css("animation-play-state", "running");
             $('#data2').css("animation-play-state", "running");
             $('#data3').css("animation-play-state", "running");
         }
-        else if (stepNum == 2) {
+        else if (insNum == 2) {
             $('#data4').css("animation-play-state", "running");
             $('#data42').css("animation-play-state", "running");
             $('#data6').css("animation-play-state", "running");
             $('#data20').css("animation-play-state", "running");
         }
-        else if (stepNum == 3) {
+        else if (insNum == 3) {
             $('#data8').css("animation-play-state", "running");
             $('#data9').css("animation-play-state", "running");
             $('#data10').css("animation-play-state", "running");
@@ -64,13 +64,13 @@ function BEQChecker() {
             $('#BranchAndZero').css("animation-play-state", "running");
             $('#and1').css("animation-play-state", "running");
         }
-        else if (stepNum == 4) {
+        else if (insNum == 4) {
             $('#data7').css("animation-play-state", "running");
             $('#data72').css("animation-play-state", "running");
             $('#data26').css("animation-play-state", "running");
             $('#data27').css("animation-play-state", "running");
         }
-        else if (stepNum == 5) {
+        else if (insNum == 5) {
             $('#data11').css("animation-play-state", "running");
         }
 

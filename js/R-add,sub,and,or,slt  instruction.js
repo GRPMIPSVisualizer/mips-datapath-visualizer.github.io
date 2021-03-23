@@ -113,11 +113,9 @@ function RBind(){
     });
     $("#ALUOp").bind("animationend", function () {
         $('#ALUOp').css("animation-play-state", "paused");
-        alert("yo");
     });
     $("#RegWrite").bind("animationend", function () {
         $('#RegWrite').css("animation-play-state", "paused");
-        alert("bro");
     });
 
     $("#data19").bind("animationend", function () {
@@ -165,8 +163,11 @@ function RBind(){
         Unbind();
         $('#fw').css("pointer-events", "auto");
         if(sequenceFlag == 1){
+            alert("AAAAA");
             continuePlay.theFlagData = continuePlay.theFlagData + 1;
+            alert("BBBBB");
         }
+
     });
 
     $("#data18").bind("animationend", function () {

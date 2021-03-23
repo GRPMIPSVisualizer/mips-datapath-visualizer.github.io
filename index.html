@@ -28,7 +28,7 @@
       operator= [];
       sequenceFlag = 0;
       getCPU = singleCycleCpu;
-      cpu = new getCPU();
+      cpu = null;
     </script>
 </head>
 <body style="background: linear-gradient(grey, white)">
@@ -1852,78 +1852,76 @@
                                             cx="148.26018"
                                             cy="142.07948"
                                             r="7.810112" />
-                        <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
-                            <body xmlns= "http://www.w3.org/1999/xhtml">
-                            <div id="instructionTable" class="scrollable" style="width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
-                                <table id="IMTable" bgcolor="white">
-                                    <thead>
-                                    <tr>
-                                        <th width="43%">PC Address</th>
-                                        <th>Machine Code</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            </body>
-                        </foreignObject>
-                        <foreignObject   width="204" height="260" x="720" y="200" fill="#e7e6e1">
-                            <body xmlns= "http://www.w3.org/1999/xhtml">
-                            <div id="registerTable" class="scrollable" style="width: 196px; height: 252px; overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
-                                <table bgcolor="white" id="rTable" style="min-height: border-box">
-                                    <thead>
-                                    <tr>
-                                        <th width=""40%>Register</th>
-                                        <th>32-bits Data</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            </body>
-                        </foreignObject>
-                        <foreignObject   width="244" height="132" x="1038" y="548">
-                            <body xmlns= "http://www.w3.org/1999/xhtml">
-                            <table class="dataMem" style="width: 100%; height: 98%;">
-                                <tr>
-                                    <td id="dynamicMemory" style="text-align: center">Dynamic</td>
-                                </tr>
-                                <tr>
-                                    <td id="staticMemory" style="text-align: center">Static</td>
-                                </tr>
-                            </table>
-                            </body>
-                        </foreignObject>
+                                    <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
+                                        <body xmlns= "http://www.w3.org/1999/xhtml">
+                                        <div id="instructionTable" class="scrollable" style="width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
+                                            <table id="IMTable" bgcolor="white">
+                                                <thead>
+                                                <tr>
+                                                    <th width="43%">PC Address</th>
+                                                    <th>Machine Code</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        </body>
+                                    </foreignObject>
+                                    <foreignObject   width="204" height="260" x="720" y="200" fill="#e7e6e1">
+                                        <body xmlns= "http://www.w3.org/1999/xhtml">
+                                        <div id="registerTable" class="scrollable" style="width: 196px; height: 252px; overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
+                                            <table bgcolor="white" id="rTable" style="min-height: border-box">
+                                                <thead>
+                                                <tr>
+                                                    <th width=""40%>Register</th>
+                                                    <th>32-bits Data</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        </body>
+                                    </foreignObject>
+                                    <foreignObject   width="244" height="132" x="1038" y="548">
+                                        <body xmlns= "http://www.w3.org/1999/xhtml">
+                                        <table class="dataMem" style="width: 100%; height: 98%;">
+                                            <tr>
+                                                <td id="dynamicMemory" style="text-align: center">Dynamic</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="staticMemory" style="text-align: center">Static</td>
+                                            </tr>
+                                        </table>
+                                        </body>
+                                    </foreignObject>
+                                    <foreignObject width="400" height="400" x="1046" y="156">
+                                        <body  xmlns= "http://www.w3.org/1999/xhtml">
+                                        <div id="dynamicTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none;">
+                                            <table id="DMTable" bgcolor="white">
+                                                <tbody id="dm">
+                                                <tr>
+                                                    <th width="30%">Address</th>
+                                                    <th>32-bits Data</th>
+                                                </tr>
+                                                </tbody>
 
-                        <foreignObject width="400" height="400" x="1046" y="156">
-                            <body  xmlns= "http://www.w3.org/1999/xhtml">
-                            <div id="dynamicTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none">
-                                <table id="DMTable" bgcolor="white">
-                                    <tbody id="dm">
-                                        <tr>
-                                            <th width="30%">Address</th>
-                                            <th>32-bits Data</th>
-                                        </tr>
-                                    </tbody>
+                                            </table>
+                                        </div>
+                                        </body>
+                                    </foreignObject>
+                                    <foreignObject width="400" height="400" x="646" y="460">
+                                        <body xmlns= "http://www.w3.org/1999/xhtml">
+                                        <div id="staticTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none;">
+                                            <table id="SMTable" bgcolor="white">
+                                                <tbody id="sm">
+                                                <tr>
+                                                    <th width="30%">Address</th>
+                                                    <th>32-bits Data</th>
+                                                </tr>
+                                                </tbody>
 
-                                </table>
-                            </div>
-                            </body>
-                        </foreignObject>
-                        <foreignObject width="400" height="400" x="646" y="460">
-                            <body xmlns= "http://www.w3.org/1999/xhtml">
-                            <div id="staticTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none">
-                                <table id="SMTable" bgcolor="white">
-                                    <tbody id="sm">
-                                        <tr>
-                                            <th width="30%">Address</th>
-                                            <th>32-bits Data</th>
-                                        </tr>
-                                    </tbody>
-
-                                </table>
-                            </div>
-                            </body>
-                        </foreignObject>
-
+                                            </table>
+                                        </div>
+                                        </body>
+                                    </foreignObject>
                     </svg>
 
                           </div>
@@ -2030,8 +2028,10 @@
                     if(newValue != 0){
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                         if(cpu.Errormsg != ""){
+                            alert('error!');
                             let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                             $("#displayArea").val(temp);
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             return false;
                         }
                         let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
@@ -2049,17 +2049,20 @@
                             $('#doubleSpeed').css("pointer-events", "none");
                             let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
                             $("#displayArea").val(temp);
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             continuePlay.theFlagData = 0;
                             return;
                         }
                         if(instructionMap[a] == instructionMap[address]){
                             let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
                             $("#displayArea").val(temp);
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                         }
                         else{
                             let l = instructionMap[a];
-                            let temp = $("#displayArea").val() + "Line " + l + " animation finished."+ "\n" ;
+                            let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
                             $("#displayArea").val(temp);
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                         }
                         lineNum = instructionMap[address];
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
@@ -2078,8 +2081,10 @@
         function continueToPlay(){
             highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
             if(cpu.Errormsg != ""){
+                alert('error!');
                 let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                 $("#displayArea").val(temp);
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 return false;
             }
             let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
@@ -2097,17 +2102,20 @@
                 $('#doubleSpeed').css("pointer-events", "none");
                 let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
                 $("#displayArea").val(temp);
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 continuePlay.theFlagData = 0;
                 return;
             }
             if(instructionMap[a] == instructionMap[address]){
                 let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
                 $("#displayArea").val(temp);
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
             }
             else{
                 let l = instructionMap[a];
-                let temp = $("#displayArea").val() + "Line " + l + " animation finished."+ "\n" ;
+                let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
                 $("#displayArea").val(temp);
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
             }
             lineNum = instructionMap[address];
             highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
@@ -2259,8 +2267,10 @@
                       highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                   }
                   if(cpu.Errormsg != ""){
+                      alert('error!');
                       let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                       $("#displayArea").val(temp);
+                      document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       return false;
                   }
                   cpu.oneClockCycle();
@@ -2277,6 +2287,7 @@
                       $('#doubleSpeed').css("pointer-events", "none");
                       let temp = $("#displayArea").val() + "Finished running." + "\n" ;
                       $("#displayArea").val(temp);
+                      document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       return;
                   }
                   lineNum = instructionMap[address];
@@ -2482,10 +2493,13 @@
                 cpu = new getCPU();
                 cpu.Assemble(CodeMirrorEditor.getValue());
                 if(cpu.Errormsg != ""){
+                    alert('error!');
                     let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                     $("#displayArea").val(temp);
+                    document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                     return false;
                 }
+                $("#displayArea").val("");
                 getCode();
                 storeALLInstruction();
                 mapping();
@@ -2577,7 +2591,7 @@
         text-align:center;
       }
         #displayArea{
-          height: 85%;
+          height: 100%;
         }
         #playSpeed{
             height: 30px;
