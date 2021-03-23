@@ -17,10 +17,12 @@ function JChecker() {
             $('#data72').css("animation-play-state", "paused");
             $('#data29').css("animation-play-state", "paused");
             $('#data30').css("animation-play-state", "paused");
+            $('#data30_0').css("animation-play-state", "paused");
         }
 
         else if (insNum == 4) {
             $('#data11').css("animation-play-state", "paused");
+            $('#data11_0').css("animation-play-state", "paused");
         }
 
         $('#pause').removeClass("fa-pause").addClass("fa-play");
@@ -46,9 +48,11 @@ function JChecker() {
             $('#data72').css("animation-play-state", "running");
             $('#data29').css("animation-play-state", "running");
             $('#data30').css("animation-play-state", "running");
+            $('#data30_0').css("animation-play-state", "running");
         }
         else if (insNum == 4) {
             $('#data11').css("animation-play-state", "running");
+            $('#data11_0').css("animation-play-state", "running");
         }
         $('#pause').removeClass("fa-play").addClass("fa-pause");
         $('#pause').attr('title', 'pause');
@@ -56,8 +60,29 @@ function JChecker() {
         $('#doubleSpeed').css("pointer-events", "auto");
     }
 };
-function JBind(){
-    /*暂停*/
+function JPlay(){
+    sequenceFlag = 1;
+    jStep1();
+}
+function JStepForward(jStep){
+    if(jStep == 1){
+        jStep1();
+    }
+    else if(jStep == 2){
+
+        jStep2();
+    }
+    else if(jStep == 3){
+
+        jStep3();
+    }
+    else if(jStep == 4){
+
+        jStep4();
+    }
+
+}
+function jStep1(){
     $('.fas.fa-pause').click(function () {
         JChecker();
     });
@@ -82,7 +107,16 @@ function JBind(){
         $('#data2').css("animation", "none");
     });
 
-
+    $('#fw').css("pointer-events", "none");
+    $('#play').css("pointer-events", "none");
+    $('#data1').css({"animation":"pathing " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data3_1').css("opacity", "0");
+    $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    insNum = 1;
+    $('#pause').css("pointer-events", "auto");
+}
+function jStep2(){
     $("#data42").bind("animationend", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
@@ -99,8 +133,14 @@ function JBind(){
             jStep3();
         }
     });
-
-
+    $('#fw').css("pointer-events", "none");
+    $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data28').css({"animation":"pathing28 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#Jump').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
+    insNum = 2;
+    $('#pause').css("pointer-events", "auto");
+}
+function jStep3(){
     $("#data72").bind("animationend", function () {
         $('#data72').css("animation-play-state", "paused");
         $('#data72').css("animation", "none");
@@ -122,8 +162,20 @@ function JBind(){
             jStep4();
         }
     });
-
-
+    $("#data30_0").bind("animationend", function () {
+        $('#data30_0').css("animation-play-state", "paused");
+        $('#data30_0').css("animation", "none");
+    });
+    $('#fw').css("pointer-events", "none");
+    $('#data72').css({"animation":"pathing72 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data73').css({"animation":"pathing73 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data29').css({"animation":"pathing29 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data30_0').css({"animation":"pathing30_0 " + 14/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data30').css({"animation":"pathing30 " + 14/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    insNum = 3;
+    $('#pause').css("pointer-events", "auto");
+}
+function jStep4(){
     $("#data11").bind("animationend", function () {
         playing = false;
         insNum = 0;
@@ -133,67 +185,16 @@ function JBind(){
         $('#pause').css("pointer-events", "none");
         Unbind();
         $('#fw').css("pointer-events", "auto");
-            if(sequenceFlag == 1){
-                continuePlay.theFlagData = continuePlay.theFlagData + 1;
-            }
+        if(sequenceFlag == 1){
+            continuePlay.theFlagData = continuePlay.theFlagData + 1;
+        }
     });
-}
-function JPlay(){
-    sequenceFlag = 1;
-    jStep1();
-}
-function JStepForward(jStep){
-    if(jStep == 1){
-        jStep1();
-    }
-    else if(jStep == 2){
-
-        jStep2();
-    }
-    else if(jStep == 3){
-
-        jStep3();
-    }
-    else if(jStep == 4){
-
-        jStep4();
-    }
-
-}
-
-function jStep1(){
-    JBind();
+    $("#data11_0").bind("animationend", function () {
+        $('#data11_0').css("animation-play-state", "paused");
+        $('#data11_0').css("animation", "none");
+    });
     $('#fw').css("pointer-events", "none");
-    $('#play').css("pointer-events", "none");
-    $('#data1').css({"animation":"pathing " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data3_1').css("opacity", "0");
-    $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 1;
-    $('#pause').css("pointer-events", "auto");
-}
-
-function jStep2(){
-    $('#fw').css("pointer-events", "none");
-    $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data28').css({"animation":"pathing28 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#Jump').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
-    insNum = 2;
-    $('#pause').css("pointer-events", "auto");
-}
-
-function jStep3(){
-    $('#fw').css("pointer-events", "none");
-    $('#data72').css({"animation":"pathing72 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data73').css({"animation":"pathing73 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data29').css({"animation":"pathing29 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data30').css({"animation":"pathing30 " + 14/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 3;
-    $('#pause').css("pointer-events", "auto");
-}
-
-function jStep4(){
-    $('#fw').css("pointer-events", "none");
+    $('#data11_0').css({"animation":"pathing11_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data11').css({"animation":"pathing11 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 4;
     $('#pause').css("pointer-events", "auto");
