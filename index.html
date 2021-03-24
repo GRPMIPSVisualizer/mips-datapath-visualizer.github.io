@@ -28,7 +28,7 @@
       operator= [];
       sequenceFlag = 0;
       getCPU = singleCycleCpu;
-      cpu = null;
+      cpu = new getCPU();
     </script>
 </head>
 <body style="background: linear-gradient(grey, white)">
@@ -289,7 +289,7 @@
                                         d="M 16 16  a 15 15 0 0 1 30 0 v 75 a 15 15 0 1 1 -30 0 v -75"
                                         stroke="#007965"
                                         fill="none"
-                                        id="path68" />
+                                        id="path68"/>
                                 <text
                                         y="40"
                                         font-size="12"
@@ -1542,7 +1542,7 @@
                                 height="30"
                                 x="153"
                                 y="81"
-                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)"/>
                         <use
                                 xlink:href="#MUX"
                                 id="mux2"
@@ -2045,13 +2045,13 @@
                         <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px">0.5 x</a>
                         <input id="playSpeed" style="text-align: center; width: 40px" readonly>
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed">2.0 x</a>
-                        <input id="dataInfo" name="dataInfo" style="margin-left: 7px" readonly>
                         </p><div id="superToggler" class="toggler"></div>
                         <textarea id="displayArea" content="" readonly></textarea>
                     <p></p>
                 </div>
             </div>
         </div>
+        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: 45px;left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'"></div>
     </main>
 
     <!-- SCRIPTS -->
@@ -2080,6 +2080,18 @@
 
     <script src="js/code_mirror/mode/mips/mips.js"></script>
      <script>
+         function showDiv(e, value) {
+             var o = document.getElementById("hidDiv");
+             $("#hidDiv").text("Data value: " + value);
+             o.style.left = e.clientX+"px";
+             o.style.top = e.clientY+10+"px";
+             o.style.display = "block";
+         }
+         function hideDiv(e) {
+             var o = document.getElementById("hidDiv");
+             o.style.display = "none";
+         }
+
          window.onload = function(){
              let reg = ['$zero','$at','$v0','$v1','$a0','$a1','$a2','$a3','$t0','$t1','$t2','$t3','$t4','$t5','$t6','$t7','$s0','$s1','$s2','$s3','$s4','$s5','$s6','$s7','$t8','$t9','$k0','$k1','$gp','$sp','$fp','$ra'];
             let table = document.getElementById('rTable');
@@ -2466,9 +2478,9 @@
                     } else if ($(this).attr("id") == "data28") {
                         var dataValue = cpu.InsMemOut.substring(6, 31);
                     } else if ($(this).attr("id") == "data29") {
-                        var dataValue = '';
+                        var dataValue = cpu.InsMemOut.substring(6, 31)+'00';
                     } else if ($(this).attr("id") == "data30_0") {
-                        var dataValue = '';
+                        var dataValue = cpu.PCAdderOut.substring(0,3)+cpu.InsMemOut.substring(6, 31)+'00';
                     }  else if ($(this).attr("id") == "data42") {
                         var dataValue = cpu.InsMemOut.substring(0, 5);
                     } else if ($(this).attr("id") == "data72") {
@@ -2481,9 +2493,12 @@
                     var dataValue = "00000000000000000000000000000100";
                 }
 
-                $("#dataInfo").val(dataValue);
+                if(($(this).attr("id") == "data3_1" && $(this).css('opacity') == 1)||$(this).css('animation-duration') != '0s'){
+                    showDiv(event, dataValue);
+                }
+
             },function () {
-                $("#dataInfo").val("");
+                hideDiv(event);
             });
 
 
@@ -2571,9 +2586,11 @@
                 operator= [];
                 sequenceFlag = 0;
                 cpu = new getCPU();
+                cpu.assembler.refresh();
                 cpu.Assemble(CodeMirrorEditor.getValue());
+                console.log("Assembled "+ cpu.getMachineCode());
                 if(cpu.Errormsg != ""){
-                    alert('error!');
+                    alert('assemble error!');
                     let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                     $("#displayArea").val(temp);
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;

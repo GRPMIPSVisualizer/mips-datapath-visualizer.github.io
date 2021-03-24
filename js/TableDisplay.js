@@ -52,6 +52,7 @@ function initializeIM(){
     let table = document.getElementById("IMTable");
     let machineCodes = cpu.getMachineCode();
     let index = 4194304;
+    console.log(machineCodes);
     for(let a=0; a<machineCodes.length; a++){
         let row = table.insertRow(-1);
         let cell1 = row.insertCell(0);
