@@ -53,6 +53,7 @@
                         <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="#" id="demo">Demo</a>
                     </li>
                     </ul>
+                    <a class="fab fa-github" href="https://github.com/GRPMIPSVisualizer" style="color:grey"></a>
                 </div>
             </div>
         </nav>
@@ -570,7 +571,9 @@
                                 <path
                                         d="M 10 10 v 20 l 8 8 l -8 8 v 20 l 40 -15 v -26 Z "
                                         fill="none"
-                                        id="path160" />
+                                        id="path160"
+                                        style="fill:red;
+                                        fill-opacity:0;"/>
                                 <text
                                         x="19"
                                         y="39"
@@ -933,7 +936,9 @@
                                         fill="none"
                                         stroke="#007965"
                                         stroke-width="2"
-                                        id="ellipse309" />
+                                        id="ellipse309"
+                                        style="fill:red;
+                                        fill-opacity:0;"/>
                                 <circle
                                         cx="80"
                                         cy="20"
@@ -1566,6 +1571,8 @@
                                 height="40"
                                 x="60"
                                 y="13.5"
+                                style="fill:red;
+                                        fill-opacity:0;"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#control"
@@ -1837,6 +1844,7 @@
                                             class="dataCircle"
                                             cx="634.38879"
                                             cy="157.61679"
+                                            cy="157.61679"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -1844,6 +1852,13 @@
                                             class="dataCircle"
                                             cx="148.26018"
                                             cy="142.07948"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data31"
+                                            class="dataCircle"
+                                            cx="495.52841"
+                                            cy="509.04526"
                                             r="7.810112" />
                                     <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
                                         <body xmlns= "http://www.w3.org/1999/xhtml">
@@ -1915,6 +1930,24 @@
                                         </div>
                                         </body>
                                     </foreignObject>
+                                    <use
+                                            xlink:href="#adder"
+                                            id="adder2_0"
+                                            width="50"
+                                            height="50"
+                                            x="278"
+                                            y="20"
+                                            style="fill:red; fill-opacity: 0;"
+                                            transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                                    <use
+                                            xlink:href="#alu"
+                                            width="60"
+                                            height="60"
+                                            x="270"
+                                            y="53.700001"
+                                            id="use459_0"
+                                            style="fill:red; fill-opacity: 1;"
+                                            transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data7_0"
@@ -2020,6 +2053,7 @@
                                             cx="634.38879"
                                             cy="157.61679"
                                             r="7.810112" />
+
                     </svg>
 
                           </div>
@@ -2051,7 +2085,7 @@
                 </div>
             </div>
         </div>
-        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: 45px;left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'"></div>
+        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: 45px;left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'; z-index: 1000"></div>
     </main>
 
     <!-- SCRIPTS -->
@@ -2428,7 +2462,47 @@
                 playing = true;
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
             });
+            $("#rect110").hover(function(event){ // PC
+                showDiv(event, "pc介绍");
+            },function () {
+                hideDiv(event);
+            });
 
+            $("#adder1").hover(function(event){ // PCAdder
+                showDiv(event, "pcadder介绍");
+            },function () {
+                hideDiv(event);
+            });
+            $("#rect2").hover(function(event){ // IM
+                showDiv(event, "im介绍");
+            },function () {
+                hideDiv(event);
+            });
+            $("#ellipse309").hover(function(event){ // Control
+                showDiv(event, "control介绍");
+            },function () {
+                hideDiv(event);
+            });
+            $("#rect177").hover(function(event){ // Register
+                showDiv(event, "register介绍");
+            },function () {
+                hideDiv(event);
+            });
+            $("#use459_0").hover(function(event){ // ALU
+                showDiv(event, "alu介绍");
+            },function () {
+                hideDiv(event);
+            });
+            $("#adder2_0").hover(function(event){ // Adder
+                showDiv(event, "adder介绍");
+            },function () {
+                hideDiv(event);
+            });
+            $("#rect248").hover(function(event){ // DM
+                showDiv(event, "dm介绍");
+            },function () {
+                hideDiv(event);
+            });
             $(".dataCircle").hover(function(){
                 if($(this).css('animation-duration') != '0s') {
                     if ($(this).attr("id") == "data1") {
@@ -2452,7 +2526,7 @@
                     } else if ($(this).attr("id") == "data10_0") {
                         var dataValue = cpu.aluMuxOut;
                     } else if ($(this).attr("id") == "data11_0") {
-                        var dataValue = cpu.MUXB;
+                        var dataValue = cpu.muxBOut;
                     } else if ($(this).attr("id") == "data12_0") {
                         var dataValue = cpu.ALUIsZeroOut;
                     } else if ($(this).attr("id") == "data18") {

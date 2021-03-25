@@ -11,15 +11,18 @@ function ADDIChecker() {
         else if (insNum == 2) {
             $('#data4').css("animation-play-state", "paused");
             $('#data42').css("animation-play-state", "paused");
-            $('#data5').css("animation-play-state", "paused");
+            $('#data31').css("animation-play-state", "paused");
             $('#data20').css("animation-play-state", "paused");
             $('#data20_0').css("animation-play-state", "paused");
             $('#ALUSrc').css("animation-play-state", "paused");
+            $('#ALUOp').css("animation-play-state", "paused");
             $('#RegWrite').css("animation-play-state", "paused");
         }
         else if (insNum == 3) {
             $('#data8').css("animation-play-state", "paused");
             $('#data8_0').css("animation-play-state", "paused");
+            $('#data7').css("animation-play-state", "paused");
+            $('#data7_0').css("animation-play-state", "paused");
             $('#data21').css("animation-play-state", "paused");
             $('#data21_0').css("animation-play-state", "paused");
         }
@@ -46,15 +49,18 @@ function ADDIChecker() {
         else if (insNum == 2) {
             $('#data4').css("animation-play-state", "running");
             $('#data42').css("animation-play-state", "running");
-            $('#data5').css("animation-play-state", "running");
+            $('#data31').css("animation-play-state", "running");
             $('#data20').css("animation-play-state", "running");
             $('#data20_0').css("animation-play-state", "running");
             $('#ALUSrc').css("animation-play-state", "running");
+            $('#ALUOp').css("animation-play-state", "running");
             $('#RegWrite').css("animation-play-state", "running");
         }
         else if (insNum == 3) {
             $('#data8').css("animation-play-state", "running");
             $('#data8_0').css("animation-play-state", "running");
+            $('#data7').css("animation-play-state", "running");
+            $('#data7_0').css("animation-play-state", "running");
             $('#data21').css("animation-play-state", "running");
             $('#data21_0').css("animation-play-state", "running");
 
@@ -139,9 +145,9 @@ function addiStep2(){
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data5").bind("animationend", function () {
-        $('#data5').css("animation-play-state", "paused");
-        $('#data5').css("animation", "none");
+    $("#data31").bind("animationend", function () {
+        $('#data31').css("animation-play-state", "paused");
+        $('#data31').css("animation", "none");
     });
     $("#data20").bind("animationend", function () {
         $('#data20').css("animation-play-state", "paused");
@@ -162,12 +168,16 @@ function addiStep2(){
     $("#RegWrite").bind("animationend", function () {
         $('#RegWrite').css("animation-play-state", "paused");
     });
+    $("#ALUOp").bind("animationend", function () {
+        $('#ALUOp').css("animation-play-state", "paused");
+    });
     $('#fw').css("pointer-events", "none");
     $('#data4').css({"animation":"pathing4 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data5').css({"animation":"pathing5 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data31').css({"animation":"pathing31 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20_0').css({"animation":"pathing20_0 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20').css({"animation":"pathing20 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#ALUOp').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     $('#ALUSrc').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     $('#RegWrite').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     insNum = 2;
@@ -187,6 +197,14 @@ function addiStep3(){
         $('#data21_0').css("animation-play-state", "paused");
         $('#data21_0').css("animation", "none");
     });
+    $("#data7").bind("animationend", function () {
+        $('#data7').css("animation-play-state", "paused");
+        $('#data7').css("animation", "none");
+    });
+    $("#data7_0").bind("animationend", function () {
+        $('#data7_0').css("animation-play-state", "paused");
+        $('#data7_0').css("animation", "none");
+    });
     $("#data8").bind("animationend", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
@@ -196,6 +214,8 @@ function addiStep3(){
         $('#data8_0').css("animation", "none");
     });
     $('#fw').css("pointer-events", "none");
+    $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8_0').css({"animation":"pathing8_0 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8').css({"animation":"pathing8 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data21_0').css({"animation":"pathing21_0 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -219,6 +239,7 @@ function addiStep4(){
         $('#data12').css("animation-play-state", "paused");
         $('#data12').css("animation", "none");
         $('#ALUSrc').css("animation", "none");
+        $('#ALUOp').css("animation", "none");
         $('#RegWrite').css("animation", "none");
         $('#pause').css("pointer-events", "none");
         Unbind();
