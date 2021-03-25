@@ -10,7 +10,7 @@ function LWChecker() {
         else if (insNum == 2) {
             $('#data4').css("animation-play-state", "paused");
             $('#data42').css("animation-play-state", "paused");
-            $('#data6').css("animation-play-state", "paused");
+            $('#data31').css("animation-play-state", "paused");
             $('#data20').css("animation-play-state", "paused");
             $('#data20_0').css("animation-play-state", "paused");
             $('#MemRead').css("animation-play-state", "paused");
@@ -50,7 +50,7 @@ function LWChecker() {
         else if (insNum == 2) {
             $('#data4').css("animation-play-state", "running");
             $('#data42').css("animation-play-state", "running");
-            $('#data6').css("animation-play-state", "running");
+            $('#data31').css("animation-play-state", "running");
             $('#data20').css("animation-play-state", "running");
             $('#data20_0').css("animation-play-state", "running");
             $('#MemRead').css("animation-play-state", "running");
@@ -150,9 +150,9 @@ function lwStep2(){
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data6").bind("animationend", function () {
-        $('#data6').css("animation-play-state", "paused");
-        $('#data6').css("animation", "none");
+    $("#data31").bind("animationend", function () {
+        $('#data31').css("animation-play-state", "paused");
+        $('#data31').css("animation", "none");
     });
     $("#data20").bind("animationend", function () {
         $('#data20').css("animation-play-state", "paused");
@@ -187,7 +187,7 @@ function lwStep2(){
     $('#fw').css("pointer-events", "none");
     $('#data4').css({"animation":"pathing4 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data6').css({"animation":"pathing5 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data31').css({"animation":"pathing5 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20_0').css({"animation":"pathing20_0 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20').css({"animation":"pathing20 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#MemRead').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});

@@ -15,6 +15,7 @@
     <script type="text/javascript" src="./js/Hardware.js"></script>
     <script type="text/javascript" src="js/TableDisplay.js"></script>
     <script type="text/javascript">
+        FOShowFlag = false;
         continuePlay = { theFlagData: 0};
         playing = false;
         address = 0;
@@ -197,7 +198,9 @@
                                 <path
                                         d="M 10 10 v 20 l 8 8 l -8 8 v 20 l 40 -15 v -26 Z "
                                         fill="none"
-                                        id="path43" />
+                                        id="path43"
+                                        style="fill:red;
+                                        fill-opacity:0;"/>
                                 <text
                                         x="19"
                                         y="39"
@@ -1937,7 +1940,7 @@
                                             height="50"
                                             x="278"
                                             y="20"
-                                            style="fill:red; fill-opacity: 0;"
+                                            style="fill:red; fill-opacity: 0; opacity: 0;"
                                             transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                                     <use
                                             xlink:href="#alu"
@@ -1946,7 +1949,7 @@
                                             x="270"
                                             y="53.700001"
                                             id="use459_0"
-                                            style="fill:red; fill-opacity: 1;"
+                                            style="fill:red; fill-opacity: 0; opacity: 0;"
                                             transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -2085,7 +2088,7 @@
                 </div>
             </div>
         </div>
-        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: 45px;left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'; z-index: 1000"></div>
+        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'; z-index: 1000"></div>
     </main>
 
     <!-- SCRIPTS -->
@@ -2147,15 +2150,16 @@
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                         if(cpu.Errormsg != ""){
                             alert('error!');
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                             $("#displayArea").val(temp);
-                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             return false;
                         }
                         let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
                         cpu.oneClockCycle();
                         address = cpu.getCurrentInsAddr();
                         address = parseInt(address, 2).toString(16);
+                        alert(address);
                         if(instructionMap[address] == undefined){
                             CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
                             $('#uploadFileButton').css("pointer-events", "auto");
@@ -2165,22 +2169,22 @@
                             $('#pause').css("pointer-events", "none");
                             $('#halfSpeed').css("pointer-events", "none");
                             $('#doubleSpeed').css("pointer-events", "none");
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
                             $("#displayArea").val(temp);
-                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             continuePlay.theFlagData = 0;
                             return;
                         }
                         if(instructionMap[a] == instructionMap[address]){
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
                             $("#displayArea").val(temp);
-                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                         }
                         else{
                             let l = instructionMap[a];
+                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
                             $("#displayArea").val(temp);
-                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                         }
                         lineNum = instructionMap[address];
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
@@ -2200,9 +2204,9 @@
             highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
             if(cpu.Errormsg != ""){
                 alert('error!');
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                 $("#displayArea").val(temp);
-                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 return false;
             }
             let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
@@ -2218,22 +2222,22 @@
                 $('#pause').css("pointer-events", "none");
                 $('#halfSpeed').css("pointer-events", "none");
                 $('#doubleSpeed').css("pointer-events", "none");
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
                 $("#displayArea").val(temp);
-                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 continuePlay.theFlagData = 0;
                 return;
             }
             if(instructionMap[a] == instructionMap[address]){
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
                 $("#displayArea").val(temp);
-                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
             }
             else{
                 let l = instructionMap[a];
+                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
                 $("#displayArea").val(temp);
-                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
             }
             lineNum = instructionMap[address];
             highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
@@ -2288,7 +2292,14 @@
                 }
                 else {
                     posOfSpace = sourceIns[i].indexOf(" ");
-                    operator[i] = sourceIns[i].substring(0, posOfSpace);
+                    if(colon.test(sourceIns[i])){
+                        posOfColon = sourceIns[i].indexOf(":");
+                        posOfComma = sourceIns[i].indexOf(",");
+                        operator[i] = sourceIns[i].substring(posOfColon+1, posOfComma).trim();
+                    }
+                    else{
+                        operator[i] = sourceIns[i].substring(0, posOfSpace);
+                    }
                     if(operator[i] == "blt" || operator[i] == "bgt") {
                         operator[i] = new Array();
                         operator[i][0] = "slt";
@@ -2308,8 +2319,21 @@
                         operator[i][0] = "lui";
                         operator[i][1] = "ori";
                     }
+                    else if(operator[i] == "li"){
+                        let posOfComma;
+                        posOfComma = sourceIns[i].indexOf(",");
+                        let num=sourceIns[i].substring(posOfComma+1, sourceIns[0].length).trim();
+                        console.log(num);
+                        if((num>=-2147483648 && num<-32768)|| (num>32767 && num<=2147483647)) {
+                            operator[i] = new Array();
+                            operator[i][0] = "lui";
+                            operator[i][1] = "ori";
+                        }
+                    }
                 }
             }
+            alert(sourceIns);
+            alert(operator);
         }
 
         function reverseCompileAndPlay(opcode){
@@ -2385,10 +2409,9 @@
                       highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                   }
                   if(cpu.Errormsg != ""){
-                      alert('error!');
+                      document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                       $("#displayArea").val(temp);
-                      document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       return false;
                   }
                   cpu.oneClockCycle();
@@ -2403,9 +2426,9 @@
                       $('#pause').css("pointer-events", "none");
                       $('#halfSpeed').css("pointer-events", "none");
                       $('#doubleSpeed').css("pointer-events", "none");
+                      document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       let temp = $("#displayArea").val() + "Finished running." + "\n" ;
                       $("#displayArea").val(temp);
-                      document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       return;
                   }
                   lineNum = instructionMap[address];
@@ -2463,43 +2486,47 @@
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
             });
             $("#rect110").hover(function(event){ // PC
-                showDiv(event, "pc介绍");
+                showDiv(event, "PC (Program Counter) is a register that holds the address of the memory unit where the instruction is to be fetched and executed.");
             },function () {
                 hideDiv(event);
             });
 
             $("#adder1").hover(function(event){ // PCAdder
-                showDiv(event, "pcadder介绍");
+                showDiv(event, "Set the address of the next instruction.");
             },function () {
                 hideDiv(event);
             });
             $("#rect2").hover(function(event){ // IM
-                showDiv(event, "im介绍");
+                showDiv(event, "Register that holds the instruction currently being decoded.");
             },function () {
                 hideDiv(event);
             });
             $("#ellipse309").hover(function(event){ // Control
-                showDiv(event, "control介绍");
+                showDiv(event, "Controls the components of the datapath: • determines how data moves through the datapath\n• receives condition signals from the components\n• sends control signals to the components\n• switches between buses with multiplexers");
             },function () {
                 hideDiv(event);
             });
             $("#rect177").hover(function(event){ // Register
-                showDiv(event, "register介绍");
+                showDiv(event, "Component that stores a 32-bit value.");
             },function () {
                 hideDiv(event);
             });
-            $("#use459_0").hover(function(event){ // ALU
-                showDiv(event, "alu介绍");
+            $("#alu").hover(function(event){ // ALU
+                if(FOShowFlag==false){
+                    showDiv(event, "The ALU is a digital logic circuit assembly that performs binary arithmetic operations (such as addition, subtraction, multiplication, AND division) AND binary logic operations (such as 'AND', 'OR', 'NOR', 'XOR'), as well as shift operations.");
+                }
             },function () {
                 hideDiv(event);
             });
             $("#adder2_0").hover(function(event){ // Adder
-                showDiv(event, "adder介绍");
+                if(FOShowFlag==false){
+                    showDiv(event, "Adder takes the PC address and the immediate number address to form the branch's address.");
+                }
             },function () {
                 hideDiv(event);
             });
             $("#rect248").hover(function(event){ // DM
-                showDiv(event, "dm介绍");
+                showDiv(event, "Part of memory that stores data manipulated by program.");
             },function () {
                 hideDiv(event);
             });
@@ -2577,14 +2604,17 @@
 
 
             $("#dynamicMemory").click(function(){
+                FOShowFlag = true;
                 $("#dynamicTable").css('display', 'block');
                 event.stopPropagation();
             });
             $("#staticMemory").click(function(){
+                FOShowFlag = true;
                $("#staticTable").css('display', 'block');
                event.stopPropagation();
             });
             $("body").click(function (){
+                FOShowFlag = false;
                $("#dynamicTable").css('display', 'none');
                $("#staticTable").css('display', 'none');
             });
@@ -2665,9 +2695,9 @@
                 console.log("Assembled "+ cpu.getMachineCode());
                 if(cpu.Errormsg != ""){
                     alert('assemble error!');
+                    document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                     let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                     $("#displayArea").val(temp);
-                    document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                     return false;
                 }
                 $("#displayArea").val("");

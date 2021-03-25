@@ -823,25 +823,14 @@ th{
     0% {
         opacity: 1;
     }
-    25% {
-        opacity: 1;
-        transform: translate3d(105.2px, 0px, 0px);
-    }
-    50% {
-        opacity: 1;
-        transform: translate3d(105.2px, -18.8px, 0px);
-    }
-    75% {
-        opacity: 1;
-        transform: translate3d(32px, -18.8px, 0px);
-    }
     99% {
         opacity: 1;
-        transform: translate3d(32px, -52px, 0px);
+        transform: translate3d(104px, 0px, 0px);
     }
+
     100% {
         opacity: 0;
-        transform: translate3d(32px, -52px, 0px);
+        transform: translate3d(104px, 0px, 0px);
     }
 
 }
