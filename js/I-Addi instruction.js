@@ -21,10 +21,10 @@ function ADDIChecker() {
         else if (insNum == 3) {
             $('#data8').css("animation-play-state", "paused");
             $('#data8_0').css("animation-play-state", "paused");
-            $('#data7').css("animation-play-state", "paused");
-            $('#data7_0').css("animation-play-state", "paused");
             $('#data21').css("animation-play-state", "paused");
             $('#data21_0').css("animation-play-state", "paused");
+            $('#data7_0').css("animation-play-state", "paused");
+            $('#data7').css("animation-play-state", "paused");
         }
         else if (insNum == 4) {
             $('#data11').css("animation-play-state", "paused");
@@ -59,11 +59,10 @@ function ADDIChecker() {
         else if (insNum == 3) {
             $('#data8').css("animation-play-state", "running");
             $('#data8_0').css("animation-play-state", "running");
-            $('#data7').css("animation-play-state", "running");
-            $('#data7_0').css("animation-play-state", "running");
             $('#data21').css("animation-play-state", "running");
             $('#data21_0').css("animation-play-state", "running");
-
+            $('#data7_0').css("animation-play-state", "running");
+            $('#data7').css("animation-play-state", "running");
         }
         else if (insNum == 4) {
             $('#data11').css("animation-play-state", "running");
@@ -159,14 +158,14 @@ function addiStep2(){
     });
     $("#ALUSrc").bind("animationend", function () {
         $('#ALUSrc').css("animation-play-state", "paused");
+    });
+    $("#RegWrite").bind("animationend", function () {
+        $('#RegWrite').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
         if(sequenceFlag == 1){
             addiStep3();
         }
-    });
-    $("#RegWrite").bind("animationend", function () {
-        $('#RegWrite').css("animation-play-state", "paused");
     });
     $("#ALUOp").bind("animationend", function () {
         $('#ALUOp').css("animation-play-state", "paused");
@@ -187,11 +186,6 @@ function addiStep3(){
     $("#data21").bind("animationend", function () {
         $('#data21').css("animation-play-state", "paused");
         $('#data21').css("animation", "none");
-        $('#fw').css("pointer-events", "auto");
-        $('#pause').css("pointer-events", "none");
-        if(sequenceFlag == 1){
-            addiStep4();
-        }
     });
     $("#data21_0").bind("animationend", function () {
         $('#data21_0').css("animation-play-state", "paused");
@@ -200,6 +194,11 @@ function addiStep3(){
     $("#data7").bind("animationend", function () {
         $('#data7').css("animation-play-state", "paused");
         $('#data7').css("animation", "none");
+        $('#fw').css("pointer-events", "auto");
+        $('#pause').css("pointer-events", "none");
+        if(sequenceFlag == 1){
+            addiStep4();
+        }
     });
     $("#data7_0").bind("animationend", function () {
         $('#data7_0').css("animation-play-state", "paused");
@@ -214,12 +213,12 @@ function addiStep3(){
         $('#data8_0').css("animation", "none");
     });
     $('#fw').css("pointer-events", "none");
-    $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8_0').css({"animation":"pathing8_0 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8').css({"animation":"pathing8 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data21_0').css({"animation":"pathing21_0 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data21').css({"animation":"pathing21 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 3;
     $('#pause').css("pointer-events", "auto");
 }

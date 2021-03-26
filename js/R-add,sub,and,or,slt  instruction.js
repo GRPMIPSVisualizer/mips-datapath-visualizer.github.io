@@ -226,13 +226,13 @@ function addStep3(){
         $('#data7_0').css("animation", "none");
     });
     $('#fw').css("pointer-events", "none");
-    $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8_0').css({"animation":"pathing8_0 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8').css({"animation":"pathing8 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data9').css({"animation":"pathing9 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data10_0').css({"animation":"pathing10_0 " + 9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data10').css({"animation":"pathing10 " + 9/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 3;
     $('#pause').css("pointer-events", "auto");
 }

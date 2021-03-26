@@ -286,6 +286,7 @@ th{
         transform: translate3d(1100px, 92px, 0px);
     }
     100% {
+        opacity: 0;
         transform: translate3d(1100px, 92px, 0px);
     }
 }
@@ -907,6 +908,7 @@ th{
         transform: translate3d(1100px, 92px, 0px);
     }
     100% {
+        opacity: 0;
         transform: translate3d(1100px, 92px, 0px);
     }
 }

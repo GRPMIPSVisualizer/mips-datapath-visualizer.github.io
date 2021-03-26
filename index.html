@@ -50,6 +50,12 @@
                     <li class="nav-item" id="helpPage">
                         <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="help.html">Help</a>
                     </li>
+                    <li class="nav-item" id="docPage">
+                        <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="">DOC</a>
+                    </li>
+                    <li class="nav-item" id="testPage">
+                        <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="">TEST</a>
+                    </li>
                     <li class="nav-item" id="demoPage">
                         <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="#" id="demo">Demo</a>
                     </li>
@@ -1574,8 +1580,6 @@
                                 height="40"
                                 x="60"
                                 y="13.5"
-                                style="fill:red;
-                                        fill-opacity:0;"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#control"
@@ -1940,7 +1944,6 @@
                                             height="50"
                                             x="278"
                                             y="20"
-                                            style="fill:red; fill-opacity: 0; opacity: 0;"
                                             transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                                     <use
                                             xlink:href="#alu"
@@ -1949,6 +1952,15 @@
                                             x="270"
                                             y="53.700001"
                                             id="use459_0"
+                                            style="fill:red; fill-opacity: 0; opacity: 0;"
+                                            transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                                    <use
+                                            xlink:href="#dataMem"
+                                            width="160"
+                                            height="160"
+                                            x="250"
+                                            y="130"
+                                            id="use461_0"
                                             style="fill:red; fill-opacity: 0; opacity: 0;"
                                             transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                                     <circle
@@ -2149,7 +2161,6 @@
                     if(newValue != 0){
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                         if(cpu.Errormsg != ""){
-                            alert('error!');
                             document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                             $("#displayArea").val(temp);
@@ -2159,7 +2170,6 @@
                         cpu.oneClockCycle();
                         address = cpu.getCurrentInsAddr();
                         address = parseInt(address, 2).toString(16);
-                        alert(address);
                         if(instructionMap[address] == undefined){
                             CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
                             $('#uploadFileButton').css("pointer-events", "auto");
@@ -2189,6 +2199,11 @@
                         lineNum = instructionMap[address];
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
                         if(instructionList[address] == "00000000000000000000000000001100"){
+                            if(cpu.StdOut != ""){
+                                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
+                                let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n" ;
+                                $("#displayArea").val(temp);
+                            }
                             console.log('syscall finished');
                             continueToPlay();
                         }
@@ -2203,7 +2218,6 @@
         function continueToPlay(){
             highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
             if(cpu.Errormsg != ""){
-                alert('error!');
                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                 $("#displayArea").val(temp);
@@ -2242,6 +2256,11 @@
             lineNum = instructionMap[address];
             highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
             if(instructionList[address] == "00000000000000000000000000001100"){
+                if(cpu.StdOut != ""){
+                    document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
+                    let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n" ;
+                    $("#displayArea").val(temp);
+                }
                 console.log('syscall finished');
                 continueToPlay();
             }
@@ -2323,7 +2342,6 @@
                         let posOfComma;
                         posOfComma = sourceIns[i].indexOf(",");
                         let num=sourceIns[i].substring(posOfComma+1, sourceIns[0].length).trim();
-                        console.log(num);
                         if((num>=-2147483648 && num<-32768)|| (num>32767 && num<=2147483647)) {
                             operator[i] = new Array();
                             operator[i][0] = "lui";
@@ -2332,19 +2350,17 @@
                     }
                 }
             }
-            alert(sourceIns);
-            alert(operator);
         }
 
         function reverseCompileAndPlay(opcode){
                 if(opcode == '000000'){
                     RPlay();
                 }
-                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011'){
+                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011' || opcode == '001111'){
                     ADDIPlay();
                 }
-                else if(opcode == '001111' || opcode == '000101' || opcode == '000100'){
-                    BEQPlay(); //存疑：lui指令到底是跑在这里，还是应该挪到addi??
+                else if(opcode == '000101' || opcode == '000100'){
+                    BEQPlay();
                 }
                 else if(opcode == '100011'){
                     LWPlay();
@@ -2361,10 +2377,10 @@
                 if(opcode == '000000'){
                     stepNum = 4;
                 }
-                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011'){
+                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011' || opcode == '001111'){
                     stepNum = 4;
                 }
-                else if(opcode == '001111' || opcode == '000101' || opcode == '000100'){
+                else if(opcode == '000101' || opcode == '000100'){
                     stepNum = 5;
                 }
                 else if(opcode == '100011'){
@@ -2382,10 +2398,10 @@
                 if(opcode == '000000'){
                     RStepForward(step);
                 }
-                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011'){
+                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011' || opcode == '001111'){
                     ADDIStepForward(step);
                 }
-                else if(opcode == '001111' || opcode == '000101' || opcode == '000100'){
+                else if(opcode == '000101' || opcode == '000100'){
                     BEQStepForward(step);
                 }
                 else if(opcode == '100011'){
@@ -2434,6 +2450,11 @@
                   lineNum = instructionMap[address];
                   highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
                   if(instructionList[address] == "00000000000000000000000000001100"){
+                      if(cpu.StdOut != ""){
+                          document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
+                          let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n" ;
+                          $("#displayArea").val(temp);
+                      }
                       console.log('syscall finished');
                   }
                   else{
@@ -2485,7 +2506,7 @@
                 playing = true;
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
             });
-            $("#rect110").hover(function(event){ // PC
+            $("#use453").hover(function(event){ // PC
                 showDiv(event, "PC (Program Counter) is a register that holds the address of the memory unit where the instruction is to be fetched and executed.");
             },function () {
                 hideDiv(event);
@@ -2496,22 +2517,22 @@
             },function () {
                 hideDiv(event);
             });
-            $("#rect2").hover(function(event){ // IM
+            $("#use455").hover(function(event){ // IM
                 showDiv(event, "Register that holds the instruction currently being decoded.");
             },function () {
                 hideDiv(event);
             });
-            $("#ellipse309").hover(function(event){ // Control
+            $("#ctl").hover(function(event){ // Control
                 showDiv(event, "Controls the components of the datapath: • determines how data moves through the datapath\n• receives condition signals from the components\n• sends control signals to the components\n• switches between buses with multiplexers");
             },function () {
                 hideDiv(event);
             });
-            $("#rect177").hover(function(event){ // Register
+            $("#use457").hover(function(event){ // Register
                 showDiv(event, "Component that stores a 32-bit value.");
             },function () {
                 hideDiv(event);
             });
-            $("#alu").hover(function(event){ // ALU
+            $("#use459_0").hover(function(event){ // ALU
                 if(FOShowFlag==false){
                     showDiv(event, "The ALU is a digital logic circuit assembly that performs binary arithmetic operations (such as addition, subtraction, multiplication, AND division) AND binary logic operations (such as 'AND', 'OR', 'NOR', 'XOR'), as well as shift operations.");
                 }
@@ -2525,7 +2546,7 @@
             },function () {
                 hideDiv(event);
             });
-            $("#rect248").hover(function(event){ // DM
+            $("#use461_0").hover(function(event){ // DM
                 showDiv(event, "Part of memory that stores data manipulated by program.");
             },function () {
                 hideDiv(event);
@@ -2539,51 +2560,53 @@
                     } else if ($(this).attr("id") == "data3") {
                         var dataValue = "00000000000000000000000000000100";
                     } else if ($(this).attr("id") == "data4") {
-                        var dataValue = cpu.InsMemOut.substring(6, 10);
+                        var dataValue = cpu.InsMemOut.substring(6, 11);
                     } else if ($(this).attr("id") == "data5") {
-                        var dataValue = cpu.InsMemOut.substring(16, 20);
+                        var dataValue = cpu.InsMemOut.substring(16, 21);
                     } else if ($(this).attr("id") == "data6") {
-                        var dataValue = cpu.InsMemOut.substring(15, 11);
-                    } else if ($(this).attr("id") == "data7_0") {
+                        var dataValue = cpu.InsMemOut.substring(11, 16);
+                    } else if ($(this).attr("id") == "data7_0" || $(this).attr("id") == "data7") {
                         var dataValue = cpu.PCAdderOut;
-                    } else if ($(this).attr("id") == "data8_0") {
+                    } else if ($(this).attr("id") == "data8_0" || $(this).attr("id") == "data8") {
                         var dataValue = cpu.registerFileOutPin1;
                     } else if ($(this).attr("id") == "data9") {
                         var dataValue = cpu.registerFileOutPin2;
-                    } else if ($(this).attr("id") == "data10_0") {
+                    } else if ($(this).attr("id") == "data10_0" || $(this).attr("id") == "data10") {
                         var dataValue = cpu.aluMuxOut;
-                    } else if ($(this).attr("id") == "data11_0") {
+                    } else if ($(this).attr("id") == "data11_0" || $(this).attr("id") == "data11") {
                         var dataValue = cpu.muxBOut;
-                    } else if ($(this).attr("id") == "data12_0") {
-                        var dataValue = cpu.ALUIsZeroOut;
+                    } else if ($(this).attr("id") == "data12_0" || $(this).attr("id") == "data12") {
+                        var dataValue = cpu.ALUResultOut;
                     } else if ($(this).attr("id") == "data18") {
                         var dataValue = cpu.writeNumberMuxOut;
-                    } else if ($(this).attr("id") == "data19_0") {
-                        var dataValue = cpu.InsMemOut.substring(26, 31);
-                    } else if ($(this).attr("id") == "data20_0") {
-                        var dataValue = cpu.InsMemOut.substring(16, 31);
-                    } else if ($(this).attr("id") == "data21_0") {
+                    } else if ($(this).attr("id") == "data19_0" || $(this).attr("id") == "data19") {
+                        var dataValue = cpu.InsMemOut.substring(26, 32);
+                    } else if ($(this).attr("id") == "data20_0" || $(this).attr("id") == "data20") {
+                        var dataValue = cpu.InsMemOut.substring(16, 32);
+                    } else if ($(this).attr("id") == "data21_0" || $(this).attr("id") == "data21") {
                         var dataValue = cpu.signExtendOUT;
-                    } else if ($(this).attr("id") == "data22_0") {
+                    } else if ($(this).attr("id") == "data22_0" || $(this).attr("id") == "data22") {
                         var dataValue = cpu.ALUResultOut;
-                    } else if ($(this).attr("id") == "data23_0") {
+                    } else if ($(this).attr("id") == "data23_0" || $(this).attr("id") == "data23") {
                         var dataValue = cpu.DMOut;
-                    } else if ($(this).attr("id") == "data24_0") {
+                    } else if ($(this).attr("id") == "data24_0" || $(this).attr("id") == "data24") {
                         var dataValue = cpu.registerFileOutPin2;
-                    } else if ($(this).attr("id") == "data25_0") {
+                    } else if ($(this).attr("id") == "data25_0" || $(this).attr("id") == "data25") {
                         var dataValue = cpu.signExtendOUT;
-                    } else if ($(this).attr("id") == "data26_0") {
+                    } else if ($(this).attr("id") == "data26_0" || $(this).attr("id") == "data26") {
                         var dataValue = cpu.ALUAdderB;
                     } else if ($(this).attr("id") == "data27_0") {
                         var dataValue = cpu.aluAdderOut;
                     } else if ($(this).attr("id") == "data28") {
-                        var dataValue = cpu.InsMemOut.substring(6, 31);
+                        var dataValue = cpu.InsMemOut.substring(6, 32);
                     } else if ($(this).attr("id") == "data29") {
-                        var dataValue = cpu.InsMemOut.substring(6, 31)+'00';
-                    } else if ($(this).attr("id") == "data30_0") {
-                        var dataValue = cpu.PCAdderOut.substring(0,3)+cpu.InsMemOut.substring(6, 31)+'00';
-                    }  else if ($(this).attr("id") == "data42") {
-                        var dataValue = cpu.InsMemOut.substring(0, 5);
+                        var dataValue = cpu.InsMemOut.substring(6, 32)+'00';
+                    } else if ($(this).attr("id") == "data30_0" || $(this).attr("id") == "data30") {
+                        var dataValue = cpu.PCAdderOut.substring(0, 4)+cpu.InsMemOut.substring(6, 32)+'00';
+                    }  else if ($(this).attr("id") == "data31") {
+                        var dataValue = cpu.InsMemOut.substring(11, 16);
+                    } else if ($(this).attr("id") == "data42") {
+                        var dataValue = cpu.InsMemOut.substring(0, 6);
                     } else if ($(this).attr("id") == "data72") {
                         var dataValue = cpu.PCAdderOut;
                     } else if ($(this).attr("id") == "data73") {
@@ -2692,9 +2715,7 @@
                 cpu = new getCPU();
                 cpu.assembler.refresh();
                 cpu.Assemble(CodeMirrorEditor.getValue());
-                console.log("Assembled "+ cpu.getMachineCode());
                 if(cpu.Errormsg != ""){
-                    alert('assemble error!');
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                     let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                     $("#displayArea").val(temp);
@@ -2740,7 +2761,6 @@
             else if(current < 0.8){
                 current = 0.8;
             }
-            console.log(current + " current");
             $(this).css('-moz-transform', 'scale(' + current + ')');
         });
         function getBrowserType() {

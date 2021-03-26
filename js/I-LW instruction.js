@@ -187,7 +187,7 @@ function lwStep2(){
     $('#fw').css("pointer-events", "none");
     $('#data4').css({"animation":"pathing4 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data31').css({"animation":"pathing5 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data31').css({"animation":"pathing31 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20_0').css({"animation":"pathing20_0 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20').css({"animation":"pathing20 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#MemRead').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
