@@ -2100,6 +2100,7 @@
             </div>
         </div>
         <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'; z-index: 1000"></div>
+        <div id="hidDiv2" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-family: 'Comic Sans MS'; z-index: 1000"></div>
     </main>
 
     <!-- SCRIPTS -->
@@ -2136,8 +2137,8 @@
              o.style.display = "block";
          }
          function showDiv2(e, value) {
-             var o = document.getElementById("hidDiv");
-             $("#hidDiv").text("Info: " + value);
+             var o = document.getElementById("hidDiv2");
+             $("#hidDiv2").text("Info: " + value);
              o.style.left = e.clientX+"px";
              o.style.top = e.clientY+10+"px";
              o.style.display = "block";
@@ -2146,6 +2147,11 @@
              var o = document.getElementById("hidDiv");
              o.style.display = "none";
          }
+         function hideDiv2(e) {
+             var o = document.getElementById("hidDiv2");
+             o.style.display = "none";
+         }
+
 
          window.onload = function(){
              let reg = ['$zero','$at','$v0','$v1','$a0','$a1','$a2','$a3','$t0','$t1','$t2','$t3','$t4','$t5','$t6','$t7','$s0','$s1','$s2','$s3','$s4','$s5','$s6','$s7','$t8','$t9','$k0','$k1','$gp','$sp','$fp','$ra'];
@@ -2203,7 +2209,7 @@
                             $("#displayArea").val(temp);
                         }
                         lineNum = instructionMap[address];
-                        highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                        highLight(lineNum, sourceIns[lineNum].length, "background-color : #bababa");
                         if(instructionList[address] == "00000000000000000000000000001100"){
                             if(cpu.StdOut != ""){
                                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
@@ -2260,7 +2266,7 @@
                 $("#displayArea").val(temp);
             }
             lineNum = instructionMap[address];
-            highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+            highLight(lineNum, sourceIns[lineNum].length, "background-color : #bababa");
             if(instructionList[address] == "00000000000000000000000000001100"){
                 if(cpu.StdOut != ""){
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
@@ -2454,7 +2460,7 @@
                       return;
                   }
                   lineNum = instructionMap[address];
-                  highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                  highLight(lineNum, sourceIns[lineNum].length, "background-color : #bababa");
                   if(instructionList[address] == "00000000000000000000000000001100"){
                       if(cpu.StdOut != ""){
                           document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
@@ -2508,54 +2514,54 @@
                 address = cpu.getCurrentInsAddr();
                 address = parseInt(address, 2).toString(16);
                 lineNum = instructionMap[address];
-                highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                highLight(lineNum, sourceIns[lineNum].length, "background-color : #bababa");
                 playing = true;
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
             });
             $("#use453").hover(function(event){ // PC
                 showDiv2(event, "PC (Program Counter) is a register that holds the address of the memory unit where the instruction is to be fetched and executed.");
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
 
             $("#adder1").hover(function(event){ // PCAdder
                 showDiv2(event, "Set the address of the next instruction.");
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $("#use455").hover(function(event){ // IM
                 showDiv2(event, "Register that holds the instruction currently being decoded.");
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $("#ctl").hover(function(event){ // Control
                 showDiv2(event, "Controls the components of the datapath: • determines how data moves through the datapath\n• receives condition signals from the components\n• sends control signals to the components\n• switches between buses with multiplexers");
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $("#use457").hover(function(event){ // Register
                 showDiv2(event, "Component that stores a 32-bit value.");
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $("#use459_0").hover(function(event){ // ALU
                 if(FOShowFlag==false){
                     showDiv2(event, "The ALU is a digital logic circuit assembly that performs binary arithmetic operations (such as addition, subtraction, multiplication, AND division) AND binary logic operations (such as 'AND', 'OR', 'NOR', 'XOR'), as well as shift operations.");
                 }
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $("#adder2_0").hover(function(event){ // Adder
                 if(FOShowFlag==false){
                     showDiv2(event, "Adder takes the PC address and the immediate number address to form the branch's address.");
                 }
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $("#use461_0").hover(function(event){ // DM
                 showDiv2(event, "Part of memory that stores data manipulated by program.");
             },function () {
-                hideDiv(event);
+                hideDiv2(event);
             });
             $(".dataCircle").hover(function(){
                 if($(this).css('animation-duration') != '0s') {
