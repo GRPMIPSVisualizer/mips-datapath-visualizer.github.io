@@ -1895,16 +1895,34 @@
                                         </div>
                                         </body>
                                     </foreignObject>
-                                    <foreignObject   width="244" height="132" x="1038" y="548">
+                                    <foreignObject width="400" height="400" x="1046" y="156">
+                                        <body  xmlns= "http://www.w3.org/1999/xhtml">
+                                        <div id="dynamicTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none;">
+                                            <table id="DMTable" bgcolor="white">
+                                                <tbody id="dm">
+                                                <tr>
+                                                    <th width="30%">Address</th>
+                                                    <th>32-bits Data</th>
+                                                </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                        </body>
+                                    </foreignObject>
+                                    <foreignObject width="400" height="400" x="646" y="460">
                                         <body xmlns= "http://www.w3.org/1999/xhtml">
-                                        <table class="dataMem" style="width: 100%; height: 98%;">
-                                            <tr>
-                                                <td id="dynamicMemory" style="text-align: center">Dynamic</td>
-                                            </tr>
-                                            <tr>
-                                                <td id="staticMemory" style="text-align: center">Static</td>
-                                            </tr>
-                                        </table>
+                                        <div id="staticTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none;">
+                                            <table id="SMTable" bgcolor="white">
+                                                <tbody id="sm">
+                                                <tr>
+                                                    <th width="30%">Address</th>
+                                                    <th>32-bits Data</th>
+                                                </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
                                         </body>
                                     </foreignObject>
                                     <use
@@ -1924,7 +1942,7 @@
                                             id="use459_0"
                                             style="fill:red; fill-opacity: 0; opacity: 0;"
                                             transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
-                                    <!-use
+                                    <use
                                             xlink:href="#dataMem"
                                             width="160"
                                             height="160"
@@ -2038,34 +2056,16 @@
                                             cx="634.38879"
                                             cy="157.61679"
                                             r="7.810112" />
-                                    <foreignObject width="400" height="400" x="1046" y="156">
-                                        <body  xmlns= "http://www.w3.org/1999/xhtml">
-                                        <div id="dynamicTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none;">
-                                            <table id="DMTable" bgcolor="white">
-                                                <tbody id="dm">
-                                                <tr>
-                                                    <th width="30%">Address</th>
-                                                    <th>32-bits Data</th>
-                                                </tr>
-                                                </tbody>
-
-                                            </table>
-                                        </div>
-                                        </body>
-                                    </foreignObject>
-                                    <foreignObject width="400" height="400" x="646" y="460">
+                                    <foreignObject   width="244" height="132" x="1038" y="548">
                                         <body xmlns= "http://www.w3.org/1999/xhtml">
-                                        <div id="staticTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none;">
-                                            <table id="SMTable" bgcolor="white">
-                                                <tbody id="sm">
-                                                <tr>
-                                                    <th width="30%">Address</th>
-                                                    <th>32-bits Data</th>
-                                                </tr>
-                                                </tbody>
-
-                                            </table>
-                                        </div>
+                                        <table class="dataMem" style="width: 100%; height: 98%;">
+                                            <tr>
+                                                <td id="dynamicMemory" style="text-align: center">Dynamic</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="staticMemory" style="text-align: center">Static</td>
+                                            </tr>
+                                        </table>
                                         </body>
                                     </foreignObject>
                     </svg>
@@ -2131,6 +2131,13 @@
          function showDiv(e, value) {
              var o = document.getElementById("hidDiv");
              $("#hidDiv").text("Data value: " + value);
+             o.style.left = e.clientX+"px";
+             o.style.top = e.clientY+10+"px";
+             o.style.display = "block";
+         }
+         function showDiv2(e, value) {
+             var o = document.getElementById("hidDiv");
+             $("#hidDiv").text("Info: " + value);
              o.style.left = e.clientX+"px";
              o.style.top = e.clientY+10+"px";
              o.style.display = "block";
@@ -2506,47 +2513,47 @@
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
             });
             $("#use453").hover(function(event){ // PC
-                showDiv(event, "PC (Program Counter) is a register that holds the address of the memory unit where the instruction is to be fetched and executed.");
+                showDiv2(event, "PC (Program Counter) is a register that holds the address of the memory unit where the instruction is to be fetched and executed.");
             },function () {
                 hideDiv(event);
             });
 
             $("#adder1").hover(function(event){ // PCAdder
-                showDiv(event, "Set the address of the next instruction.");
+                showDiv2(event, "Set the address of the next instruction.");
             },function () {
                 hideDiv(event);
             });
             $("#use455").hover(function(event){ // IM
-                showDiv(event, "Register that holds the instruction currently being decoded.");
+                showDiv2(event, "Register that holds the instruction currently being decoded.");
             },function () {
                 hideDiv(event);
             });
             $("#ctl").hover(function(event){ // Control
-                showDiv(event, "Controls the components of the datapath: • determines how data moves through the datapath\n• receives condition signals from the components\n• sends control signals to the components\n• switches between buses with multiplexers");
+                showDiv2(event, "Controls the components of the datapath: • determines how data moves through the datapath\n• receives condition signals from the components\n• sends control signals to the components\n• switches between buses with multiplexers");
             },function () {
                 hideDiv(event);
             });
             $("#use457").hover(function(event){ // Register
-                showDiv(event, "Component that stores a 32-bit value.");
+                showDiv2(event, "Component that stores a 32-bit value.");
             },function () {
                 hideDiv(event);
             });
             $("#use459_0").hover(function(event){ // ALU
                 if(FOShowFlag==false){
-                    showDiv(event, "The ALU is a digital logic circuit assembly that performs binary arithmetic operations (such as addition, subtraction, multiplication, AND division) AND binary logic operations (such as 'AND', 'OR', 'NOR', 'XOR'), as well as shift operations.");
+                    showDiv2(event, "The ALU is a digital logic circuit assembly that performs binary arithmetic operations (such as addition, subtraction, multiplication, AND division) AND binary logic operations (such as 'AND', 'OR', 'NOR', 'XOR'), as well as shift operations.");
                 }
             },function () {
                 hideDiv(event);
             });
             $("#adder2_0").hover(function(event){ // Adder
                 if(FOShowFlag==false){
-                    showDiv(event, "Adder takes the PC address and the immediate number address to form the branch's address.");
+                    showDiv2(event, "Adder takes the PC address and the immediate number address to form the branch's address.");
                 }
             },function () {
                 hideDiv(event);
             });
             $("#use461_0").hover(function(event){ // DM
-                showDiv(event, "Part of memory that stores data manipulated by program.");
+                showDiv2(event, "Part of memory that stores data manipulated by program.");
             },function () {
                 hideDiv(event);
             });
