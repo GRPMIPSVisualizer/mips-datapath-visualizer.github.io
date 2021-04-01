@@ -82,10 +82,9 @@
                             xmlns:xlink="http://www.w3.org/1999/xlink"
                             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                            viewBox="0 0 800 900"
                             width="720"
                             height="429"
-
+                                viewBox="0 0 800 950"
                             preserveAspectRatio="xMinYMin meet"
                             version="1.1"
                             id="svg803"
@@ -2070,7 +2069,6 @@
                                         </body>
                                     </foreignObject>
                     </svg>
-
                           </div>
                 </div>
                 <div class="card col-sm-9 col-md-3 col-lg-3" style="height: 63vh" v-html="log">
@@ -2165,22 +2163,23 @@
                 cell2.innerHTML = '00000000000000000000000000000000';
             }
 
-            let w = window.screen.width;
-            let h = window.screen.height;
-            let ratio = w/h;
+         }
+
+
+        $(document).ready(function() {
+            /*
+            w = window.screen.width;
+            h = window.screen.height;
+            ratio = w/h;
             if(ratio > 1.61){
-                $('captchaImg').attr('viewBox', '0 0 800 800');
+                document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 800');
             }
             else if(ratio < 1.40){
                 $('captchaImg').attr('viewBox', '0 0 800 1000');
             }
             else{
                 $('captchaImg').attr('viewBox', '0 0 800 900');
-            }
-         }
-
-
-        $(document).ready(function() {
+            } */
             $("#displayArea").val("");
             Object.defineProperty(continuePlay, 'theFlagData', {
                 set:function(newValue){
@@ -2733,7 +2732,8 @@
                 CodeMirrorEditor.setValue('.text\n.globl main\nmain:\nla $a0, str\nli $v0, 4\nsyscall\nli $v0, 10\nsyscall\n.data\nstr: .asciiz "hello world"');
               });
             $("#redo").click(function(){
-                location.reload(); 
+                location.reload();
+                alert(document.getElementById('captchaImg').getAttribute('viewBox'));
             });
             $('#uploadFileButton').click(function() {
                 $("#file").trigger("click");
