@@ -84,7 +84,7 @@
                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                             width="720"
                             height="429"
-                                viewBox="0 0 800 1000"
+                                viewBox="0 0 800 900"
                             preserveAspectRatio="xMinYMin meet"
                             version="1.1"
                             id="svg803"
@@ -2162,24 +2162,23 @@
                 cell1.innerHTML = reg[i];
                 cell2.innerHTML = '00000000000000000000000000000000';
             }
-
          }
 
 
         $(document).ready(function() {
+
             w = window.screen.width;
             h = window.screen.height;
             ratio = w/h;
             if(ratio > 1.61){
-                document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 800');
+                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 800');
             }
             else if(ratio < 1.40){
-                document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 1000');
+                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 1000');
             }
             else{
-                document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 900');
+                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 900');
             }
-            alert(document.getElementById('captchaImg').getAttribute('viewBox'));
             $("#displayArea").val("");
             Object.defineProperty(continuePlay, 'theFlagData', {
                 set:function(newValue){
@@ -2733,7 +2732,6 @@
               });
             $("#redo").click(function(){
                 location.reload();
-                alert(document.getElementById('captchaImg').getAttribute('viewBox'));
             });
             $('#uploadFileButton').click(function() {
                 $("#file").trigger("click");
