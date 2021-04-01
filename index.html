@@ -2214,7 +2214,7 @@
                         if(instructionList[address] == "00000000000000000000000000001100"){
                             if(cpu.StdOut != ""){
                                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                                let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n" ;
+                                let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut ;
                                 $("#displayArea").val(temp);
                             }
                             console.log('syscall finished');
@@ -2271,7 +2271,7 @@
             if(instructionList[address] == "00000000000000000000000000001100"){
                 if(cpu.StdOut != ""){
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                    let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n" ;
+                    let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut ;
                     $("#displayArea").val(temp);
                 }
                 console.log('syscall finished');
@@ -2465,7 +2465,7 @@
                   if(instructionList[address] == "00000000000000000000000000001100"){
                       if(cpu.StdOut != ""){
                           document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                          let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n" ;
+                          let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut ;
                           $("#displayArea").val(temp);
                       }
                       console.log('syscall finished');
