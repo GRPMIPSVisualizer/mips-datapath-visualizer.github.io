@@ -52,6 +52,8 @@
                                                 <th>Instruction</th>
                                                 <th>Type</th>
                                                 <th>Example</th>
+                                                <th>Compile support</th>
+                                                <th>Animation support</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,158 +61,318 @@
                                                 <td>add</td>
                                                 <td>R-type</td>
                                                 <td>add $1,$2,$3 => $1=$2+$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>addu</td>
                                                 <td>R-type</td>
                                                 <td>addu $1,$2,$3 => $1=$2+$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>sub</td>
                                                 <td>R-type</td>
                                                 <td>sub $1,$2,$3 => $1=$2-$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>subu</td>
                                                 <td>R-type</td>
                                                 <td>subu $1,$2,$3 => $1=$2-$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>and</td>
                                                 <td>R-type</td>
                                                 <td>and $1,$2,$3 => $1=$2 & $3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>or</td>
                                                 <td>R-type</td>
                                                 <td>or $1,$2,$3 => $1=$2 | $3</td>
-                                            </tr>
-                                            <tr>
-                                                <td>xor</td>
-                                                <td>R-type</td>
-                                                <td>xor $1,$2,$3 => $1=$2 ^ $3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>nor</td>
                                                 <td>R-type</td>
                                                 <td>nor $1,$2,$3 => $1=~($2 | $3)</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>slt</td>
                                                 <td>R-type</td>
                                                 <td>slt $1,$2,$3 => if($2<$3){$1=1} else{$1=0}</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>sltu</td>
                                                 <td>R-type</td>
                                                 <td>sltu $1,$2,$3 => if($2<$3){$1=1} else{$1=0}</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>sll</td>
                                                 <td>R-type</td>
                                                 <td>sll $1,$2,10 => $1=$2<<10</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>srl</td>
                                                 <td>R-type</td>
                                                 <td>srl $1,$2,10 => $1=$2>>10</td>
-                                            </tr>
-                                            <tr>
-                                                <td>sra</td>
-                                                <td>R-type</td>
-                                                <td>sra $1,$2,10 => $1=$2>>10</td>
-                                            </tr>
-                                            <tr>
-                                                <td>sllv</td>
-                                                <td>R-type</td>
-                                                <td>sllv $1,$2,$3 => $1=$2<<$3</td>
-                                            </tr>
-                                            <tr>
-                                                <td>srlv</td>
-                                                <td>R-type</td>
-                                                <td>srlv $1,$2,$3 => $1=$2>>$3</td>
-                                            </tr>
-                                            <tr>
-                                                <td>srav</td>
-                                                <td>R-type</td>
-                                                <td>srav $1,$2,$3 => $1=$2>>$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>jr</td>
                                                 <td>R-type</td>
                                                 <td>jr $31 => goto $31</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>sra</td>
+                                                <td>R-type</td>
+                                                <td>sra $1,$2,10 => $1=$2>>10</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>addi</td>
                                                 <td>I-type</td>
                                                 <td>addi $1,$2,100 => $1=$2+100</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>addiu</td>
                                                 <td>I-type</td>
                                                 <td>addiu $1,$2,100 => $1=$2+100</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>andi</td>
                                                 <td>I-type</td>
                                                 <td>andi $1,$2,10 => $1=$2 & 10</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>ori</td>
                                                 <td>I-type</td>
                                                 <td>ori $1,$2,10 => $1=$2 | 10</td>
-                                            </tr>
-                                            <tr>
-                                                <td>xori</td>
-                                                <td>I-type</td>
-                                                <td>xori $1,$2,10 => $1=$2 ^ 10</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>lui</td>
                                                 <td>I-type</td>
                                                 <td>lui $1,100 => $1=100*65536</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>lbu</td>
+                                                <td>I-type</td>
+                                                <td>lbu $1, -100($2)</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>lhu</td>
+                                                <td>I-type</td>
+                                                <td>lhu $1, -100($2)</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ll</td>
+                                                <td>I-type</td>
+                                                <td>ll $1, -100($2)</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>sb</td>
+                                                <td>I-type</td>
+                                                <td>sb $1, -100($2)</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>sc</td>
+                                                <td>I-type</td>
+                                                <td>sc $1, -100($2)</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>sh</td>
+                                                <td>I-type</td>
+                                                <td>sh $1, -100($2)</td>
+                                                <td>Y</td>
+                                                <td>N</td>
                                             </tr>
                                             <tr>
                                                 <td>lw</td>
                                                 <td>I-type</td>
                                                 <td>lw $1,10($2) => $1=memory[$2
          +10]</td>
+         <td>Y</td>
+         <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>sw</td>
                                                 <td>I-type</td>
                                                 <td>sw $1,10($2) => memory[$2+10]
          =$1</td>
+         <td>Y</td>
+         <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>beq</td>
                                                 <td>I-type</td>
                                                 <td>beq $1,$2,10 => if($1==$2) goto PC+4+40</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>bne</td>
                                                 <td>I-type</td>
                                                 <td>bne $1,$2,10 => if($1!=$2) goto PC+4+40</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>slti</td>
                                                 <td>I-type</td>
                                                 <td>slti $1,$2,10 => if($2<10){$1=1} else{$1=0}</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>sltiu</td>
                                                 <td>I-type</td>
                                                 <td>sltiu $1,$2,10 => if($2<10){$1=1} else{$1=0}</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                             <tr>
                                                 <td>j</td>
                                                 <td>J-type</td>
                                                 <td>j label => goto label</td>
+                                                <td>Y</td>
+                                                <td>N</td>
                                             </tr>
                                             <tr>
                                                 <td>jal</td>
                                                 <td>J-type</td>
                                                 <td>jal label => $31<-PC+4; goto label</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>abs</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>abs $1,$2</td>
+                                                <td>Y</td>
+                                                <td>N</td>
+                                            </tr>
+                                            <tr>
+                                                <td>blt</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>blt $1,$2,label</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>bgt</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>bgt $1,$2,label</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ble</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>ble $1,$2,label</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>bge</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>bge $1,$2,label</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>neg</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>neg $1,$2</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>negu</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>negu $1,$2</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>not</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>not $1,$2</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>li</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>li $1,-100</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>la</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>la $1,($2)</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>move</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>move $1,$2</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>sge</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>sge $1,$2,$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
+                                            </tr>
+                                            <tr>
+                                                <td>sgt</td>
+                                                <td>Pseudo instruction</td>
+                                                <td>sgt $1,$2,$3</td>
+                                                <td>Y</td>
+                                                <td>Y</td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
@@ -218,6 +380,8 @@
                                                 <th>Instruction</th>
                                                 <th>Type</th>
                                                 <th>Example</th>
+                                                <th>Compile support</th>
+                                                <th>Animation support</th>
                                             </tr>
                                         </tfoot>
                                     </table>

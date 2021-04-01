@@ -2177,6 +2177,15 @@
                             document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                             $("#displayArea").val(temp);
+                            CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                            $('#uploadFileButton').css("pointer-events", "auto");
+                            $('#compile').css("pointer-events", "auto");
+                            $('#fw').css("pointer-events", "none");
+                            $('#play').css("pointer-events", "none");
+                            $('#pause').css("pointer-events", "none");
+                            $('#halfSpeed').css("pointer-events", "none");
+                            $('#doubleSpeed').css("pointer-events", "none");
+                            continuePlay.theFlagData = 0;
                             return false;
                         }
                         let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
@@ -2192,10 +2201,10 @@
                             $('#pause').css("pointer-events", "none");
                             $('#halfSpeed').css("pointer-events", "none");
                             $('#doubleSpeed').css("pointer-events", "none");
+                            continuePlay.theFlagData = 0;
                             document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
                             $("#displayArea").val(temp);
-                            continuePlay.theFlagData = 0;
                             return;
                         }
                         if(instructionMap[a] == instructionMap[address]){
@@ -2234,6 +2243,15 @@
                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                 $("#displayArea").val(temp);
+                CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                $('#uploadFileButton').css("pointer-events", "auto");
+                $('#compile').css("pointer-events", "auto");
+                $('#fw').css("pointer-events", "none");
+                $('#play').css("pointer-events", "none");
+                $('#pause').css("pointer-events", "none");
+                $('#halfSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("pointer-events", "none");
+                continuePlay.theFlagData = 0;
                 return false;
             }
             let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
@@ -2441,6 +2459,15 @@
                       document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                       $("#displayArea").val(temp);
+                      CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                      $('#uploadFileButton').css("pointer-events", "auto");
+                      $('#compile').css("pointer-events", "auto");
+                      $('#fw').css("pointer-events", "none");
+                      $('#play').css("pointer-events", "none");
+                      $('#pause').css("pointer-events", "none");
+                      $('#halfSpeed').css("pointer-events", "none");
+                      $('#doubleSpeed').css("pointer-events", "none");
+                      continuePlay.theFlagData = 0;
                       return false;
                   }
                   cpu.oneClockCycle();
@@ -2732,6 +2759,15 @@
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                     let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                     $("#displayArea").val(temp);
+                    CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                    $('#uploadFileButton').css("pointer-events", "auto");
+                    $('#compile').css("pointer-events", "auto");
+                    $('#fw').css("pointer-events", "none");
+                    $('#play').css("pointer-events", "none");
+                    $('#pause').css("pointer-events", "none");
+                    $('#halfSpeed').css("pointer-events", "none");
+                    $('#doubleSpeed').css("pointer-events", "none");
+                    continuePlay.theFlagData = 0;
                     return false;
                 }
                 $("#displayArea").val("");
