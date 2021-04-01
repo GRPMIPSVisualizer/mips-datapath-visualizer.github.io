@@ -82,7 +82,7 @@
                             xmlns:xlink="http://www.w3.org/1999/xlink"
                             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                            viewBox="0 0 800 900"
+                            viewBox="0 0 800 800"
                             width="720"
                             height="429"
 
@@ -2164,6 +2164,10 @@
                 cell1.innerHTML = reg[i];
                 cell2.innerHTML = '00000000000000000000000000000000';
             }
+            let w = document.body.clientWidth;
+            let h = document.body.clientHeight;
+            alert(w+" "+h);
+             $('captchaImg').attr('viewBox', '0 0 ' + w +' '+ h);
          }
 
 
