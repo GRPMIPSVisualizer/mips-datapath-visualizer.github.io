@@ -2167,7 +2167,6 @@
 
 
         $(document).ready(function() {
-            /*
             w = window.screen.width;
             h = window.screen.height;
             ratio = w/h;
@@ -2175,11 +2174,12 @@
                 document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 800');
             }
             else if(ratio < 1.40){
-                $('captchaImg').attr('viewBox', '0 0 800 1000');
+                document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 1000');
             }
             else{
-                $('captchaImg').attr('viewBox', '0 0 800 900');
-            } */
+                document.getElementById('captchaImg').setAttribute('viewBox', '0 0 800 900');
+            }
+            alert(document.getElementById('captchaImg').getAttribute('viewBox'));
             $("#displayArea").val("");
             Object.defineProperty(continuePlay, 'theFlagData', {
                 set:function(newValue){
