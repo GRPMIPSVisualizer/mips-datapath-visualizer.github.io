@@ -122,24 +122,23 @@ function setSP(){
     }
 }
 
-function initializeRegisters(){
-    let data = cpu.debugReg();
-    let table = document.getElementById("rTable");
-    let i;
-    for(i=1; i<table.rows.length; i++){
-        table.rows[i].cells[1].innerHTML = data[i-1];
-    }
-    clearTable("rTable");
-}
 
 function refreshRegisters(){
     clearTable("rTable");
     let data = cpu.debugReg();
-    let altered = compareRegisters(data);
-    let table = document.getElementById("rTable");
     let i;
-    for(i=0; i<altered.length; i++){
+    for(i=0; i<data.length; i++){
+        data[i] = parseInt(data[i], 2).toString(16);
+        let l = 8 - data[i].length;
+        for(let k=0; k<l; k++){
+            data[i] = '0' + data[i];
+        }
+        data[i] = '0x' + data[i];
+    }
+    let altered = compareRegisters(data);
 
+    let table = document.getElementById("rTable");
+    for(i=0; i<altered.length; i++){
         table.rows[altered[i]].cells[1].innerHTML = data[altered[i]-1];
         table.rows[altered[i]].classList.add("highlightRow");
     }
