@@ -146,7 +146,24 @@ function refreshRegisters(){
         scrollTable("registerTable", "rTable", altered[0]);
     }
 }
-
+function initializeRegisters(){
+    clearTable("rTable");
+    let data = cpu.debugReg();
+    let i;
+    for(i=0; i<data.length; i++){
+        data[i] = parseInt(data[i], 2).toString(16);
+        let l = 8 - data[i].length;
+        for(let k=0; k<l; k++){
+            data[i] = '0' + data[i];
+        }
+        data[i] = '0x' + data[i];
+    }
+    let table = document.getElementById("rTable");
+    for(i=0; i<data.length; i++){
+        table.rows[i+1].cells[1].innerHTML = data[i];
+    }
+    scrollTable("registerTable", "rTable", 0);
+}
 function refreshIM(){
     clearTable("IMTable");
     let current = cpu.getCurrentInsAddr();
