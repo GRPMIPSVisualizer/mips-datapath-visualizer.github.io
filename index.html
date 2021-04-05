@@ -36,7 +36,7 @@
 
     <!-- NavMenu -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 6vh">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
             <a style="margin-left: 10%; font-weight:bold; font-size:2vw; font-family:'Papyrus',fantasy; letter-spacing: 3px" class="navbar-brand" href="#">MIPS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +77,7 @@
             <div class="row" style="">
                 <div id="leftUp" class="card col-sm-9 col-md-10 col-lg-10" style="height: 63vh;" v-html="log">
                     <!--<div style="position:fixed;">-->
-                    <div class="card-body" style="position:absolute;bottom:0px;left:0px;" scroll="no">
+                    <div class="card-body" style="position:absolute;bottom:10px;left:0px;" scroll="no">
                           <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
                         <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
                         <a type="button" id="play" class="fas fa-play-circle" title="play" style="z-index:999;"></a>
@@ -88,7 +88,7 @@
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed" style="z-index:999;">2.0 x</a>
                     </div>
                     <!--</div>-->
-    
+
                         <div id="superToggler" class="toggler"></div>
                         <div style="overflow-y: scroll; overflow-x: scroll;">
                           <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%; -moz-transform: scale(1.0); -moz-transform-origin: top left;" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
@@ -3028,7 +3028,7 @@
         border-radius: 5px;
         color: #fff;
         content: attr(title);
-        z-index: 2;
+        z-index: 2000;
         width: 150px;
         text-align:center;
       }
