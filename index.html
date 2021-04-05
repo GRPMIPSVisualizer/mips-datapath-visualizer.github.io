@@ -56,9 +56,15 @@
                     <li class="nav-item" id="testPage">
                         <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="reports/lcov-report/index.html">Test</a>
                     </li>
-                    <li class="nav-item" id="demoPage">
-                        <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="#" id="demo">Demo</a>
-                    </li>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="demoPage" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'; border:none">
+                                Demo
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href=" " id="demo_hw" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'">Hello world</a></li>
+                                <li><a class="dropdown-item" href="#" id="demo_blt" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'">blt</a></li>
+                            </ul>
+                        </div>
                     </ul>
                     <a class="fab fa-github" href="https://github.com/GRPMIPSVisualizer" style="color:grey"></a>
                 </div>
@@ -1943,16 +1949,16 @@
                                             id="adder2_0"
                                             width="50"
                                             height="50"
-                                            x="278"
-                                            y="20"
+                                            x="252"
+                                            y="16"
                                             style="fill:red; fill-opacity: 0; opacity: 0;"
-                                            transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                                            transform="matrix(4.55,0,0,4.55,-50.208552,-23.311117)" />
                                     <use
                                             xlink:href="#alu"
                                             width="60"
                                             height="60"
-                                            x="270"
-                                            y="53.700001"
+                                            x="300"
+                                            y="60.700001"
                                             id="use459_0"
                                             style="fill:red; fill-opacity: 0; opacity: 0;"
                                             transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
@@ -2089,7 +2095,7 @@
                           </div>
 
                 </div>
-                <div id="leftDown" class="card col-sm-9 col-md-2 col-lg-2" style="height: 63vh;text-align:left;" v-html="log">
+                <div id="rightUp" class="card col-sm-9 col-md-2 col-lg-2" style="height: 63vh;text-align:center;" v-html="log">
                         <div class="card-body">
                         <input type="file" name="file" id="file" accept=".asm, .s, .txt" style="display:none">
                         <a type="button" id="uploadFileButton" class="fas fa-upload" title="upload"></a>
@@ -2183,17 +2189,18 @@
             ratio = w/h;
             if(ratio > 1.61){
                 document.getElementById('svg803').setAttribute('viewBox', '0 0 800 860');
-                $('#leftDown').css('height', '70vh');
-                $('#leftUp').css('height', '70vh');
+                $('#rightUp').css('height', '80vh');
+                $('#leftUp').css('height', '80vh');
+                $('#captchaImg').css('zoom', '150%');
             }
             else if(ratio < 1.40){
                 document.getElementById('svg803').setAttribute('viewBox', '0 0 800 1000');
-                $('#leftDown').css('height', '40vh');
+                $('#rightUp').css('height', '40vh');
                 $('#leftUp').css('height', '40vh');
             }
             else{
                 document.getElementById('svg803').setAttribute('viewBox', '0 0 800 900');
-                $('#leftDown').css('height', '53vh');
+                $('#rightUp').css('height', '53vh');
                 $('#leftUp').css('height', '53vh');
             }
             $("#displayArea").val("");

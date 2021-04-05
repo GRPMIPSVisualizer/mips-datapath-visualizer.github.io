@@ -1,5 +1,3 @@
-
-
 function ADDIChecker() {
     if ($('#pause').hasClass("fa-pause")) {
 
