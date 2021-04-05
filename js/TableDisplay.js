@@ -60,6 +60,7 @@ function initializeIM(){
         cell2.innerHTML = machineCodes[a];
         index += 4;
     }
+    scrollTable("instructionTable", "IMTable", 0);
 }
 
 function refreshDM(){
@@ -94,6 +95,8 @@ function initializeSM(){
         cell1.innerHTML = data[a][0];
         cell2.innerHTML = data[a][1];
     }
+    scrollTable("staticTable", "SMTable", 0);
+
 }
 
 function setFP(){

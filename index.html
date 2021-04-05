@@ -36,7 +36,7 @@
 
     <!-- NavMenu -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 6vh">
             <div class="container-fluid">
             <a style="margin-left: 10%; font-weight:bold; font-size:2vw; font-family:'Papyrus',fantasy; letter-spacing: 3px" class="navbar-brand" href="#">MIPS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,11 +65,26 @@
             </div>
         </nav>
     </header>
-    <main role="main">
+    <main role="main"  style="overflow: hidden;height: 100%;width:90%; margin: 0 auto">
         <br/>
-        <div class="container" style="overflow: hidden;">
-            <div class="row">
-                <div id="leftUp" class="card col-sm-9 col-md-9 col-lg-9" style="height: 63vh; overflow-y: scroll; overflow-x: scroll" v-html="log">
+        <!--<div class="container" style="overflow: hidden;height: 100%;width:100%;">-->
+            <div class="row" style="">
+                <div id="leftUp" class="card col-sm-9 col-md-10 col-lg-10" style="height: 63vh;" v-html="log">
+                    <!--<div style="position:fixed;">-->
+                    <div class="card-body" style="position:absolute;bottom:0px;left:0px;" scroll="no">
+                          <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
+                        <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
+                        <a type="button" id="play" class="fas fa-play-circle" title="play" style="z-index:999;"></a>
+                        <a type="button" id="pause" class="fas fa-pause pause" title="pause" style="z-index:999;"></a>
+                        <a type="button" id="terminate" class="far fa-stop-circle" title=" terminate" style="z-index:999;"></a>
+                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px" style="z-index:999;">0.5 x</a>
+                        <input id="playSpeed" style="text-align: center; width: 10%" readonly style="z-index:999;">
+                        <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed" style="z-index:999;">2.0 x</a>
+                    </div>
+                    <!--</div>-->
+    
+                        <div id="superToggler" class="toggler"></div>
+                        <div style="overflow-y: scroll; overflow-x: scroll;">
                           <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%; -moz-transform: scale(1.0); -moz-transform-origin: top left;" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
                                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg
@@ -84,7 +99,7 @@
                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                             width="720"
                             height="429"
-                                viewBox="0 0 800 900"
+                                viewBox="0 0 1000 1000"
                             preserveAspectRatio="xMinYMin meet"
                             version="1.1"
                             id="svg803"
@@ -1075,42 +1090,42 @@
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 958.90826,250.70598 h 97.72084"
+                                d="m 958.90826,250.70598  h 97.72084 v 28 h 120"
                                 class="wire"
                                 id="regRD1toAluSrcA"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="M 958.90826,395.4923 H 992.8114"
+                                d="M 958.90826,395.4923 H 1092.8114"
                                 class="wire"
                                 id="regRD2tomux2"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1022.7259,423.41253 h 11.9658 v -65.01424 h 19.9431"
+                                d="m 1122.7259,423.41253 h 11.9658 v -37.01424 h 39.9431"
                                 class="wire"
                                 id="mux2toAluSrcB"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 966.88547,395.4923 v 87.74929 H 1365.7459 V 648.3698 h -63.8177"
+                                d="m 990.88547,395.4923 v 87.74929 H 1365.7459 v 79 c 11.9658,0 11.9658,11.96581 0,11.96581  V 648.3698   h -63.8177"
                                 class="wire"
                                 id="regRD2toDMWD"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1174.2929,325.69174 h 159.5441 v 151.56695 c 11.9658,0 11.9658,11.96581 0,11.96581 v 79.77208 h -33.9031"
+                                d="m 1294.2929,353.8 h 129.5441 v 126.56695 v 87.77208 h -126.9031"
                                 class="wire"
                                 id="alu2DMAddr"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1226.1447,325.69174 v 151.56695 c 11.9658,0 11.9658,11.96581 0,11.96581 v 27.92023 H 907.05641 v 81.76638 h -43.87464"
+                                d="m 1425.1447,353.8 H 1480.1447  v 151.56695  v 211.92023 H 907.05641 v -56.76638 c -11.9658,0 -11.9658,-11.96581 0,-11.96581 v -50 h -43.87464"
                                 class="wire"
                                 id="alu2mux3"
                                 fill="none"
@@ -1152,63 +1167,63 @@
                                 id="text368"
                                 style="stroke-width:3.9886">4</text>
                         <path
-                                d="m 564.03647,499.19601 h 79.77208 c 0,-11.96581 11.96581,-11.96581 11.96581,0 h 327.06553 v -9.97151 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 v -25.92593 h 9.97151"
+                                d="m 564.03647,499.19601 h 79.77208 c 0,-11.96581 11.96581,-11.96581 11.96581,0 h 368.06553 v -9.97151 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 v -25.92593 h 67.97151"
                                 class="wire"
                                 id="ins2mux2"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 982.83989,451.33276 v -49.85755 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 V 256.68889 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 v -49.05983 h 19.94301"
+                                d="m 1023.83989,451.33276 v -49.85755 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 V 256.68889 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 v -35.9 h 19.94301"
                                 class="wire"
                                 id="ins2shift1"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1050.6462,196.06211 h 31.9088"
+                                d="m 1091.6462,209.06211 h 31.9088"
                                 class="wire"
                                 id="shift1toadder2"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 763.46667,499.19601 v 47.86325 H 883.12479 V 507.17322 H 1042.6689 V 489.2245 c -11.9658,0 -11.9658,-11.96581 0,-11.96581 v -41.88035 h 23.9317"
+                                d="m 763.46667,499.19601 v 57.86325 H 883.12479 V 517.17322 H 1163.6689 V 489.2245 c -11.9658,0 -11.9658,-11.96581 0,-11.96581 v -30.88035 h 23.9317"
                                 class="wire"
                                 id="ins2aluCtl"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1098.5094,435.37834 h 17.9487 v -71.79486"
+                                d="m 1220.5094,447.37834 h 16.0 v -55.79486"
                                 class="wire"
                                 id="aluCtl2alu"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="M 288.82279,106.31852 H 1081.7573"
+                                d="M 288.82279,106.31852 H 1126.7573"
                                 class="wire"
                                 id="adder1toadder2"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="M 946.94245,106.31852 V 66.432481 h 279.20225 v 97.720799 h 32.7066"
+                                d="M 946.94245,106.31852 V 66.432481 h 279.20225 v 26.520799 h 92.7066"
                                 class="wire"
                                 id="adder1tomux4"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1184.6632,151.38974 h 19.9431 v 77.77778 h 55.8404"
+                                d="m 1240.6632,157.88974 H 1320.4467"
                                 class="wire"
                                 id="adder2tomux4"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1293.951,196.85983 h 65.4131"
+                                d="m 1354.951,124.85983 h 35.4131 h 34.5"
                                 class="wire"
                                 id="mux4tomux5"
                                 fill="none"
@@ -1236,14 +1251,14 @@
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 739.53504,158.17037 h 191.45299 v -45.86895 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 V 52.472367 H 1309.9054 V 190.47806 c 11.9658,0 11.9658,11.96581 0,11.96581 v 59.82906 h 49.8576"
+                                d="m 739.53504,158.17037 h 191.45299 v -45.86895 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 V 52.472367 H 1389.9054 V 118.47806 c 11.9658,0 11.9658,11.96581 0,11.96581 v 59.82906 h 37.8576"
                                 class="wire"
                                 id="jmpAddr2mux5"
                                 fill="none"
                                 stroke="#161d6f"
                                 stroke-width="3.9886" />
                         <path
-                                d="m 1394.8627,229.16752 h 19.943 V 9.794302 H 18.794301 V 472.0735 h 17.948723"
+                                d="m 1460.8627,157.16752 h 19.943 V 9.794302 H 18.794301 V 472.0735 h 17.948723"
                                 class="wire"
                                 id="mux5toPc"
                                 fill="none"
@@ -1293,14 +1308,14 @@
                                 id="circle395"
                                 style="stroke-width:3.9886" />
                         <circle
-                                cx="966.88556"
+                                cx="990.88547"
                                 cy="395.49231"
                                 r="3.9886041"
                                 id="circle397"
                                 style="stroke-width:3.9886" />
                         <circle
-                                cx="1226.1448"
-                                cy="325.69174"
+                                cx="1424"
+                                cy="354.69174"
                                 r="3.9886041"
                                 id="circle399"
                                 style="stroke-width:3.9886" />
@@ -1311,7 +1326,7 @@
                                 id="circle401"
                                 style="stroke-width:3.9886" />
                         <circle
-                                cx="982.8399"
+                                cx="1023.8399"
                                 cy="451.33276"
                                 r="3.9886041"
                                 id="circle403"
@@ -1354,35 +1369,35 @@
                                 style="stroke-width:3.9886" />
                         <!-- control -->
                         <path
-                                d="m 424.43533,195.26439 h 39.88604 V 23.754418 H 1376.914 V 171.33276"
+                                d="m 424.43533,195.26439 h 39.88604 V 20.754418 H 1442.914 V 101.33276"
                                 class="CtlWire"
                                 id="Jump"
                                 fill="none"
                                 stroke="#03dcda"
                                 stroke-width="2.79202" />
                         <path
-                                d="m 1176.2872,287.00228 h 39.886 V 91.560686 h 15.9544"
+                                d="m 1294.2872,315.00228 h 12.886 v -100 h -50 V 46.560686 h 27"
                                 class="CtlWire"
                                 id="isZero"
                                 fill="none"
                                 stroke="#03dcda"
                                 stroke-width="2.79202" />
                         <path
-                                d="m 1271.6148,81.988033 h 5.5841 v 55.840457"
+                                d="m 1323.6148,41.988033 h 13.5841 v 25.840457"
                                 class="CtlWire"
                                 id="BranchAndZero"
                                 fill="none"
                                 stroke="#03dcda"
                                 stroke-width="2.79202" />
                         <path
-                                d="M 436.40114,216.00513 H 496.2302 V 40.506555 h 719.5442 v 33.903134 h 17.5498"
+                                d="M 436.40114,216.00513 H 496.2302 V 35.506555 h 788.5442"
                                 class="CtlWire"
                                 id="Branch"
                                 fill="none"
                                 stroke="#03dcda"
                                 stroke-width="2.79202" />
                         <path
-                                d="m 444.37835,237.94245 h 79.77208 V 60.449575 H 994.8057 V 339.65185 h 12.963 v 33.90314"
+                                d="m 444.37835,237.94245 h 79.77208 V 60.449575 H 994.8057 V 339.65185 h 112.963 v 33.90314"
                                 class="CtlWire"
                                 id="ALUSrc"
                                 fill="none"
@@ -1403,7 +1418,7 @@
                                 stroke="#03dcda"
                                 stroke-width="2.79202" />
                         <path
-                                d="m 444.37835,306.54644 h 103.7037 v 230.14245 h 398.8604 V 492.81424 H 1082.555 v -29.91453"
+                                d="m 444.37835,306.54644 h 103.7037 v 230.14245 h 398.8604 V 492.81424 H 1202.555 v -15.91453"
                                 class="CtlWire"
                                 id="ALUOp"
                                 fill="none"
@@ -1462,8 +1477,8 @@
                                 style="stroke-width:3.9886">Ins [15:0]</text>
                         <text
                                 font-size="11.9658px"
-                                x="827.2843"
-                                y="541.87408"
+                                x="832.2843"
+                                y="550.87408"
                                 id="text437"
                                 style="stroke-width:3.9886">Ins [5:0]</text>
                         <text
@@ -1536,8 +1551,8 @@
                                 xlink:href="#alu"
                                 width="60"
                                 height="60"
-                                x="270"
-                                y="53.700001"
+                                x="300"
+                                y="60.700001"
                                 id="use459"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
@@ -1561,7 +1576,7 @@
                                 id="mux2"
                                 width="30"
                                 height="30"
-                                x="250"
+                                x="275"
                                 y="99"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
@@ -1593,8 +1608,8 @@
                                 id="aluCtl"
                                 width="25"
                                 height="25"
-                                x="270"
-                                y="99"
+                                x="300"
+                                y="102"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#signExtend"
@@ -1609,16 +1624,16 @@
                                 id="adder2"
                                 width="50"
                                 height="50"
-                                x="278"
-                                y="20"
-                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                                x="252"
+                                y="16"
+                                transform="matrix(4.55,0,0,4.55,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#shiftLeft2"
                                 id="shift1"
                                 width="35"
                                 height="35"
-                                x="252"
-                                y="34.5"
+                                x="262"
+                                y="37.8"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#shiftLeft2"
@@ -1633,16 +1648,16 @@
                                 id="mux4"
                                 width="35"
                                 height="35"
-                                x="315"
-                                y="40"
+                                x="330"
+                                y="22"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#MUX"
                                 id="mux5"
                                 width="35"
                                 height="35"
-                                x="340"
-                                y="48.200001"
+                                x="356.5"
+                                y="30.200001"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <use
                                 xlink:href="#and"
@@ -1650,8 +1665,8 @@
                                 class="CtlWire"
                                 width="13"
                                 height="13"
-                                x="319"
-                                y="20"
+                                x="332"
+                                y="10"
                                 transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
                         <!--
                         <use xlink:href="#dataMem" x="50" y="50" ></use> -->
@@ -1729,15 +1744,15 @@
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data11"
                                             class="dataCircle"
-                                            cx="1385.9792"
-                                            cy="228.86066"
+                                            cx="1450.7844"
+                                            cy="156.57797"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data12"
                                             class="dataCircle"
-                                            cx="1163.6656"
-                                            cy="324.8364"
+                                            cx="1282.0597"
+                                            cy="353.50021"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -1778,8 +1793,8 @@
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data22"
                                             class="dataCircle"
-                                            cx="1164.3547"
-                                            cy="326.95172"
+                                            cx="1283.995"
+                                            cy="353.12305"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -1813,15 +1828,15 @@
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data26"
                                             class="dataCircle"
-                                            cx="1041.2247"
-                                            cy="196.64915"
+                                            cx="1079.8586"
+                                            cy="209.11169"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data27"
                                             class="dataCircle"
-                                            cx="1041.5797"
-                                            cy="195.71999"
+                                            cx="1080.2136"
+                                            cy="208.18253"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -1975,15 +1990,15 @@
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data11_0"
                                             class="dataCircle"
-                                            cx="1385.9792"
-                                            cy="228.86066"
+                                            cx="1450.7844"
+                                            cy="156.57797"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data12_0"
                                             class="dataCircle"
-                                            cx="1163.6656"
-                                            cy="324.8364"
+                                            cx="1282.0597"
+                                            cy="353.50021"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -2010,8 +2025,8 @@
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data22_0"
                                             class="dataCircle"
-                                            cx="1164.3547"
-                                            cy="326.95172"
+                                            cx="1283.995"
+                                            cy="353.12305"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -2038,15 +2053,15 @@
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data26_0"
                                             class="dataCircle"
-                                            cx="1041.2247"
-                                            cy="196.64915"
+                                            cx="1079.8586"
+                                            cy="209.11169"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
                                             id="data27_0"
                                             class="dataCircle"
-                                            cx="1041.5797"
-                                            cy="195.71999"
+                                            cx="1080.2136"
+                                            cy="208.18253"
                                             r="7.810112" />
                                     <circle
                                             style="fill:#ff0000;stroke-width:3.9886"
@@ -2068,32 +2083,28 @@
                                         </body>
                                     </foreignObject>
                     </svg>
-                          </div>
                 </div>
-                <div id="leftDown" class="card col-sm-9 col-md-3 col-lg-3" style="height: 63vh" v-html="log">
+
+
+                          </div>
+
+                </div>
+                <div id="leftDown" class="card col-sm-9 col-md-2 col-lg-2" style="height: 63vh;text-align:left;" v-html="log">
                         <div class="card-body">
                         <input type="file" name="file" id="file" accept=".asm, .s, .txt" style="display:none">
                         <a type="button" id="uploadFileButton" class="fas fa-upload" title="upload"></a>
                         <a type="button" id="downloadFileButton" class="fas fa-download" title="download"></a>
                         <a type="button" id="compile" class="fas fa-tools" title="compile"></a>
-                        <a type="button" id="redo" class="fas fa-redo-alt" title="redo"></a>
                     </div>
                     <textarea id="code" name="code" style="display: none;" ></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="card col-sm-12 col-md-12 col-lg-12 shadow-sm p-3 mb-5 bg-white rounded" style="height: 30vh" v-html="log">
+                <div class="card col-sm-12 col-md-12 col-lg-12 shadow-sm p-3 mb-5 bg-white rounded" style="height: 30vh; width: 100%" v-html="log">
                     <p class="card-body">
-                        <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
-                        <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
-                        <a type="button" id="play" class="fas fa-play-circle" title="play" ></a>
-                        <a type="button" id="pause" class="fas fa-pause pause" title="pause"></a>
-                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px">0.5 x</a>
-                        <input id="playSpeed" style="text-align: center; width: 5%" readonly>
-                        <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed">2.0 x</a>
-                        </p><div id="superToggler" class="toggler"></div>
-                        <textarea id="displayArea" content="" readonly></textarea>
-                    <p></p>
+                        
+                        <textarea id="displayArea" content="" style="width: 100%" readonly></textarea>
+                </p>
                 </div>
             </div>
         </div>
@@ -2127,9 +2138,9 @@
 
     <script src="js/code_mirror/mode/mips/mips.js"></script>
      <script>
-         function showDiv(e, value) {
+         function showDiv(e, description, value) {
              var o = document.getElementById("hidDiv");
-             $("#hidDiv").text("Data value: " + value);
+             $("#hidDiv").text("Data value:\n" + value + "\nData description:\n" + description);
              o.style.left = e.clientX+"px";
              o.style.top = e.clientY+10+"px";
              o.style.display = "block";
@@ -2161,6 +2172,7 @@
                 cell1.innerHTML = reg[i];
                 cell2.innerHTML = '0x00000000';
             }
+
          }
 
 
@@ -2170,7 +2182,7 @@
             h = window.screen.height;
             ratio = w/h;
             if(ratio > 1.61){
-                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 800');
+                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 860');
                 $('#leftDown').css('height', '70vh');
                 $('#leftUp').css('height', '70vh');
             }
@@ -2180,7 +2192,7 @@
                 $('#leftUp').css('height', '40vh');
             }
             else{
-                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 850');
+                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 900');
                 $('#leftDown').css('height', '53vh');
                 $('#leftUp').css('height', '53vh');
             }
@@ -2194,13 +2206,22 @@
                             let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                             $("#displayArea").val(temp);
                             CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                            $("#demo").css("pointer-events", "auto");
+                            $("#demo").css("color", "#9eb7ce");
                             $('#uploadFileButton').css("pointer-events", "auto");
+                            $("#uploadFileButton").css("color", "#9eb7ce");
                             $('#compile').css("pointer-events", "auto");
+                            $("#compile").css("color", "#9eb7ce");
                             $('#fw').css("pointer-events", "none");
+                            $('#fw').css("color", "#878181");
                             $('#play').css("pointer-events", "none");
+                            $('#play').css("color", "#878181");
                             $('#pause').css("pointer-events", "none");
+                            $('#pause').css("color", "#878181");
                             $('#halfSpeed').css("pointer-events", "none");
+                            $('#halfSpeed').css("color", "#878181");
                             $('#doubleSpeed').css("pointer-events", "none");
+                            $('#doubleSpeed').css("color", "#878181");
                             continuePlay.theFlagData = 0;
                             return false;
                         }
@@ -2210,13 +2231,22 @@
                         address = parseInt(address, 2).toString(16);
                         if(instructionMap[address] == undefined){
                             CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                            $("#demo").css("pointer-events", "auto");
+                            $("#demo").css("color", "#9eb7ce");
                             $('#uploadFileButton').css("pointer-events", "auto");
+                            $("#uploadFileButton").css("color", "#9eb7ce");
                             $('#compile').css("pointer-events", "auto");
+                            $("#compile").css("color", "#9eb7ce");
                             $('#fw').css("pointer-events", "none");
+                            $('#fw').css("color", "#878181");
                             $('#play').css("pointer-events", "none");
+                            $('#play').css("color", "#878181");
                             $('#pause').css("pointer-events", "none");
+                            $('#pause').css("color", "#878181");
                             $('#halfSpeed').css("pointer-events", "none");
+                            $('#halfSpeed').css("color", "#878181");
                             $('#doubleSpeed').css("pointer-events", "none");
+                            $('#doubleSpeed').css("color", "#878181");
                             continuePlay.theFlagData = 0;
                             document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                             let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
@@ -2260,13 +2290,22 @@
                 let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                 $("#displayArea").val(temp);
                 CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                $("#demo").css("pointer-events", "auto");
+                $('#demo').css("color", "#9eb7ce");
                 $('#uploadFileButton').css("pointer-events", "auto");
+                $('#uploadFileButton').css("color", "#9eb7ce");
                 $('#compile').css("pointer-events", "auto");
+                $('#compile').css("color", "#9eb7ce");
                 $('#fw').css("pointer-events", "none");
+                $('#fw').css("color", "#878181");
                 $('#play').css("pointer-events", "none");
+                $('#play').css("color", "#878181");
                 $('#pause').css("pointer-events", "none");
+                $('#pause').css("color", "#878181");
                 $('#halfSpeed').css("pointer-events", "none");
+                $('#halfSpeed').css("color", "#878181");
                 $('#doubleSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("color", "#878181");
                 continuePlay.theFlagData = 0;
                 return false;
             }
@@ -2276,13 +2315,22 @@
             address = parseInt(address, 2).toString(16);
             if(instructionMap[address] == undefined){
                 CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                $("#demo").css("pointer-events", "auto");
+                $("#demo").css("color", "#9eb7ce");
                 $('#uploadFileButton').css("pointer-events", "auto");
+                $("#uploadFileButton").css("color", "#9eb7ce");
                 $('#compile').css("pointer-events", "auto");
+                $("#compile").css("color", "#9eb7ce");
                 $('#fw').css("pointer-events", "none");
+                $('#fw').css("color", "#878181");
                 $('#play').css("pointer-events", "none");
+                $('#play').css("color", "#878181");
                 $('#pause').css("pointer-events", "none");
+                $('#pause').css("color", "#878181");
                 $('#halfSpeed').css("pointer-events", "none");
+                $('#halfSpeed').css("color", "#878181");
                 $('#doubleSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("color", "#878181");
                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                 let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
                 $("#displayArea").val(temp);
@@ -2468,7 +2516,9 @@
                   if(lineNum != -1){
                       CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
                       $('#uploadFileButton').css("pointer-events", "none");
+                      $('#uploadFileButton').css("color", "#878181");
                       $('#compile').css("pointer-events", "none");
+                      $('#compile').css("color", "#878181");
                       highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                   }
                   if(cpu.Errormsg != ""){
@@ -2476,13 +2526,22 @@
                       let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                       $("#displayArea").val(temp);
                       CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                      $("#demo").css("pointer-events", "auto");
+                      $("#demo").css("color", "#9eb7ce");
                       $('#uploadFileButton').css("pointer-events", "auto");
+                      $("#uploadFileButton").css("color", "#9eb7ce");
                       $('#compile').css("pointer-events", "auto");
+                      $("#compile").css("color", "#9eb7ce");
                       $('#fw').css("pointer-events", "none");
+                      $('#fw').css("color", "#878181");
                       $('#play').css("pointer-events", "none");
+                      $('#play').css("color", "#878181");
                       $('#pause').css("pointer-events", "none");
+                      $('#pause').css("color", "#878181");
                       $('#halfSpeed').css("pointer-events", "none");
+                      $('#halfSpeed').css("color", "#878181");
                       $('#doubleSpeed').css("pointer-events", "none");
+                      $('#doubleSpeed').css("color", "#878181");
                       continuePlay.theFlagData = 0;
                       return false;
                   }
@@ -2491,13 +2550,22 @@
                   address = parseInt(address, 2).toString(16);
                   if(instructionMap[address] == undefined){
                       CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                      $("#demo").css("pointer-events", "auto");
+                      $("#demo").css("color", "#9eb7ce");
                       $('#uploadFileButton').css("pointer-events", "auto");
+                      $("#uploadFileButton").css("color", "#9eb7ce");
                       $('#compile').css("pointer-events", "auto");
+                      $("#compile").css("color", "#9eb7ce");
                       $('#fw').css("pointer-events", "none");
+                      $('#fw').css("color", "#878181");
                       $('#play').css("pointer-events", "none");
+                      $('#play').css("color", "#878181");
                       $('#pause').css("pointer-events", "none");
+                      $('#pause').css("color", "#878181");
                       $('#halfSpeed').css("pointer-events", "none");
+                      $('#halfSpeed').css("color", "#878181");
                       $('#doubleSpeed').css("pointer-events", "none");
+                      $('#doubleSpeed').css("color", "#878181");
                       document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
                       let temp = $("#displayArea").val() + "Finished running." + "\n" ;
                       $("#displayArea").val(temp);
@@ -2552,7 +2620,9 @@
             $('.fas.fa-play-circle').click(function(){
                 CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
                 $('#uploadFileButton').css("pointer-events", "none");
+                $('#uploadFileButton').css("color", "#878181");
                 $('#compile').css("pointer-events", "none");
+                $('#compile').css("color", "#878181");
                 cpu.oneClockCycle();
                 address = cpu.getCurrentInsAddr();
                 address = parseInt(address, 2).toString(16);
@@ -2610,70 +2680,100 @@
                 if($(this).css('animation-duration') != '0s') {
                     if ($(this).attr("id") == "data1") {
                         var dataValue = cpu.PCOut;
+                        var dataDescription = "The address of current instruction.";
                     } else if ($(this).attr("id") == "data2") {
                         var dataValue = cpu.PCOut;
+                        var dataDescription = "The address of current instruction.";
                     } else if ($(this).attr("id") == "data3") {
                         var dataValue = "00000000000000000000000000000100";
+                        var dataDescription = "Constant 4. The PC of the next address can be obtained by adding 4 to the original PC.";
                     } else if ($(this).attr("id") == "data4") {
                         var dataValue = cpu.InsMemOut.substring(6, 11);
+                        var dataDescription = "The value is 25 to 21 bits of machine code, indicating the first register to read.";
                     } else if ($(this).attr("id") == "data5") {
                         var dataValue = cpu.InsMemOut.substring(16, 21);
+                        var dataDescription = "The value is 15 to 11 bits of machine code, indicating the register to be written of R-type instruction.";
                     } else if ($(this).attr("id") == "data6") {
                         var dataValue = cpu.InsMemOut.substring(11, 16);
+                        var dataDescription = "The value is 20 to 16 bits of machine code, indicating the second register to read.";
                     } else if ($(this).attr("id") == "data7_0" || $(this).attr("id") == "data7") {
                         var dataValue = cpu.PCAdderOut;
+                        var dataDescription = "The value is the address of the next instruction if the current instruction is not J-type or branch instruction.";
                     } else if ($(this).attr("id") == "data8_0" || $(this).attr("id") == "data8") {
                         var dataValue = cpu.registerFileOutPin1;
+                        var dataDescription = "The value stored in the register indicated by the first register address.";
                     } else if ($(this).attr("id") == "data9") {
                         var dataValue = cpu.registerFileOutPin2;
+                        var dataDescription = "The value stored in the register indicated by the second register address.";
                     } else if ($(this).attr("id") == "data10_0" || $(this).attr("id") == "data10") {
                         var dataValue = cpu.aluMuxOut;
+                        var dataDescription = "The source value of the second input pin of ALU.";
                     } else if ($(this).attr("id") == "data11_0" || $(this).attr("id") == "data11") {
                         var dataValue = cpu.muxBOut;
+                        var dataDescription = "The address of the next instruction to be executed.";
                     } else if ($(this).attr("id") == "data12_0" || $(this).attr("id") == "data12") {
                         var dataValue = cpu.ALUResultOut;
+                        var dataDescription = "The calculation result of ALU. This value is written back to the register designated by write register number.";
                     } else if ($(this).attr("id") == "data18") {
                         var dataValue = cpu.writeNumberMuxOut;
+                        var dataDescription = "The value is either 20 to 16 bits or 15 to 11 bits of machine code, indicating the second register to be written.";
                     } else if ($(this).attr("id") == "data19_0" || $(this).attr("id") == "data19") {
                         var dataValue = cpu.InsMemOut.substring(26, 32);
+                        var dataDescription = "The value is 5 to 0 bits of machine code, which is the function code of R-type instruction.";
                     } else if ($(this).attr("id") == "data20_0" || $(this).attr("id") == "data20") {
                         var dataValue = cpu.InsMemOut.substring(16, 32);
+                        var dataDescription = "The value is 15 to 0 bits of machine code, which is the immediate number of I-type instruction.";
                     } else if ($(this).attr("id") == "data21_0" || $(this).attr("id") == "data21") {
                         var dataValue = cpu.signExtendOUT;
+                        var dataDescription = "The immediate number that has been sign extended.";
                     } else if ($(this).attr("id") == "data22_0" || $(this).attr("id") == "data22") {
                         var dataValue = cpu.ALUResultOut;
+                        var dataDescription = "";
                     } else if ($(this).attr("id") == "data23_0" || $(this).attr("id") == "data23") {
                         var dataValue = cpu.DMOut;
+                        var dataDescription = "The value is read from data memory, whose loacation is indicated by the address.";
                     } else if ($(this).attr("id") == "data24_0" || $(this).attr("id") == "data24") {
                         var dataValue = cpu.registerFileOutPin2;
+                        var dataDescription = "The value is the second data read from register file, whose address is indicated by the second register read number. This value is also the data that will be written to data memory.";
                     } else if ($(this).attr("id") == "data25_0" || $(this).attr("id") == "data25") {
                         var dataValue = cpu.signExtendOUT;
+                        var dataDescription = "The immediate number that has been sign extended.";
                     } else if ($(this).attr("id") == "data26_0" || $(this).attr("id") == "data26") {
                         var dataValue = cpu.ALUAdderB;
+                        var dataDescription = "The immediate number that has been left shifted by 2 bits.";
                     } else if ($(this).attr("id") == "data27_0") {
                         var dataValue = cpu.aluAdderOut;
+                        var dataDescription = "The value is obtained from plusing 4 to the current PC, indicating the address of instruction in next line.";
                     } else if ($(this).attr("id") == "data28") {
                         var dataValue = cpu.InsMemOut.substring(6, 32);
+                        var dataDescription = "This value is obtained by left shifting the machine code from bits 25 to 0 by two.";
                     } else if ($(this).attr("id") == "data29") {
                         var dataValue = cpu.InsMemOut.substring(6, 32)+'00';
+                        var dataDescription = "This value is 25 to 0 bits of machine code, which is only used by J-type instruction.";
                     } else if ($(this).attr("id") == "data30_0" || $(this).attr("id") == "data30") {
                         var dataValue = cpu.PCAdderOut.substring(0, 4)+cpu.InsMemOut.substring(6, 32)+'00';
+                        var dataDescription = "The value is the combination of the first 4 bits of PC+4 and the value that is obtained from left shifting the machine code from bits 25 to 0 by two. This is the jumping address of J-type instruction.";
                     }  else if ($(this).attr("id") == "data31") {
                         var dataValue = cpu.InsMemOut.substring(11, 16);
+                        var dataDescription = "The value is 20 to 16 bits of machine code.";
                     } else if ($(this).attr("id") == "data42") {
                         var dataValue = cpu.InsMemOut.substring(0, 6);
+                        var dataDescription = "The value is 31 to 26 bits of machine code, indicating the type of instructions. It is also called operation code.";
                     } else if ($(this).attr("id") == "data72") {
                         var dataValue = cpu.PCAdderOut;
+                        var dataDescription = "The source of first input pin of the branch adder.";
                     } else if ($(this).attr("id") == "data73") {
                         var dataValue = cpu.PCAdderOut;
+                        var dataDescription = "The first 4 bits of PC+4 is intercepted to form the jumping address.";
                     }
                 }
                 if ($(this).attr("id") == "data3_1" && $(this).css('opacity') == 1) {
                     var dataValue = "00000000000000000000000000000100";
+                    var dataDescription = "Constant 4. The PC of the next address can be obtained by adding 4 to the original PC.";
                 }
 
                 if(($(this).attr("id") == "data3_1" && $(this).css('opacity') == 1)||$(this).css('animation-duration') != '0s'){
-                    showDiv(event, dataValue);
+                    showDiv(event, dataDescription, dataValue);
                 }
 
             },function () {
@@ -2681,8 +2781,8 @@
             });
 
             $("body").keydown(function (e){
-                e.preventDefault();
-                if(e.keyCode == 32){
+                if(e.keyCode == 32 && playing == true){
+                    e.preventDefault();
                     $('#pause').trigger('click');
                 }
             });
@@ -2730,22 +2830,45 @@
             });
             CodeMirrorEditor.on("change",function(CodeMirrorEditor, changes){
                 $('#fw').css("pointer-events", "none");
+                $('#fw').css("color", "#878181");
                 $('#play').css("pointer-events", "none");
+                $('#play').css("color", "#878181");
                 $('#pause').css("pointer-events", "none");
+                $('#pause').css("color", "#878181");
                 $('#halfSpeed').css("pointer-events", "none");
+                $('#halfSpeed').css("color", "#878181");
                 $('#doubleSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("color", "#878181");
             });
 
             $("#demo").click(function(){
                 CodeMirrorEditor.setValue('.text\n.globl main\nmain:\nla $a0, str\nli $v0, 4\nsyscall\nli $v0, 10\nsyscall\n.data\nstr: .asciiz "hello world"');
               });
-            $("#redo").click(function(){
+            $("#terminate").click(function(){
+                Unbind();
                 highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                 let data = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data7_0', 'data8', 'data8_0', 'data9', 'data10', 'data10_0', 'data11', 'data11_0', 'data12', 'data12_0', 'data18', 'data19', 'data19_0', 'data20', 'data20_0', 'data21', 'data21_0', 'data22', 'data22_0', 'data23', 'data23_0', 'data24', 'data24_0', 'data25', 'data25_0', 'data26', 'data26_0', 'data27', 'data27_0',  'data28', 'data29', 'data30', 'data30_0', 'data31',  'data42', 'data73', 'data72', 'Jump', 'isZero', 'BranchAndZero', 'Branch', 'ALUSrc', 'RegWrite',  'RegDst', 'ALUOp', 'MemWrite', 'MemRead', 'MemtoReg', 'and1'];
                 for(let i=0;i<56;i++) {
                     $("#"+data[i]).css('animation', 'none');
                 }
-                $('#compile').trigger('click');
+                CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                            $("#demo").css("pointer-events", "auto");
+                            $("#demo").css("color", "#9eb7ce");
+                            $('#uploadFileButton').css("pointer-events", "auto");
+                            $("#uploadFileButton").css("color", "#9eb7ce");
+                            $('#compile').css("pointer-events", "auto");
+                            $("#compile").css("color", "#9eb7ce");
+                            $('#fw').css("pointer-events", "none");
+                            $('#fw').css("color", "#878181");
+                            $('#play').css("pointer-events", "none");
+                            $('#play').css("color", "#878181");
+                            $('#pause').css("pointer-events", "none");
+                            $('#pause').css("color", "#878181");
+                            $('#halfSpeed').css("pointer-events", "none");
+                            $('#halfSpeed').css("color", "#878181");
+                            $('#doubleSpeed').css("pointer-events", "none");
+                            $('#doubleSpeed').css("color", "#878181");
+                //$('#compile').trigger('click');
             });
             $('#uploadFileButton').click(function() {
                 $("#file").trigger("click");
@@ -2768,6 +2891,7 @@
             });
             $("#compile").click(function(){
                 continuePlay.theFlagData = 0;
+                playing = false;
                 address = 0;
                 instructionList = {}; // Store all instructions, including syscall
                 instructionMap = {}; // Store mapping relationships between instructions and code mirror.
@@ -2785,16 +2909,27 @@
                     let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
                     $("#displayArea").val(temp);
                     CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                    $("#demo").css("pointer-events", "auto");
+                    $("#demo").css("color", "#9eb7ce");
                     $('#uploadFileButton').css("pointer-events", "auto");
+                    $("#uploadFileButton").css("color", "#9eb7ce");
                     $('#compile').css("pointer-events", "auto");
+                    $("#compile").css("color", "#9eb7ce");
                     $('#fw').css("pointer-events", "none");
+                    $('#fw').css("color", "#878181");
                     $('#play').css("pointer-events", "none");
+                    $('#play').css("color", "#878181");
                     $('#pause').css("pointer-events", "none");
+                    $('#pause').css("color", "#878181");
                     $('#halfSpeed').css("pointer-events", "none");
+                    $('#halfSpeed').css("color", "#878181");
                     $('#doubleSpeed').css("pointer-events", "none");
+                    $('#doubleSpeed').css("color", "#878181");
                     continuePlay.theFlagData = 0;
                     return false;
                 }
+                $("#demo").css("pointer-events", "none");
+                $('#demo').css("color", "#878181");
                 $("#displayArea").val("");
                 getCode();
                 storeALLInstruction();
@@ -2804,10 +2939,16 @@
                 initializeSM();
                 refreshDM();
                 $('#fw').css("pointer-events", "auto");
+                $("#fw").css("color", "#9eb7ce");
                 $('#play').css("pointer-events", "auto");
-                $('#pause').css("pointer-events", "auto");
-                $('#halfSpeed').css("pointer-events", "auto");
+                $("#play").css("color", "#9eb7ce");
+                $('#pause').removeClass("fa-play").addClass("fa-pause");
+                $('#pause').css("pointer-events", "none");
+                $('#doubleSpeed').css("color", "#878181");
                 $('#doubleSpeed').css("pointer-events", "auto");
+                $("#demo").css("color", "#9eb7ce");
+                $('#doubleSpeed').css("pointer-events", "auto");
+                $("#doubleSpeed").css("color", "#9eb7ce");
             })
           });
 
@@ -2864,7 +3005,6 @@
           }
           return false;
         }
-
 
 
 
