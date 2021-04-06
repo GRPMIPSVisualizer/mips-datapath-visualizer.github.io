@@ -38,7 +38,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-            <a style="margin-left: 10%; font-weight:bold; font-size:2vw; font-family:'Papyrus',fantasy; letter-spacing: 3px" class="navbar-brand" href="#">MIPS</a>
+            <a style="margin-left: 10%; font-weight:bold; font-size:3vh; font-family:'Papyrus',fantasy; letter-spacing: 3px" class="navbar-brand" href="#">MIPS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -57,9 +57,7 @@
                         <a style="font-weight:bold; font-family: 'Cormorant Unicase Bold'" class="nav-link" href="reports/lcov-report/index.html">Test</a>
                     </li>
                         <div class="dropdown">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="demo" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'; border:none">
-                                Demo
-                            </button>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="demo" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'; border:none; padding-top: 10%">Demo</button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" id="demo_hw" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'">Hello world</a></li>
                                 <li><a class="dropdown-item" id="demo_branch" style="font-weight:bold; font-family: 'Cormorant Unicase Bold'">Branch</a></li>
@@ -72,8 +70,10 @@
             </div>
         </nav>
     </header>
-    <main role="main"  style="overflow: hidden;height: 100%;width:90%; margin: 0 auto">
-        <br/>
+    <main role="main"  style="height: 100%;width:90%; margin: 0 auto;">
+        <div style="line-height: 50%">
+            <br/>
+        </div>
         <!--<div class="container" style="overflow: hidden;height: 100%;width:100%;">-->
             <div class="row" style="">
                 <div id="leftUp" class="card col-sm-9 col-md-10 col-lg-10" style="height: 63vh;" v-html="log">
@@ -89,7 +89,7 @@
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed" style="z-index:999;">2.0 x</a>
                     </div>
 
-                          <div class="code-img" style="overflow: scroll;width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%; -moz-transform: scale(1.0); -moz-transform-origin: top left" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
+                          <div class="code-img" style="overflow: scroll;width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
                                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                               <svg
                                       xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -2247,7 +2247,7 @@
                 <div class="card col-sm-12 col-md-12 col-lg-12 shadow-sm p-3 mb-5 bg-white rounded" style="height: 30vh; width: 100%" v-html="log">
                     <p class="card-body">
                         
-                        <textarea id="displayArea" content="" style="width: 100%" readonly></textarea>
+                        <textarea id="displayArea" content="" style="width: 100%; resize: none; height: 100%" readonly></textarea>
                 </p>
                 </div>
             </div>
@@ -2337,16 +2337,20 @@
                 $('#rightUp').css('height', '80vh');
                 $('#leftUp').css('height', '80vh');
                 $('#captchaImg').css('zoom', '150%');
+                $('#captchaImg').css('-moz-transform', 'scale(1.15)');
+                $('#captchaImg').css('-moz-transform-origin', 'top left');
             }
             else if(ratio < 1.40){
                 document.getElementById('svg803').setAttribute('viewBox', '0 0 800 1000');
-                $('#rightUp').css('height', '40vh');
-                $('#leftUp').css('height', '40vh');
+                $('#rightUp').css('height', '60vh');
+                $('#leftUp').css('height', '60vh');
+
             }
             else{
                 document.getElementById('svg803').setAttribute('viewBox', '0 0 800 900');
                 $('#rightUp').css('height', '70vh');
                 $('#leftUp').css('height', '70vh');
+                $('#captchaImg').css('zoom', '140%');
             }
             $("#displayArea").val("");
             Object.defineProperty(continuePlay, 'theFlagData', {
@@ -3258,7 +3262,7 @@
             aLink.download = fileName;
             aLink.href = URL.createObjectURL(blob);
         }
-
+        /*
         document.getElementById('captchaImg').addEventListener("DOMMouseScroll", function (event) {
             let transform = $(this).css('-moz-transform');
             let transformMatrix = transform.slice(7, transform.length - 1).split(', ');
@@ -3272,6 +3276,8 @@
             }
             $(this).css('-moz-transform', 'scale(' + current + ')');
         });
+
+         */
         function getBrowserType() {
             var ua = navigator.userAgent.toLowerCase();
 
