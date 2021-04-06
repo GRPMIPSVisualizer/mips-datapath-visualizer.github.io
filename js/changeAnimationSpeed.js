@@ -39,4 +39,55 @@ function Unbind(){
     }
     $("#pause").unbind("click");
 }
-
+function transparentDiagram() {
+    let i;
+    let wires = document.getElementsByClassName('wire');
+    for (i = 0; i < wires.length; i++) {
+        wires[i].setAttribute('opacity', '0.2');
+    }
+    let texts = document.getElementsByClassName('textOnWire');
+    for (i = 0; i < texts.length; i++) {
+        texts[i].setAttribute('opacity', '0.2');
+    }
+    let circles = document.getElementsByTagName('circle');
+    for (i = 0; i < circles.length; i++) {
+        if (!$(circles[i]).hasClass('dataCircle')) {
+            circles[i].setAttribute('opacity', '0.2');
+        }
+    }
+    let uses = document.getElementsByTagName('use');
+    for (i = 0; i < uses.length; i++) {
+        if (!$(uses[i]).hasClass('transparent')) {
+            uses[i].setAttribute('opacity', '0.2');
+        }
+    }
+    $('#instructionTable').css('opacity', '0.2');
+    $('#registerTable').css('opacity', '0.2');
+    $('#memoryTable').css('opacity', '0.2')
+}
+function recoverDiagram(){
+    let i;
+    let wires = document.getElementsByClassName('wire');
+    for(i = 0; i < wires.length; i++){
+        wires[i].setAttribute('opacity','1');
+    }
+    let texts = document.getElementsByClassName('textOnWire');
+    for(i = 0; i < texts.length; i++){
+        texts[i].setAttribute('opacity','1');
+    }
+    let circles = document.getElementsByTagName('circle');
+    for(i = 0; i < circles.length; i++){
+        if(!$(circles[i]).hasClass('dataCircle')){
+            circles[i].setAttribute('opacity','1');
+        }
+    }
+    let uses = document.getElementsByTagName('use');
+    for(i = 0; i < uses.length; i++){
+        if(!$(uses[i]).hasClass('transparent')){
+            uses[i].setAttribute('opacity','1');
+        }
+    }
+    $('#instructionTable').css('opacity', '1');
+    $('#registerTable').css('opacity', '1');
+    $('#memoryTable').css('opacity', '1')
+}

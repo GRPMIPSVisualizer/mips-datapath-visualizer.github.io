@@ -42,11 +42,12 @@ function BEQChecker() {
             $('#data11').css("animation-play-state", "paused");
             $('#data11_0').css("animation-play-state", "paused");
         }
-
-        $('#pause').removeClass("fa-pause").addClass("fa-play");
-        $('#pause').attr('title', 'play');
         $('#halfSpeed').css("pointer-events", "none");
         $('#doubleSpeed').css("pointer-events", "none");
+        $('#halfSpeed').css("background-color", "grey");
+        $('#doubleSpeed').css("background-color", "grey");
+        $('#pause').removeClass("fa-pause").addClass("fa-play");
+        $('#pause').attr('title', 'play');
     }
 
     else if ($('#pause').hasClass("fa-play")) {
@@ -91,12 +92,13 @@ function BEQChecker() {
             $('#data11').css("animation-play-state", "running");
             $('#data11_0').css("animation-play-state", "running");
         }
-
-
-        $('#pause').removeClass("fa-play").addClass("fa-pause");
-        $('#pause').attr('title', 'pause');
         $('#halfSpeed').css("pointer-events", "auto");
         $('#doubleSpeed').css("pointer-events", "auto");
+        $('#halfSpeed').css("background-color", "blue");
+        $('#doubleSpeed').css("background-color", "blue");
+        $('#pause').removeClass("fa-play").addClass("fa-pause");
+        $('#pause').attr('title', 'pause');
+
     }
 };
 
@@ -126,20 +128,34 @@ function BEQStepForward(beqStep){
     }
 }
 function beqStep1(){
+    playing = true;
+    transparentDiagram();
     $('#pause').click(function () {
         BEQChecker();
     });
 
     $("#data3").bind("animationend", function () {
+        playing = false;
+        $('#pause').css("pointer-events", "none");
+        $('#pause').css("color", "grey");
         $('#data3').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
-        $('#pause').css("pointer-events", "none");
+        $('#fw').css("color", "blue");
+        document.getElementById('pc2insMem').setAttribute('opacity', '0.2');
+        document.getElementById('pc2adder1').setAttribute('opacity', '0.2');
+        document.getElementById('const4').setAttribute('opacity', '0.2');
+        document.getElementById('use453').setAttribute('opacity', '0.2');
+        document.getElementById('use455').setAttribute('opacity', '0.2');
+        $('#instructionTable').css('opacity', '0.2');
+        document.getElementById('adder1').setAttribute('opacity', '0.2');
+        document.getElementById('circle385').setAttribute('opacity', '0.2');
         $('#data3').css("animation", "none");
         $('#data3_1').css("opacity", "1");
         if(sequenceFlag == 1){
             beqStep2();
         }
     });
+
     $("#data1").bind("animationend", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
@@ -151,30 +167,80 @@ function beqStep1(){
     });
 
     $('#fw').css("pointer-events", "none");
+    $('#fw').css("color", "grey");
     $('#play').css("pointer-events", "none");
+    $('#play').css("color", "grey");
+
+    document.getElementById('pc2insMem').setAttribute('opacity', '1');
+    document.getElementById('pc2adder1').setAttribute('opacity', '1');
+    document.getElementById('const4').setAttribute('opacity', '1');
+    document.getElementById('use453').setAttribute('opacity', '1');
+    document.getElementById('use455').setAttribute('opacity', '1');
+    $('#instructionTable').css('opacity', '1');
+    document.getElementById('adder1').setAttribute('opacity', '1');
+    document.getElementById('circle385').setAttribute('opacity', '1');
+
     $('#data1').css({"animation":"pathing " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data3_1').css("opacity", "0");
     $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 1;
     $('#pause').css("pointer-events", "auto");
+    $('#pause').css("color", "blue");
 }
-function beqStep2(){
 
+function beqStep2(){
+    playing = true;
     $("#data4").bind("animationend", function () {
         $('#data4').css("animation-play-state", "paused");
         $('#data4').css("animation", "none");
-
     });
     $("#data42").bind("animationend", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
     $("#data6").bind("animationend", function () {
+        playing = false;
         $('#data6').css("animation-play-state", "paused");
         $('#data6').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
+        $('#fw').css("color", "blue");
         $('#pause').css("pointer-events", "none");
+        $('#pause').css("color", "grey");
+        document.getElementById('insMem2reg_1').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_2').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_3').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_4').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_5').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_6').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_7').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_8').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_10').setAttribute('opacity', '0.2');
+        document.getElementById('use455').setAttribute('opacity', '0.2');
+        document.getElementById('text443').setAttribute('opacity', '0.2');
+        document.getElementById('use457').setAttribute('opacity', '0.2');
+        document.getElementById('circle389').setAttribute('opacity', '0.2');
+        document.getElementById('circle391').setAttribute('opacity', '0.2');
+        document.getElementById('circle395').setAttribute('opacity', '0.2');
+        document.getElementById('circle387').setAttribute('opacity', '0.2');
+        document.getElementById('circle409').setAttribute('opacity', '0.2');
+        document.getElementById('circle411').setAttribute('opacity', '0.2');
+        document.getElementById('circle393').setAttribute('opacity', '0.2');
+        document.getElementById('circle405').setAttribute('opacity', '0.2');
+        document.getElementById('text445').setAttribute('opacity', '0.2');
+        document.getElementById('text435').setAttribute('opacity', '0.2');
+        document.getElementById('text447').setAttribute('opacity', '0.2');
+        document.getElementById('ins2ctl').setAttribute('opacity', '0.2');
+        document.getElementById('ctl').setAttribute('opacity', '0.2');
+        document.getElementById('insMem2reg_9').setAttribute('opacity', '0.2');
+        document.getElementById('ins2mux2_1').setAttribute('opacity', '0.2');
+        document.getElementById('ins2mux2_2').setAttribute('opacity', '0.2');
+        document.getElementById('signExd').setAttribute('opacity', '0.2');
+        $('#instructionTable').css('opacity', '0.2');
+        $('#registerTable').css('opacity', '0.2');
+        document.getElementById('text441').setAttribute('opacity', '0.2');
+        document.getElementById('text435').setAttribute('opacity', '0.2');
+        document.getElementById('text447').setAttribute('opacity', '0.2');
         if(sequenceFlag == 1){
             beqStep3();
         }
@@ -189,6 +255,39 @@ function beqStep2(){
     });
 
     $('#fw').css("pointer-events", "none");
+    $('#fw').css("color", "grey");
+    document.getElementById('insMem2reg_1').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_2').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_3').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_4').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_5').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_6').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_7').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_8').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_10').setAttribute('opacity', '1');
+        document.getElementById('use455').setAttribute('opacity', '1');
+        document.getElementById('text443').setAttribute('opacity', '1');
+        document.getElementById('use457').setAttribute('opacity', '1');
+        document.getElementById('circle389').setAttribute('opacity', '1');
+        document.getElementById('circle391').setAttribute('opacity', '1');
+        document.getElementById('circle395').setAttribute('opacity', '1');
+        document.getElementById('circle387').setAttribute('opacity', '1');
+        document.getElementById('circle409').setAttribute('opacity', '1');
+        document.getElementById('circle411').setAttribute('opacity', '1');
+        document.getElementById('circle393').setAttribute('opacity', '1');
+        document.getElementById('text445').setAttribute('opacity', '1');
+        document.getElementById('ins2ctl').setAttribute('opacity', '1');
+        document.getElementById('ctl').setAttribute('opacity', '1');
+        document.getElementById('insMem2reg_9').setAttribute('opacity', '1');
+        document.getElementById('ins2mux2_1').setAttribute('opacity', '1');
+        document.getElementById('ins2mux2_2').setAttribute('opacity', '1');
+        document.getElementById('signExd').setAttribute('opacity', '1');
+        $('#instructionTable').css('opacity', '1');
+        $('#registerTable').css('opacity', '1');
+        document.getElementById('text441').setAttribute('opacity', '1');
+        document.getElementById('text435').setAttribute('opacity', '1');
+        document.getElementById('text447').setAttribute('opacity', '1');
+
     $('#data4').css({"animation":"pathing4 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data6').css({"animation":"pathing6 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -196,8 +295,10 @@ function beqStep2(){
     $('#data20').css({"animation":"pathing20 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 2;
     $('#pause').css("pointer-events", "auto");
+    $('#pause').css("color", "blue");
 }
 function beqStep3(){
+    playing = true;
     $("#data8").bind("animationend", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
@@ -211,10 +312,30 @@ function beqStep3(){
         $('#data9').css("animation", "none");
     });
     $("#data10").bind("animationend", function () {
+        playing = false;
         $('#data10').css("animation-play-state", "paused");
         $('#data10').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
+        $('#fw').css("color", "blue");
         $('#pause').css("pointer-events", "none");
+        $('#pause').css("color", "grey");
+        document.getElementById('use457').setAttribute('opacity', '0.2');
+        document.getElementById('use459').setAttribute('opacity', '0.2');
+        document.getElementById('regRD1toAluSrcA').setAttribute('opacity', '0.2');
+        document.getElementById('regRD2tomux2_0').setAttribute('opacity', '0.2');
+        document.getElementById('regRD2tomux2').setAttribute('opacity', '0.2');
+        document.getElementById('mux2').setAttribute('opacity', '0.2');
+        document.getElementById('circle397').setAttribute('opacity', '0.2');
+        document.getElementById('circle403').setAttribute('opacity', '0.2');
+        document.getElementById('mux2').setAttribute('opacity', '0.2');
+        document.getElementById('mux2toAluSrcB').setAttribute('opacity', '0.2');
+        document.getElementById('signExd').setAttribute('opacity', '0.2');
+        document.getElementById('ins2mux2_3').setAttribute('opacity', '0.2');
+        document.getElementById('ins2shift1').setAttribute('opacity', '0.2');
+        document.getElementById('shift1').setAttribute('opacity', '0.2');
+        document.getElementById('text449').setAttribute('opacity', '0.2');
+        $('#registerTable').css('opacity', '0.2');
+
         if(sequenceFlag == 1){
             beqStep4();
         }
@@ -245,6 +366,24 @@ function beqStep3(){
     });
 
     $('#fw').css("pointer-events", "none");
+    $('#fw').css("color", "grey");
+    document.getElementById('use457').setAttribute('opacity', '1');
+        document.getElementById('use459').setAttribute('opacity', '1');
+        document.getElementById('regRD1toAluSrcA').setAttribute('opacity', '1');
+        document.getElementById('regRD2tomux2_0').setAttribute('opacity', '1');
+        document.getElementById('regRD2tomux2').setAttribute('opacity', '1');
+        document.getElementById('mux2').setAttribute('opacity', '1');
+        document.getElementById('circle397').setAttribute('opacity', '1');
+        document.getElementById('circle403').setAttribute('opacity', '1');
+        document.getElementById('mux2').setAttribute('opacity', '1');
+        document.getElementById('mux2toAluSrcB').setAttribute('opacity', '1');
+        document.getElementById('signExd').setAttribute('opacity', '1');
+        document.getElementById('ins2mux2_3').setAttribute('opacity', '1');
+        document.getElementById('ins2shift1').setAttribute('opacity', '1');
+        document.getElementById('shift1').setAttribute('opacity', '1');
+        document.getElementById('text449').setAttribute('opacity', '1');
+        $('#registerTable').css('opacity', '1');
+
     $('#data8_0').css({"animation":"pathing8_0 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8').css({"animation":"pathing8 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data9').css({"animation":"pathing9 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -258,11 +397,10 @@ function beqStep3(){
     $('#and1').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     insNum = 3;
     $('#pause').css("pointer-events", "auto");
+    $('#pause').css("color", "blue");
 }
 function beqStep4(){
-
-
-
+    playing = true;
     $("#data7").bind("animationend", function () {
         $('#data7').css("animation-play-state", "paused");
         $('#data7').css("animation", "none");
@@ -284,10 +422,30 @@ function beqStep4(){
         $('#data26_0').css("animation", "none");
     });
     $("#data27").bind("animationend", function () {
+        playing = false;
         $('#data27').css("animation-play-state", "paused");
         $('#data27').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
+        $('#fw').css("color", "blue");
         $('#pause').css("pointer-events", "none");
+        $('#pause').css("color", "grey");
+        document.getElementById('adder1').setAttribute('opacity', '0.2');
+        document.getElementById('adder1toadder2_0').setAttribute('opacity', '0.2');
+        document.getElementById('adder1toadder2_1').setAttribute('opacity', '0.2');
+        document.getElementById('adder1toadder2').setAttribute('opacity', '0.2');
+        document.getElementById('adder1tomux4').setAttribute('opacity', '0.2');
+        document.getElementById('mux4').setAttribute('opacity', '0.2');
+        document.getElementById('circle407').setAttribute('opacity', '0.2');
+        document.getElementById('circle413').setAttribute('opacity', '0.2');
+        document.getElementById('adder1').setAttribute('opacity', '0.2');
+        document.getElementById('adder2').setAttribute('opacity', '0.2');
+        document.getElementById('adder2tomux4').setAttribute('opacity', '0.2');
+        document.getElementById('mux4tomux5').setAttribute('opacity', '0.2');
+        document.getElementById('mux5').setAttribute('opacity', '0.2');
+        document.getElementById('shift1').setAttribute('opacity', '0.2');
+        document.getElementById('shift1toadder2').setAttribute('opacity', '0.2');
+
+
         if(sequenceFlag == 1){
             beqStep5();
         }
@@ -298,6 +456,23 @@ function beqStep4(){
     });
 
     $('#fw').css("pointer-events", "none");
+    $('#fw').css("color", "grey");
+    document.getElementById('adder1').setAttribute('opacity', '1');
+        document.getElementById('adder1toadder2_0').setAttribute('opacity', '1');
+        document.getElementById('adder1toadder2_1').setAttribute('opacity', '1');
+        document.getElementById('adder1toadder2').setAttribute('opacity', '1');
+        document.getElementById('adder1tomux4').setAttribute('opacity', '1');
+        document.getElementById('mux4').setAttribute('opacity', '1');
+        document.getElementById('circle407').setAttribute('opacity', '1');
+        document.getElementById('circle413').setAttribute('opacity', '1');
+        document.getElementById('adder1').setAttribute('opacity', '1');
+        document.getElementById('adder2').setAttribute('opacity', '1');
+        document.getElementById('adder2tomux4').setAttribute('opacity', '1');
+        document.getElementById('mux4tomux5').setAttribute('opacity', '1');
+        document.getElementById('mux5').setAttribute('opacity', '1');
+        document.getElementById('shift1').setAttribute('opacity', '1');
+        document.getElementById('shift1toadder2').setAttribute('opacity', '1');
+
     $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data72').css({"animation":"pathing72 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -307,8 +482,10 @@ function beqStep4(){
     $('#data27').css({"animation":"pathing27 " + 17/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 4;
     $('#pause').css("pointer-events", "auto");
+    $('#pause').css("color", "blue");
 }
 function beqStep5(){
+    playing = true;
     $("#data11").one("animationend", function () {
         playing = false;
         insNum = 0;
@@ -319,8 +496,11 @@ function beqStep5(){
         $('#Branch').css("animation", "none");
         $('#and1').css("animation", "none");
         $('#pause').css("pointer-events", "none");
+        $('#pause').css("color", "grey");
+        recoverDiagram();
         Unbind();
         $('#fw').css("pointer-events", "auto");
+        $('#fw').css("color", "blue");
         if(sequenceFlag == 1){
             continuePlay.theFlagData = continuePlay.theFlagData + 1;
         }
@@ -331,10 +511,16 @@ function beqStep5(){
         $('#data11_0').css("animation", "none");
     });
     $('#fw').css("pointer-events", "none");
+    $('#fw').css("color", "grey");
+    document.getElementById('use453').setAttribute('opacity', '1');
+    document.getElementById('mux5').setAttribute('opacity', '1');
+    document.getElementById('mux5toPc').setAttribute('opacity', '1');
+
     $('#data11_0').css({"animation":"pathing11_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data11').css({"animation":"pathing11 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 5;
     $('#pause').css("pointer-events", "auto");
+    $('#pause').css("color", "blue");
 }
 
 
