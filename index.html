@@ -2405,7 +2405,7 @@
                             $('#doubleSpeed').css("background-color", "lightgrey");
                             continuePlay.theFlagData = 0;
                             document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                            let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
+                            let temp = $("#displayArea").val() +  "Program finished running."+ "\n" ;
                             $("#displayArea").val(temp);
                             return;
                         }
@@ -2415,20 +2415,21 @@
                             $("#displayArea").val(temp);
                         }
                         else{
-                            let l = instructionMap[a];
-                            document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                            let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
-                            $("#displayArea").val(temp);
+                            if(instructionList[a] != "00000000000000000000000000001100"){
+                                let l = instructionMap[a];
+                                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
+                                let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
+                                $("#displayArea").val(temp);
+                            }
                         }
                         lineNum = instructionMap[address];
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : #bababa");
                         if(instructionList[address] == "00000000000000000000000000001100"){
                             if(cpu.StdOut != ""){
                                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                                let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut ;
+                                let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n";
                                 $("#displayArea").val(temp);
                             }
-                            console.log('syscall finished');
                             continueToPlay();
                         }
                         else{
@@ -2491,7 +2492,7 @@
                 $('#doubleSpeed').css("pointer-events", "none");
                 $('#doubleSpeed').css("background-color", "lightgrey");
                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
+                let temp = $("#displayArea").val() +  "Program finished running."+ "\n" ;
                 $("#displayArea").val(temp);
                 continuePlay.theFlagData = 0;
                 return;
@@ -2502,20 +2503,21 @@
                 $("#displayArea").val(temp);
             }
             else{
-                let l = instructionMap[a];
-                document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
-                $("#displayArea").val(temp);
+                if(instructionList[a] != "00000000000000000000000000001100"){
+                    let l = instructionMap[a];
+                    document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
+                    let temp = $("#displayArea").val() + "Line " + l + " finished running."+ "\n" ;
+                    $("#displayArea").val(temp);
+                }
             }
             lineNum = instructionMap[address];
             highLight(lineNum, sourceIns[lineNum].length, "background-color : #bababa");
             if(instructionList[address] == "00000000000000000000000000001100"){
                 if(cpu.StdOut != ""){
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                    let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut ;
+                    let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n";
                     $("#displayArea").val(temp);
                 }
-                console.log('syscall finished');
                 continueToPlay();
             }
             else{
@@ -2552,10 +2554,9 @@
               sourceIns[i] = sourceIns[i].trim();
             }
 
-
             var length = sourceIns.length;
             for (i = 0; i < length; i++) {
-                if(annotation.test(sourceIns[i])){
+                if(sourceIns[i].indexOf("#") > -1){
                     let posOfAnnotation = sourceIns[i].indexOf("#")
                     if(posOfAnnotation == 0){
                         operator[i] = "empty";
@@ -2668,6 +2669,8 @@
                 }
 
             }
+            console.log(sourceIns);
+            console.log(operator);
         }
 
         function reverseCompileAndPlay(opcode){
@@ -2792,7 +2795,7 @@
                       $('#doubleSpeed').css("pointer-events", "none");
                       $('#doubleSpeed').css("background-color", "lightgrey");
                       document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                      let temp = $("#displayArea").val() + "Finished running." + "\n" ;
+                      let temp = $("#displayArea").val() + "Program finished running." + "\n" ;
                       $("#displayArea").val(temp);
                       return;
                   }
@@ -2801,10 +2804,9 @@
                   if(instructionList[address] == "00000000000000000000000000001100"){
                       if(cpu.StdOut != ""){
                           document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                          let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut ;
+                          let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n";
                           $("#displayArea").val(temp);
                       }
-                      console.log('syscall finished');
                   }
                   else{
                       typeMatching(instructionList[address].substring(0,6));
@@ -2840,7 +2842,6 @@
                         index += 4;
                     }
                 }
-
             }
 
             $('.fas.fa-play-circle').click(function(){
