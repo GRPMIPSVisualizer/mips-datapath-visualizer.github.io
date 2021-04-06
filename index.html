@@ -78,7 +78,7 @@
             <div class="row" style="">
                 <div id="leftUp" class="card col-sm-9 col-md-10 col-lg-10" style="height: 63vh;" v-html="log">
                     <!--<div style="position:fixed;">-->
-                    <div class="card-body" style="position:absolute;bottom:10px;left:0px;" scroll="no">
+                    <div class="card-body" style="position:absolute;bottom:7px;left:0px;" scroll="no">
                           <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
                         <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
                         <a type="button" id="play" class="fas fa-play-circle" title="play" style="z-index:999;"></a>
@@ -2344,9 +2344,9 @@
                 $('#leftUp').css('height', '40vh');
             }
             else{
-                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 950');
-                $('#rightUp').css('height', '53vh');
-                $('#leftUp').css('height', '53vh');
+                document.getElementById('svg803').setAttribute('viewBox', '0 0 800 900');
+                $('#rightUp').css('height', '70vh');
+                $('#leftUp').css('height', '70vh');
             }
             $("#displayArea").val("");
             Object.defineProperty(continuePlay, 'theFlagData', {
@@ -2541,6 +2541,7 @@
             mapForLabel = new Map();
             patt = /^[\s]$/;
             colon = /[(\:)]+/;
+            annotation = /[(\#)]+/;
             instructionCounter = 0;
             address = "4194304";
             let posOfSpace;
@@ -2552,56 +2553,118 @@
 
             var length = sourceIns.length;
             for (i = 0; i < length; i++) {
-                if (sourceIns[i] == "" || patt.test(sourceIns[i]) || sourceIns[i].substring(sourceIns[i].length - 1, sourceIns[i].length) == ":" || sourceIns[i].indexOf('.') != -1) {
-                    operator[i] = "empty";
-                } else if(colon.test(sourceIns[i])){
-                    posOfSpace = sourceIns[i].indexOf(":");
-                    colonIns = sourceIns[i].substring(posOfSpace+1, sourceIns[i].length).trim();
-                    posOfSpace = colonIns.indexOf(" ");
-                    operator[i] = colonIns.substring(0, posOfSpace);
-                } else if(sourceIns[i] == 'syscall'){
-                    operator[i] = 'syscall';
-                }
-                else {
-                    posOfSpace = sourceIns[i].indexOf(" ");
-                    if(colon.test(sourceIns[i])){
-                        posOfColon = sourceIns[i].indexOf(":");
-                        posOfComma = sourceIns[i].indexOf(",");
-                        operator[i] = sourceIns[i].substring(posOfColon+1, posOfComma).trim();
+                if(annotation.test(sourceIns[i])){
+                    let posOfAnnotation = sourceIns[i].indexOf("#")
+                    if(posOfAnnotation == 0){
+                        operator[i] = "empty";
                     }
                     else{
-                        operator[i] = sourceIns[i].substring(0, posOfSpace);
+                        sourceIns[i] = sourceIns[i].substring(0, posOfAnnotation).trim();
+                        if (sourceIns[i] == "" || patt.test(sourceIns[i]) || sourceIns[i].substring(sourceIns[i].length - 1, sourceIns[i].length) == ":" || sourceIns[i].indexOf('.') != -1) {
+                            operator[i] = "empty";
+                        } else if(colon.test(sourceIns[i])){
+                            posOfSpace = sourceIns[i].indexOf(":");
+                            colonIns = sourceIns[i].substring(posOfSpace+1, sourceIns[i].length).trim();
+                            posOfSpace = colonIns.indexOf(" ");
+                            operator[i] = colonIns.substring(0, posOfSpace);
+                        } else if(sourceIns[i] == 'syscall'){
+                            operator[i] = 'syscall';
+                        }
+                        else {
+                            posOfSpace = sourceIns[i].indexOf(" ");
+                            if(colon.test(sourceIns[i])){
+                                posOfColon = sourceIns[i].indexOf(":");
+                                posOfComma = sourceIns[i].indexOf(",");
+                                operator[i] = sourceIns[i].substring(posOfColon+1, posOfComma).trim();
+                            }
+                            else{
+                                operator[i] = sourceIns[i].substring(0, posOfSpace);
+                            }
+                            if(operator[i] == "blt" || operator[i] == "bgt") {
+                                operator[i] = new Array();
+                                operator[i][0] = "slt";
+                                operator[i][1] = "bne";
+                            }else if(operator[i] == "ble" || operator[i] == "bge") {
+                                operator[i] = new Array();
+                                operator[i][0] = "slt";
+                                operator[i][1] = "beq";
+                            }else if(operator[i] == "sge") {
+                                operator[i] = new Array();
+                                operator[i][0] = "slt";
+                                operator[i][1] = "ori";
+                                operator[i][2] = "subu";
+                            }
+                            else if(operator[i] == "la"){
+                                operator[i] = new Array();
+                                operator[i][0] = "lui";
+                                operator[i][1] = "ori";
+                            }
+                            else if(operator[i] == "li"){
+                                let posOfComma;
+                                posOfComma = sourceIns[i].indexOf(",");
+                                let num=sourceIns[i].substring(posOfComma+1, sourceIns[0].length).trim();
+                                if((num>=-2147483648 && num<-32768)|| (num>32767 && num<=2147483647)) {
+                                    operator[i] = new Array();
+                                    operator[i][0] = "lui";
+                                    operator[i][1] = "ori";
+                                }
+                            }
+                        }
                     }
-                    if(operator[i] == "blt" || operator[i] == "bgt") {
-                        operator[i] = new Array();
-                        operator[i][0] = "slt";
-                        operator[i][1] = "bne";
-                    }else if(operator[i] == "ble" || operator[i] == "bge") {
-                        operator[i] = new Array();
-                        operator[i][0] = "slt";
-                        operator[i][1] = "beq";
-                    }else if(operator[i] == "sge") {
-                        operator[i] = new Array();
-                        operator[i][0] = "slt";
-                        operator[i][1] = "ori";
-                        operator[i][2] = "subu";
+                }
+                else{
+                    if (sourceIns[i] == "" || patt.test(sourceIns[i]) || sourceIns[i].substring(sourceIns[i].length - 1, sourceIns[i].length) == ":" || sourceIns[i].indexOf('.') != -1) {
+                        operator[i] = "empty";
+                    } else if(colon.test(sourceIns[i])){
+                        posOfSpace = sourceIns[i].indexOf(":");
+                        colonIns = sourceIns[i].substring(posOfSpace+1, sourceIns[i].length).trim();
+                        posOfSpace = colonIns.indexOf(" ");
+                        operator[i] = colonIns.substring(0, posOfSpace);
+                    } else if(sourceIns[i] == 'syscall'){
+                        operator[i] = 'syscall';
                     }
-                    else if(operator[i] == "la"){
-                        operator[i] = new Array();
-                        operator[i][0] = "lui";
-                        operator[i][1] = "ori";
-                    }
-                    else if(operator[i] == "li"){
-                        let posOfComma;
-                        posOfComma = sourceIns[i].indexOf(",");
-                        let num=sourceIns[i].substring(posOfComma+1, sourceIns[0].length).trim();
-                        if((num>=-2147483648 && num<-32768)|| (num>32767 && num<=2147483647)) {
+                    else {
+                        posOfSpace = sourceIns[i].indexOf(" ");
+                        if(colon.test(sourceIns[i])){
+                            posOfColon = sourceIns[i].indexOf(":");
+                            posOfComma = sourceIns[i].indexOf(",");
+                            operator[i] = sourceIns[i].substring(posOfColon+1, posOfComma).trim();
+                        }
+                        else{
+                            operator[i] = sourceIns[i].substring(0, posOfSpace);
+                        }
+                        if(operator[i] == "blt" || operator[i] == "bgt") {
+                            operator[i] = new Array();
+                            operator[i][0] = "slt";
+                            operator[i][1] = "bne";
+                        }else if(operator[i] == "ble" || operator[i] == "bge") {
+                            operator[i] = new Array();
+                            operator[i][0] = "slt";
+                            operator[i][1] = "beq";
+                        }else if(operator[i] == "sge") {
+                            operator[i] = new Array();
+                            operator[i][0] = "slt";
+                            operator[i][1] = "ori";
+                            operator[i][2] = "subu";
+                        }
+                        else if(operator[i] == "la"){
                             operator[i] = new Array();
                             operator[i][0] = "lui";
                             operator[i][1] = "ori";
                         }
+                        else if(operator[i] == "li"){
+                            let posOfComma;
+                            posOfComma = sourceIns[i].indexOf(",");
+                            let num=sourceIns[i].substring(posOfComma+1, sourceIns[0].length).trim();
+                            if((num>=-2147483648 && num<-32768)|| (num>32767 && num<=2147483647)) {
+                                operator[i] = new Array();
+                                operator[i][0] = "lui";
+                                operator[i][1] = "ori";
+                            }
+                        }
                     }
                 }
+
             }
         }
 
@@ -3266,8 +3329,8 @@
         }
 
         ::-webkit-scrollbar{
-          width: 10px;
-          height: 10px;
+          width: 7px;
+          height: 7px;
         }
 
         ::-webkit-scrollbar-thumb{

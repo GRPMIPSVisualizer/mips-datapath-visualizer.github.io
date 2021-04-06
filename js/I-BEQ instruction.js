@@ -476,8 +476,8 @@ function beqStep4(){
     $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data72').css({"animation":"pathing72 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data26_0').css({"animation":"pathing26_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#data26').css({"animation":"pathing26 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data26_0').css({"animation":"pathing26_0 " + 6/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data26').css({"animation":"pathing26 " + 6/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data27_0').css({"animation":"pathing27_0 " + 17/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data27').css({"animation":"pathing27 " + 17/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 4;
