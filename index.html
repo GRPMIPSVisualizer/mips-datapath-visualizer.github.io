@@ -2252,8 +2252,8 @@
                 </div>
             </div>
         </div>
-        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'; z-index: 1000"></div>
-        <div id="hidDiv2" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-family: 'Comic Sans MS'; z-index: 1000"></div>
+        <div id="hidDiv" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-weight:bold; font-family: 'Cormorant Unicase Bold'; z-index: 1000; white-space: pre-line"></div>
+        <div id="hidDiv2" style="width: 275px; position: absolute; display: none; height: auto; left: 228px; top: 22px; background-color: #cfe2f3; border: 2px solid deepskyblue; font-size: 15px; font-family: 'Comic Sans MS'; z-index: 1000; white-space: pre-line"></div>
     </main>
 
     <!-- SCRIPTS -->
@@ -2284,14 +2284,16 @@
      <script>
          function showDiv(e, description, value) {
              var o = document.getElementById("hidDiv");
-             $("#hidDiv").text("Data value:\n" + value + "\nData description:\n" + description);
+             let string = "Data value:\n" + value + "\nData description:\n" + description;
+                 o.innerHTML = string;
              o.style.left = e.clientX+"px";
              o.style.top = e.clientY+10+"px";
              o.style.display = "block";
          }
          function showDiv2(e, value) {
              var o = document.getElementById("hidDiv2");
-             $("#hidDiv2").text("Info: " + value);
+             let string = "Info:\n" + value;
+             o.innerHTML = string;
              o.style.left = e.clientX+"px";
              o.style.top = e.clientY+10+"px";
              o.style.display = "block";
