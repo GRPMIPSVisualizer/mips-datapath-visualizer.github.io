@@ -80,10 +80,8 @@
         <!--<div class="container" style="overflow: hidden;height: 100%;width:100%;">-->
             <div class="row" style="">
                 <div id="leftUp" class="card col-sm-9 col-md-10 col-lg-10" style="height: 63vh;" v-html="log">
-                    <!--<div style="position:fixed;">-->
                     <div class="card-body" style="position:absolute;bottom:7px;left:0px;" scroll="no">
                           <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
-                        <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
                         <a type="button" id="play" class="fas fa-play-circle" title="play" style="z-index:999;"></a>
                         <a type="button" id="pause" class="fas fa-pause pause" title="pause" style="z-index:999;"></a>
                         <a type="button" id="terminate" class="far fa-stop-circle" title=" terminate" style="z-index:999;"></a>
@@ -91,8 +89,7 @@
                         <input id="playSpeed" style="text-align: center; width: 10%; background: rgba(255,255,255,0)" readonly style="z-index:999;">
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed" style="z-index:999;">2.0 x</a>
                     </div>
-
-                          <div class="code-img" style="overflow: scroll;width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
+                    <div style="overflow: scroll;width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
                                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                               <svg
                                       xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -2061,7 +2058,7 @@
                                           <table id="DMTable" bgcolor="white">
                                               <tbody id="dm">
                                               <tr>
-                                                  <th width="30%">Address</th>
+                                                  <th width="37%">Address</th>
                                                   <th>32-bits Data</th>
                                               </tr>
                                               </tbody>
@@ -2076,7 +2073,7 @@
                                           <table id="SMTable" bgcolor="white">
                                               <tbody id="sm">
                                               <tr>
-                                                  <th width="30%">Address</th>
+                                                  <th width="37%">Address</th>
                                                   <th>32-bits Data</th>
                                               </tr>
                                               </tbody>
@@ -2338,7 +2335,7 @@
                 document.getElementById('svg803').setAttribute('viewBox', '0 0 800 900');
                 $('#rightUp').css('height', '80vh');
                 $('#leftUp').css('height', '80vh');
-                $('#captchaImg').css('zoom', '150%');
+                $('#captchaImg').css('zoom', '145%');
                 $('#captchaImg').css('-moz-transform', 'scale(1.15)');
                 $('#captchaImg').css('-moz-transform-origin', 'top left');
             }
@@ -2745,12 +2742,14 @@
         $('.fas.fa-step-forward').click(function () { // 向前一步
               if(insNum == 0){ //如果上一条指令的动画全都运行完了，运行下一条指令
                   if(lineNum != -1){
+                      highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
+                  }
+                  else{
                       CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
                       $('#uploadFileButton').css("pointer-events", "none");
                       $('#uploadFileButton').css("color", "lightgrey");
                       $('#compile').css("pointer-events", "none");
                       $('#compile').css("color", "lightgrey");
-                      highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                   }
                   if(cpu.Errormsg != ""){
                       document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
@@ -3013,12 +3012,36 @@
                 hideDiv(event);
             });
 
-            $("body").keydown(function (e){
-                if(e.keyCode == 32 && playing == true){
+
+            function keydown(e){
+                if(e.keyCode == 32){
                     e.preventDefault();
-                    $('#pause').trigger('click');
+                    if(playing == true)
+                        $('#pause').trigger('click');
+                    else if($('#play').css('pointer-events') == 'auto'){
+                        $('#play').trigger('click');
+                    }
                 }
-            });
+                else if(e.keyCode == 38){
+                    e.preventDefault();
+                    if($('#doubleSpeed').css('pointer-events') == 'auto'){
+                        $('#doubleSpeed').trigger('click');
+                    }
+                }
+                else if(e.keyCode == 40){
+                    e.preventDefault();
+                    if($('#halfSpeed').css('pointer-events') == 'auto'){
+                        $('#halfSpeed').trigger('click');
+                    }
+                }
+                else if(e.keyCode == 13){
+                    e.preventDefault();
+                    if($('#fw').css('pointer-events') == 'auto'){
+                        $('#fw').trigger('click');
+                    }
+                }
+            }
+            document.onkeydown = keydown;
             $("#dynamicMemory").click(function(){
                 FOShowFlag = true;
                 $("#dynamicTable").css('display', 'block');

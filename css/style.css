@@ -76,7 +76,6 @@ th{
 }
 .dataCircle{
     position: absolute;
-    z-index: 3;
     opacity: 0;
     animation-timing-function: linear;
 }
@@ -85,7 +84,6 @@ th{
 }
 .CtlWire{
     position: absolute;
-    z-index: 3;
     opacity: 0;
     animation-play-state: paused;
     animation-fill-mode: forwards;
