@@ -441,6 +441,7 @@ function lwStep5(){
     $("#data23").one("animationend", function () {
         $('#data23').css("animation-play-state", "paused");
         $('#data23').css("animation", "none");
+        refreshRegisters();
     });
     $("#data23_0").one("animationend", function () {
         $('#data23_0').css("animation-play-state", "paused");

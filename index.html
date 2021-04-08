@@ -2721,7 +2721,7 @@
                             else if(operator[i] == "li"){
                                 let posOfComma;
                                 posOfComma = sourceIns[i].indexOf(",");
-                                let num=sourceIns[i].substring(posOfComma+1, sourceIns[0].length).trim();
+                                let num=sourceIns[i].substring(posOfComma+1, sourceIns[i].length).trim();
                                 if((num>=-2147483648 && num<-32768)|| (num>32767 && num<=2147483647)) {
                                     operator[i] = new Array();
                                     operator[i][0] = "lui";
@@ -2732,6 +2732,8 @@
                     }
 
                 }
+                console.log(sourceIns);
+                console.log(operator);
             }
             //Store all instructions, used in compiling
             function storeALLInstruction(){
@@ -3323,7 +3325,7 @@
                 initializeIM();
                 initializeRegisters();
                 initializeSM();
-                refreshDM();
+                initializeDM();
                 $('#fw').css("pointer-events", "auto");
                 $("#fw").css("color", "blue");
                 $('#play').css("pointer-events", "auto");

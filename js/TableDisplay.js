@@ -73,26 +73,26 @@ function refreshDM(){
     deleteALLRows("DMTable");
     clearTable("DMTable");
     let data = cpu.getDynamicData();
-    let a=0;
     let table = document.getElementById("DMTable");
-    for(a=0; a<data.length; a++){
+    let theRow = table.insertRow(-1);
+    let cell1 = theRow.insertCell(0);
+    cell1.innerHTML = "STACK POINTER ↓";
+    cell1.colSpan = 2;
+    cell1.bgColor = 'yellowgreen';
+    for(let a=0; a<data.length; a++){
         let row = table.insertRow(-1);
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         cell1.innerHTML = data[a][0];
         cell2.innerHTML = data[a][1];
     }
-    if(table.rows.length != 1){
-        let fp = setFP();
-        setSP();
-        scrollTable("dynamicTable","DMTable", fp);
-    }
+
 }
 
 function initializeSM(){
     deleteALLRows("SMTable");
     let data = cpu.getStaticData();
-    let a=0;
+    let a;
     let table = document.getElementById("SMTable");
     for(a=0; a<data.length; a++){
         let row = table.insertRow(-1);
@@ -105,11 +105,29 @@ function initializeSM(){
 
 }
 
+function initializeDM(){
+    deleteALLRows("DMTable");
+    let table = document.getElementById("DMTable");
+    let row = table.insertRow(-1);
+    let cell1 = row.insertCell(0);
+    cell1.innerHTML = "STACK POINTER ↓";
+    cell1.colSpan = 2;
+    cell1.bgColor = 'yellowgreen';
+    /*
+    let row_ = table.insertRow(-1);
+    let cell2 = row_.insertCell(0);
+    cell2.innerHTML = "FRAME POINTER ↑";
+    cell2.colSpan = 2;
+     */
+}
+
 //Set framePointer in dynamic memory
 function setFP(){
     let table = document.getElementById("DMTable");
     let rTable = document.getElementById("rTable");
     let FPAddress = rTable.rows[31].cells[1].innerHTML;
+    FPAddress = parseInt(FPAddress.substring(2,10), 16).toString(2);
+    alert(FPAddress);
     let a;
     for(a=1; a<table.rows.length; a++){
         if(table.rows[a].cells[0].innerHTML == FPAddress){
@@ -124,6 +142,8 @@ function setSP(){
     let table = document.getElementById("DMTable");
     let rTable = document.getElementById("rTable");
     let SPAddress = rTable.rows[30].cells[1].innerHTML;
+    SPAddress = parseInt(SPAddress.substring(2,10), 16).toString(2);
+    alert(SPAddress);
     let a;
     for(a=0; a<table.rows.length; a++){
         if(table.rows[a].cells[0].innerHTML == SPAddress){
