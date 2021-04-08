@@ -286,7 +286,7 @@ function addiStep4(){
     });
     $('#fw').css("pointer-events", "none");
     $('#fw').css("color", "grey");
-    
+
     $('#data11_0').css({"animation":"pathing11_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data11').css({"animation":"pathing11 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data12_0').css({"animation":"pathing12_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
