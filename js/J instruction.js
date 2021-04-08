@@ -93,7 +93,7 @@ function jStep1(){
         JChecker();
     });
 
-    $("#data3").bind("animationend", function () {
+    $("#data3").one("animationend", function () {
         playing = false;
         $('#data3').css("animation-play-state", "paused");
         $('#data3').css("animation", "none");
@@ -114,11 +114,11 @@ function jStep1(){
             jStep2();
         }
     });
-    $("#data1").bind("animationend", function () {
+    $("#data1").one("animationend", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend", function () {
+    $("#data2").one("animationend", function () {
         refreshIM();
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
@@ -148,15 +148,15 @@ function jStep1(){
 }
 function jStep2(){
     playing = true;
-    $("#data42").bind("animationend", function () {
+    $("#data42").one("animationend", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data28").bind("animationend", function () {
+    $("#data28").one("animationend", function () {
         $('#data28').css("animation-play-state", "paused");
         $('#data28').css("animation", "none");
     });
-    $("#Jump").bind("animationend", function () {
+    $("#Jump").one("animationend", function () {
         playing = false;
         $('#Jump').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
@@ -207,19 +207,19 @@ function jStep2(){
 }
 function jStep3(){
     playing = true;
-    $("#data72").bind("animationend", function () {
+    $("#data72").one("animationend", function () {
         $('#data72').css("animation-play-state", "paused");
         $('#data72').css("animation", "none");
     });
-    $("#data73").bind("animationend", function () {
+    $("#data73").one("animationend", function () {
         $('#data73').css("animation-play-state", "paused");
         $('#data73').css("animation", "none");
     });
-    $("#data29").bind("animationend", function () {
+    $("#data29").one("animationend", function () {
         $('#data29').css("animation-play-state", "paused");
         $('#data29').css("animation", "none");
     });
-    $("#data30").bind("animationend", function () {
+    $("#data30").one("animationend", function () {
         playing = false;
         $('#data30').css("animation-play-state", "paused");
         $('#data30').css("animation", "none");
@@ -251,7 +251,7 @@ function jStep3(){
             jStep4();
         }
     });
-    $("#data30_0").bind("animationend", function () {
+    $("#data30_0").one("animationend", function () {
         $('#data30_0').css("animation-play-state", "paused");
         $('#data30_0').css("animation", "none");
     });
@@ -288,7 +288,7 @@ function jStep3(){
 }
 function jStep4(){
     playing = true;
-    $("#data11").bind("animationend", function () {
+    $("#data11").one("animationend", function () {
         playing = false;
         insNum = 0;
         $('#data11').css("animation-play-state", "paused");
@@ -304,7 +304,7 @@ function jStep4(){
             continuePlay.theFlagData = continuePlay.theFlagData + 1;
         }
     });
-    $("#data11_0").bind("animationend", function () {
+    $("#data11_0").one("animationend", function () {
         $('#data11_0').css("animation-play-state", "paused");
         $('#data11_0').css("animation", "none");
     });

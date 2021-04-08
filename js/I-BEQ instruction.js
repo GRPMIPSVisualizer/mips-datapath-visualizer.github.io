@@ -134,7 +134,7 @@ function beqStep1(){
         BEQChecker();
     });
 
-    $("#data3").bind("animationend", function () {
+    $("#data3").one("animationend", function () {
         playing = false;
         $('#pause').css("pointer-events", "none");
         $('#pause').css("color", "grey");
@@ -156,11 +156,11 @@ function beqStep1(){
         }
     });
 
-    $("#data1").bind("animationend", function () {
+    $("#data1").one("animationend", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend", function () {
+    $("#data2").one("animationend", function () {
         refreshIM();
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
@@ -191,15 +191,15 @@ function beqStep1(){
 
 function beqStep2(){
     playing = true;
-    $("#data4").bind("animationend", function () {
+    $("#data4").one("animationend", function () {
         $('#data4').css("animation-play-state", "paused");
         $('#data4').css("animation", "none");
     });
-    $("#data42").bind("animationend", function () {
+    $("#data42").one("animationend", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data6").bind("animationend", function () {
+    $("#data6").one("animationend", function () {
         playing = false;
         $('#data6').css("animation-play-state", "paused");
         $('#data6').css("animation", "none");
@@ -245,11 +245,11 @@ function beqStep2(){
             beqStep3();
         }
     });
-    $("#data20").bind("animationend", function () {
+    $("#data20").one("animationend", function () {
         $('#data20').css("animation-play-state", "paused");
         $('#data20').css("animation", "none");
     });
-    $("#data20_0").bind("animationend", function () {
+    $("#data20_0").one("animationend", function () {
         $('#data20_0').css("animation-play-state", "paused");
         $('#data20_0').css("animation", "none");
     });
@@ -299,19 +299,19 @@ function beqStep2(){
 }
 function beqStep3(){
     playing = true;
-    $("#data8").bind("animationend", function () {
+    $("#data8").one("animationend", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
     });
-    $("#data8_0").bind("animationend", function () {
+    $("#data8_0").one("animationend", function () {
         $('#data8_0').css("animation-play-state", "paused");
         $('#data8_0').css("animation", "none");
     });
-    $("#data9").bind("animationend", function () {
+    $("#data9").one("animationend", function () {
         $('#data9').css("animation-play-state", "paused");
         $('#data9').css("animation", "none");
     });
-    $("#data10").bind("animationend", function () {
+    $("#data10").one("animationend", function () {
         playing = false;
         $('#data10').css("animation-play-state", "paused");
         $('#data10').css("animation", "none");
@@ -340,28 +340,28 @@ function beqStep3(){
             beqStep4();
         }
     });
-    $("#data10_0").bind("animationend", function () {
+    $("#data10_0").one("animationend", function () {
         $('#data10_0').css("animation-play-state", "paused");
         $('#data10_0').css("animation", "none");
     });
-    $("#data25").bind("animationend", function () {
+    $("#data25").one("animationend", function () {
         $('#data25').css("animation-play-state", "paused");
         $('#data25').css("animation", "none");
     });
-    $("#data25_0").bind("animationend", function () {
+    $("#data25_0").one("animationend", function () {
         $('#data25_0').css("animation-play-state", "paused");
         $('#data25_0').css("animation", "none");
     });
-    $("#isZero").bind("animationend", function () {
+    $("#isZero").one("animationend", function () {
         $('#isZero').css("animation-play-state", "paused");
     });
-    $("#BranchAndZero").bind("animationend", function () {
+    $("#BranchAndZero").one("animationend", function () {
         $('#BranchAndZero').css("animation-play-state", "paused");
     });
-    $("#Branch").bind("animationend", function () {
+    $("#Branch").one("animationend", function () {
         $('#Branch').css("animation-play-state", "paused");
     });
-    $("#and1").bind("animationend", function () {
+    $("#and1").one("animationend", function () {
         $('#and1').css("animation-play-state", "paused");
     });
 
@@ -401,27 +401,27 @@ function beqStep3(){
 }
 function beqStep4(){
     playing = true;
-    $("#data7").bind("animationend", function () {
+    $("#data7").one("animationend", function () {
         $('#data7').css("animation-play-state", "paused");
         $('#data7').css("animation", "none");
     });
-    $("#data7_0").bind("animationend", function () {
+    $("#data7_0").one("animationend", function () {
         $('#data7_0').css("animation-play-state", "paused");
         $('#data7_0').css("animation", "none");
     });
-    $("#data72").bind("animationend", function () {
+    $("#data72").one("animationend", function () {
         $('#data72').css("animation-play-state", "paused");
         $('#data72').css("animation", "none");
     });
-    $("#data26").bind("animationend", function () {
+    $("#data26").one("animationend", function () {
         $('#data26').css("animation-play-state", "paused");
         $('#data26').css("animation", "none");
     });
-    $("#data26_0").bind("animationend", function () {
+    $("#data26_0").one("animationend", function () {
         $('#data26_0').css("animation-play-state", "paused");
         $('#data26_0').css("animation", "none");
     });
-    $("#data27").bind("animationend", function () {
+    $("#data27").one("animationend", function () {
         playing = false;
         $('#data27').css("animation-play-state", "paused");
         $('#data27').css("animation", "none");
@@ -450,7 +450,7 @@ function beqStep4(){
             beqStep5();
         }
     });
-    $("#data27_0").bind("animationend", function () {
+    $("#data27_0").one("animationend", function () {
         $('#data27_0').css("animation-play-state", "paused");
         $('#data27_0').css("animation", "none");
     });
@@ -506,7 +506,7 @@ function beqStep5(){
         }
 
     });
-    $("#data11_0").bind("animationend", function () {
+    $("#data11_0").one("animationend", function () {
         $('#data11_0').css("animation-play-state", "paused");
         $('#data11_0').css("animation", "none");
     });

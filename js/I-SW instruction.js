@@ -114,7 +114,7 @@ function swStep1(){
         SWChecker();
     });
 
-    $("#data3").bind("animationend", function () {
+    $("#data3").one("animationend", function () {
         playing = false;
         $('#data3').css("animation-play-state", "paused");
         $('#data3').css("animation", "none");
@@ -137,11 +137,11 @@ function swStep1(){
             swStep2();
         }
     });
-    $("#data1").bind("animationend", function () {
+    $("#data1").one("animationend", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend", function () {
+    $("#data2").one("animationend", function () {
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
         refreshIM();
@@ -169,31 +169,31 @@ function swStep1(){
 }
 function swStep2(){
     playing = true;
-    $("#data4").bind("animationend", function () {
+    $("#data4").one("animationend", function () {
         $('#data4').css("animation-play-state", "paused");
         $('#data4').css("animation", "none");
     });
-    $("#data42").bind("animationend", function () {
+    $("#data42").one("animationend", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data6").bind("animationend", function () {
+    $("#data6").one("animationend", function () {
         $('#data6').css("animation-play-state", "paused");
         $('#data6').css("animation", "none");
     });
-    $("#data20").bind("animationend", function () {
+    $("#data20").one("animationend", function () {
         $('#data20').css("animation-play-state", "paused");
         $('#data20').css("animation", "none");
     });
-    $("#data20_0").bind("animationend", function () {
+    $("#data20_0").one("animationend", function () {
         $('#data20_0').css("animation-play-state", "paused");
         $('#data20_0').css("animation", "none");
     });
-    $("#ALUSrc").bind("animationend", function () {
+    $("#ALUSrc").one("animationend", function () {
         $('#ALUSrc').css("animation-play-state", "paused");
 
     });
-    $("#MemWrite").bind("animationend", function () {
+    $("#MemWrite").one("animationend", function () {
         playing = false;
         $('#MemWrite').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
@@ -284,15 +284,15 @@ function swStep2(){
 }
 function swStep3(){
     playing = true;
-    $("#data8").bind("animationend", function () {
+    $("#data8").one("animationend", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
     });
-    $("#data8_0").bind("animationend", function () {
+    $("#data8_0").one("animationend", function () {
         $('#data8_0').css("animation-play-state", "paused");
         $('#data8_0').css("animation", "none");
     });
-    $("#data21").bind("animationend", function () {
+    $("#data21").one("animationend", function () {
         playing = false;
         $('#data21').css("animation-play-state", "paused");
         $('#data21').css("animation", "none");
@@ -317,7 +317,7 @@ function swStep3(){
             swStep4();
         }
     });
-    $("#data21_0").bind("animationend", function () {
+    $("#data21_0").one("animationend", function () {
         $('#data21_0').css("animation-play-state", "paused");
         $('#data21_0').css("animation", "none");
     });
@@ -365,25 +365,25 @@ function swStep4(){
         }
 
     });
-    $("#data11_0").bind("animationend", function () {
+    $("#data11_0").one("animationend", function () {
         $('#data11_0').css("animation-play-state", "paused");
         $('#data11_0').css("animation", "none");
     });
 
-    $("#data22").bind("animationend", function () {
+    $("#data22").one("animationend", function () {
         $('#data22').css("animation-play-state", "paused");
         $('#data22').css("animation", "none");
     });
-    $("#data22_0").bind("animationend", function () {
+    $("#data22_0").one("animationend", function () {
         $('#data22_0').css("animation-play-state", "paused");
         $('#data22_0').css("animation", "none");
     });
-    $("#data24").bind("animationend", function () {
+    $("#data24").one("animationend", function () {
         $('#data24').css("animation-play-state", "paused");
         $('#data24').css("animation", "none");
         refreshDM();
     });
-    $("#data24_0").bind("animationend", function () {
+    $("#data24_0").one("animationend", function () {
         $('#data24_0').css("animation-play-state", "paused");
         $('#data24_0').css("animation", "none");
     });
