@@ -103,6 +103,7 @@ function ADDIStepForward(addiStep){
 }
 function addiStep1(){
     playing = true;
+    transparentDiagram();
     $('#pause').click(function () {
         ADDIChecker();
     });

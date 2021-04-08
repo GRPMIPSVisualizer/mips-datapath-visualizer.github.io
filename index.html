@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./published/css/fontawesome/all.css">
     <!-- Bootstrap core CSS -->
     <link href="./published/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="./published/css/jquery-ui.css" rel="stylesheet" type="text/css">
     <!-- Code Mirror CSS -->
     <!--<link href="./published/js/CodeMirror-5.59.2/lib/codemirror.css" rel="stylesheet" type="text/css" />-->
     <link rel="stylesheet" href="js/code_mirror/lib/codemirror.css">
@@ -2238,13 +2239,13 @@
                         <a type="button" id="uploadFileButton" class="fas fa-upload" title="upload"></a>
                         <a type="button" id="downloadFileButton" class="fas fa-download" title="download"></a>
                         <a type="button" id="compile" class="fas fa-tools" title="compile"></a>
-                    </div>
+                        </div>
                     <textarea id="code" name="code" style="display: none" ></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="card col-sm-12 col-md-12 col-lg-12 shadow-sm p-3 mb-5 bg-white rounded" style="height: 30vh; width: 100%" v-html="log">
-                        <textarea id="displayArea" content="" style="width: 100%; resize: none; height: 100%" readonly></textarea>
+                        <textarea id="displayArea" content="" style="width: 100%; resize: none; height: 100%; overflow: auto" readonly></textarea>
                 </div>
             </div>
         </div>
@@ -2255,6 +2256,8 @@
     <!-- SCRIPTS -->
     <!-- JQuery -->
     <script type="text/javascript" src="./published/js/jquery-3.6.0.js"></script>
+    <!-- JQuery UI-->
+    <script type="text/javascript" src="./published/js/jquery-ui.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="./published/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -3071,7 +3074,7 @@
                 lineNumbers: true,
                 firstLineNumber: 0
             });
-            CodeMirrorEditor.setSize('auto', '100%');
+            CodeMirrorEditor.setSize('100%', '100%');
             CodeMirrorEditor.addKeyMap({
                 name: 'autoInsertParentheses',
                 "'('": (cm) => {
@@ -3337,8 +3340,6 @@
          });
 
          */
-         $('#rightUp').resizable
-
 
     </script>
 
