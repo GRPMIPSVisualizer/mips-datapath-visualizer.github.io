@@ -1,3 +1,4 @@
+//Author: Chuyan FU, Enze Ren, Jiahe Lyu
 
 function BEQChecker() {
     if ($('#pause').hasClass("fa-pause")) {

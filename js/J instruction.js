@@ -1,3 +1,4 @@
+//Author: Chuyan FU, Enze Ren, Jiahe Lyu
 
 function JChecker() {
     if ($('#pause').hasClass("fa-pause")) {

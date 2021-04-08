@@ -1,3 +1,4 @@
+//Author: Chuyan FU, Enze Ren, Jiahe Lyu
 
 function SWChecker() {
     if ($('#pause').hasClass("fa-pause")) {

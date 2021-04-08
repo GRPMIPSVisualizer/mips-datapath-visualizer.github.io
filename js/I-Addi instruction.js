@@ -1,3 +1,5 @@
+//Author: Chuyan FU, Enze Ren, Jiahe Lyu
+
 //The 'onclick' function for 'pause' button
 function ADDIChecker() {
     if ($('#pause').hasClass("fa-pause")) {
