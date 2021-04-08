@@ -1,3 +1,6 @@
+//Author: Chuyan Fu
+
+//Scroll the table to corresponding line
 function scrollTable(divName, tableName, number){ //Scroll the scrollbar to a certain row in a table
     let line = document.getElementById(tableName).rows[number];
     $("#" + divName).animate({scrollTop:line.offsetTop},"slow"); //定位tr
@@ -13,6 +16,7 @@ function deleteALLRows(tableName){
     }
 }
 
+//Compare new and old data in registers and return the altered ones
 function compareRegisters(newData){ // Return the rows that have been changed in the register table
     let tableName = "rTable";
     let alteredRegisters = new Array();
@@ -30,6 +34,7 @@ function compareRegisters(newData){ // Return the rows that have been changed in
     return alteredRegisters; //This data can be passed to setHighlight function
 }
 
+//Clear the highlight of a table
 function clearTable(tableName){ //Remove all highlighted rows from a table
     let table = document.getElementById(tableName);
     for(let i=0; i<table.rows.length; i++){
@@ -39,6 +44,7 @@ function clearTable(tableName){ //Remove all highlighted rows from a table
     }
 }
 
+//Set the highlight of a table
 function setHighlight(tableName, rowNumbers){ //Set highlighted rows in a table
     let table = document.getElementById(tableName);
     for(let i=0; i<rowNumbers.length; i++){
@@ -99,6 +105,7 @@ function initializeSM(){
 
 }
 
+//Set framePointer in dynamic memory
 function setFP(){
     let table = document.getElementById("DMTable");
     let rTable = document.getElementById("rTable");
@@ -112,6 +119,7 @@ function setFP(){
     }
 }
 
+//Set stackPointer in dynamic memory
 function setSP(){
     let table = document.getElementById("DMTable");
     let rTable = document.getElementById("rTable");

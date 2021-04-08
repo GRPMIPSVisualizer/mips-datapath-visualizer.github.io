@@ -1,8 +1,11 @@
+//Author: Chuyan Fu
+
+//Change the text in speed display area
 function displaySpeed(){
     $('#playSpeed').val(parseFloat(speed).toFixed(2));
 }
 
-/*半速播放*/
+//Reduce the speed by half
 $('.btn.btn-primary.half').click(function () {
     if(parseFloat(speed) == 0.25)
         return;
@@ -17,7 +20,7 @@ $('.btn.btn-primary.half').click(function () {
     displaySpeed();
 });
 
-/*二倍速播放*/
+//Double the speed
 $('.btn.btn-primary.double').click(function () {
     if(parseFloat(speed) == 8)
         return;
@@ -32,6 +35,7 @@ $('.btn.btn-primary.double').click(function () {
     displaySpeed();
 });
 
+//Clear all bindings of animation components
 function Unbind(){
     let data = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data7_0', 'data8', 'data8_0', 'data9', 'data10', 'data10_0', 'data11', 'data11_0', 'data12', 'data12_0', 'data18', 'data19', 'data19_0', 'data20', 'data20_0', 'data21', 'data21_0', 'data22', 'data22_0', 'data23', 'data23_0', 'data24', 'data24_0', 'data25', 'data25_0', 'data26', 'data26_0', 'data27', 'data27_0',  'data28', 'data29', 'data30', 'data30_0', 'data31',  'data42', 'data73', 'data72', 'Jump', 'isZero', 'BranchAndZero', 'Branch', 'ALUSrc', 'RegWrite',  'RegDst', 'ALUOp', 'MemWrite', 'MemRead', 'MemtoReg', 'and1'];
     for(let i=0;i<56;i++) {
@@ -39,6 +43,8 @@ function Unbind(){
     }
     $("#pause").unbind("click");
 }
+
+//Make the diagram completely transparent
 function transparentDiagram() {
     let i;
     let wires = document.getElementsByClassName('wire');
@@ -65,6 +71,8 @@ function transparentDiagram() {
     $('#registerTable').css('opacity', '0.2');
     $('#memoryTable').css('opacity', '0.2')
 }
+
+//Make the diagram opaque
 function recoverDiagram(){
     let i;
     let wires = document.getElementsByClassName('wire');

@@ -2,20 +2,20 @@
 function BEQChecker() {
     if ($('#pause').hasClass("fa-pause")) {
 
-        if (insNum == 1) {
+        if (stepNum == 1) {
             $('#data1').css("animation-play-state", "paused");
             $('#data2').css("animation-play-state", "paused");
             $('#data3').css("animation-play-state", "paused");
 
         }
-        else if (insNum == 2) {
+        else if (stepNum == 2) {
             $('#data4').css("animation-play-state", "paused");
             $('#data42').css("animation-play-state", "paused");
             $('#data6').css("animation-play-state", "paused");
             $('#data20').css("animation-play-state", "paused");
             $('#data20_0').css("animation-play-state", "paused");
         }
-        else if (insNum == 3) {
+        else if (stepNum == 3) {
             $('#data8').css("animation-play-state", "paused");
             $('#data8_0').css("animation-play-state", "paused");
             $('#data9').css("animation-play-state", "paused");
@@ -28,7 +28,7 @@ function BEQChecker() {
             $('#BranchAndZero').css("animation-play-state", "paused");
             $('#and1').css("animation-play-state", "paused");
         }
-        else if (insNum == 4) {
+        else if (stepNum == 4) {
             $('#BranchAndZero').css("animation-play-state", "paused");
             $('#data7').css("animation-play-state", "paused");
             $('#data7_0').css("animation-play-state", "paused");
@@ -38,7 +38,7 @@ function BEQChecker() {
             $('#data27').css("animation-play-state", "paused");
             $('#data27_0').css("animation-play-state", "paused");
         }
-        else if (insNum == 5) {
+        else if (stepNum == 5) {
             $('#data11').css("animation-play-state", "paused");
             $('#data11_0').css("animation-play-state", "paused");
         }
@@ -52,20 +52,20 @@ function BEQChecker() {
 
     else if ($('#pause').hasClass("fa-play")) {
 
-        if (insNum == 1) {
+        if (stepNum == 1) {
             $('#data1').css("animation-play-state", "running");
             $('#data2').css("animation-play-state", "running");
             $('#data3').css("animation-play-state", "running");
 
         }
-        else if (insNum == 2) {
+        else if (stepNum == 2) {
             $('#data4').css("animation-play-state", "running");
             $('#data42').css("animation-play-state", "running");
             $('#data6').css("animation-play-state", "running");
             $('#data20').css("animation-play-state", "running");
             $('#data20_0').css("animation-play-state", "running");
         }
-        else if (insNum == 3) {
+        else if (stepNum == 3) {
             $('#data8').css("animation-play-state", "running");
             $('#data8_0').css("animation-play-state", "running");
             $('#data9').css("animation-play-state", "running");
@@ -78,7 +78,7 @@ function BEQChecker() {
             $('#BranchAndZero').css("animation-play-state", "running");
             $('#and1').css("animation-play-state", "running");
         }
-        else if (insNum == 4) {
+        else if (stepNum == 4) {
             $('#BranchAndZero').css("animation-play-state", "running");
             $('#data7').css("animation-play-state", "running");
             $('#data7_0').css("animation-play-state", "running");
@@ -88,7 +88,7 @@ function BEQChecker() {
             $('#data27').css("animation-play-state", "running");
             $('#data27_0').css("animation-play-state", "running");
         }
-        else if (insNum == 5) {
+        else if (stepNum == 5) {
             $('#data11').css("animation-play-state", "running");
             $('#data11_0').css("animation-play-state", "running");
         }
@@ -184,7 +184,7 @@ function beqStep1(){
     $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data3_1').css("opacity", "0");
     $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 1;
+    stepNum = 1;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
@@ -293,7 +293,7 @@ function beqStep2(){
     $('#data6').css({"animation":"pathing6 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20_0').css({"animation":"pathing20_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data20').css({"animation":"pathing20 " + 4.9/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 2;
+    stepNum = 2;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
@@ -395,7 +395,7 @@ function beqStep3(){
     $('#Branch').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     $('#BranchAndZero').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     $('#and1').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
-    insNum = 3;
+    stepNum = 3;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
@@ -480,7 +480,7 @@ function beqStep4(){
     $('#data26').css({"animation":"pathing26 " + 6/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data27_0').css({"animation":"pathing27_0 " + 17/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data27').css({"animation":"pathing27 " + 17/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 4;
+    stepNum = 4;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
@@ -488,7 +488,7 @@ function beqStep5(){
     playing = true;
     $("#data11").one("animationend", function () {
         playing = false;
-        insNum = 0;
+        stepNum = 0;
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
         $('#isZero').css("animation", "none");
@@ -518,7 +518,7 @@ function beqStep5(){
 
     $('#data11_0').css({"animation":"pathing11_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data11').css({"animation":"pathing11 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 5;
+    stepNum = 5;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }

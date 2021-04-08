@@ -1,12 +1,13 @@
+//The 'onclick' function for 'pause' button
 function ADDIChecker() {
     if ($('#pause').hasClass("fa-pause")) {
 
-        if (insNum == 1) {
+        if (stepNum == 1) {
             $('#data1').css("animation-play-state", "paused");
             $('#data2').css("animation-play-state", "paused");
             $('#data3').css("animation-play-state", "paused");
         }
-        else if (insNum == 2) {
+        else if (stepNum == 2) {
             $('#data4').css("animation-play-state", "paused");
             $('#data42').css("animation-play-state", "paused");
             $('#data31').css("animation-play-state", "paused");
@@ -16,7 +17,7 @@ function ADDIChecker() {
             $('#ALUOp').css("animation-play-state", "paused");
             $('#RegWrite').css("animation-play-state", "paused");
         }
-        else if (insNum == 3) {
+        else if (stepNum == 3) {
             $('#data8').css("animation-play-state", "paused");
             $('#data8_0').css("animation-play-state", "paused");
             $('#data21').css("animation-play-state", "paused");
@@ -24,7 +25,7 @@ function ADDIChecker() {
             $('#data7_0').css("animation-play-state", "paused");
             $('#data7').css("animation-play-state", "paused");
         }
-        else if (insNum == 4) {
+        else if (stepNum == 4) {
             $('#data11').css("animation-play-state", "paused");
             $('#data11_0').css("animation-play-state", "paused");
             $('#data12').css("animation-play-state", "paused");
@@ -40,12 +41,12 @@ function ADDIChecker() {
         
     else if ($('#pause').hasClass("fa-play")) {
         
-        if (insNum == 1) {
+        if (stepNum == 1) {
             $('#data1').css("animation-play-state", "running");
             $('#data2').css("animation-play-state", "running");
             $('#data3').css("animation-play-state", "running");
         }
-        else if (insNum == 2) {
+        else if (stepNum == 2) {
             $('#data4').css("animation-play-state", "running");
             $('#data42').css("animation-play-state", "running");
             $('#data31').css("animation-play-state", "running");
@@ -55,7 +56,7 @@ function ADDIChecker() {
             $('#ALUOp').css("animation-play-state", "running");
             $('#RegWrite').css("animation-play-state", "running");
         }
-        else if (insNum == 3) {
+        else if (stepNum == 3) {
             $('#data8').css("animation-play-state", "running");
             $('#data8_0').css("animation-play-state", "running");
             $('#data21').css("animation-play-state", "running");
@@ -63,7 +64,7 @@ function ADDIChecker() {
             $('#data7_0').css("animation-play-state", "running");
             $('#data7').css("animation-play-state", "running");
         }
-        else if (insNum == 4) {
+        else if (stepNum == 4) {
             $('#data11').css("animation-play-state", "running");
             $('#data11_0').css("animation-play-state", "running");
             $('#data12').css("animation-play-state", "running");
@@ -78,11 +79,15 @@ function ADDIChecker() {
     }
 };
 
+
+//Sequential play of animation
 function ADDIPlay(){
     sequenceFlag = 1;
     addiStep1();
 }
 
+
+//Stage-by-stage play of animation
 function ADDIStepForward(addiStep){
     if(addiStep == 1){
         addiStep1();
@@ -101,9 +106,45 @@ function ADDIStepForward(addiStep){
     }
 
 }
+
+/*
+    Explanation for the implementation of animation:
+
+    In the beginning of each instruction:
+    1. Make the diagram completely transparent.
+    2. Disable the 'forward' and 'play' button.
+    3. Set the coding area to 'read only' mode.
+
+    In the beginning of each step:
+    1. Set the animation attribute of the animated objects and add 'animation-end' bindings to each of them.
+    2. Make the working objects visible for users.
+    3. Set the 'playing' variable to 'true'
+
+    At the end of a step:
+    1. Set the 'playing' variable to 'false'
+    2. The binding functions are triggered to clear it's animation attributes.
+    3. The binding function of the animation which takes the longest time would:
+        a. Make all components transparent again.
+        b. Free some buttons.
+        c. If the animation is playing in sequential mode, play the next step.
+
+    At the end of each instruction:
+    1. Make the diagram opaque.
+    2. Clear all binding functions of all animated objects, otherwise there would be errors when running the next instruction.
+    3. Free some buttons
+    4. If the animation is playing in sequential mode, change the 'theFlagData' variable to inform the 'set' listener to run the next instruction.
+
+    At the end of some certain animation:
+    1. Refresh the register/instruction memory/dynamic memory table
+
+ */
+
+
+//Stage one of the instruction
 function addiStep1(){
     playing = true;
     transparentDiagram();
+
     $('#pause').click(function () {
         ADDIChecker();
     });
@@ -158,10 +199,13 @@ function addiStep1(){
     $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data3_1').css("opacity", "0");
     $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 1;
+    stepNum = 1;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
+
+
+//Stage two of the instruction
 function addiStep2(){
     playing = true;
     $("#data4").one("animationend", function () {
@@ -277,10 +321,13 @@ function addiStep2(){
     $('#ALUOp').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     $('#ALUSrc').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     $('#RegWrite').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
-    insNum = 2;
+    stepNum = 2;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
+
+
+//Stage three of the instruction
 function addiStep3(){
     playing = true;
     $("#data21").one("animationend", function () {
@@ -363,10 +410,13 @@ function addiStep3(){
     $('#data21').css({"animation":"pathing21 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data7_0').css({"animation":"pathing7_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data7').css({"animation":"pathing7 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 3;
+    stepNum = 3;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
+
+
+//Stage four of the instruction
 function addiStep4(){
     playing = true;
     $("#data11").one("animationend", function () {
@@ -379,7 +429,7 @@ function addiStep4(){
     });
     $("#data12").one("animationend", function () {
         playing = false;
-        insNum = 0;
+        stepNum = 0;
         recoverDiagram();
         refreshRegisters();
         $('#data12').css("animation-play-state", "paused");
@@ -389,7 +439,6 @@ function addiStep4(){
         $('#RegWrite').css("animation", "none");
         $('#pause').css("pointer-events", "none");
         $('#pause').css("color", "grey");
-        recoverDiagram();
 
         Unbind();
         $('#fw').css("pointer-events", "auto");
@@ -420,7 +469,7 @@ function addiStep4(){
     $('#data11').css({"animation":"pathing11 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data12_0').css({"animation":"pathing12_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data12').css({"animation":"pathing12 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    insNum = 4;
+    stepNum = 4;
     $('#pause').css("pointer-events", "auto");
     $('#pause').css("color", "blue");
 }
