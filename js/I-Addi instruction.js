@@ -82,6 +82,7 @@ function ADDIPlay(){
     sequenceFlag = 1;
     addiStep1();
 }
+
 function ADDIStepForward(addiStep){
     if(addiStep == 1){
         addiStep1();
@@ -100,6 +101,7 @@ function ADDIStepForward(addiStep){
     }
 
 }
+
 function addiStep1(){
     playing = true;
     transparentDiagram();
@@ -114,14 +116,7 @@ function addiStep1(){
         $('#data3').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#fw').css("color", "blue");
-        document.getElementById('pc2insMem').setAttribute('opacity', '0.2');
-        document.getElementById('pc2adder1').setAttribute('opacity', '0.2');
-        document.getElementById('const4').setAttribute('opacity', '0.2');
-        document.getElementById('use453').setAttribute('opacity', '0.2');
-        document.getElementById('use455').setAttribute('opacity', '0.2');
-        $('#instructionTable').css('opacity', '0.2');
-        document.getElementById('adder1').setAttribute('opacity', '0.2');
-        document.getElementById('circle385').setAttribute('opacity', '0.2');
+
         $('#data3').css("animation", "none");
         $('#data3_1').css("opacity", "1");
         if(sequenceFlag == 1){
@@ -144,14 +139,6 @@ function addiStep1(){
     $('#play').css("pointer-events", "none");
     $('#play').css("color", "grey");
 
-    document.getElementById('pc2insMem').setAttribute('opacity', '1');
-    document.getElementById('pc2adder1').setAttribute('opacity', '1');
-    document.getElementById('const4').setAttribute('opacity', '1');
-    document.getElementById('use453').setAttribute('opacity', '1');
-    document.getElementById('use455').setAttribute('opacity', '1');
-    $('#instructionTable').css('opacity', '1');
-    document.getElementById('adder1').setAttribute('opacity', '1');
-    document.getElementById('circle385').setAttribute('opacity', '1');
 
     $('#data1').css({"animation":"pathing " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -193,38 +180,6 @@ function addiStep2(){
         $('#fw').css("color", "blue");
         $('#pause').css("pointer-events", "none");
         $('#pause').css("color", "grey");
-        document.getElementById('use455').setAttribute('opacity', '0.2');
-        $('#instructionTable').css('opacity', '0.2');
-        document.getElementById('insMem2reg_1').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_2').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_3').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_4').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_5').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_6').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_7').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_8').setAttribute('opacity', '0.2');
-        document.getElementById('insMem2reg_10').setAttribute('opacity', '0.2');
-        document.getElementById('use457').setAttribute('opacity', '0.2');
-        $('#registerTable').css('opacity', '0.2');
-        document.getElementById('text443').setAttribute('opacity', '0.2');
-        document.getElementById('ins2mux2_1').setAttribute('opacity', '0.2');
-        document.getElementById('ins2mux2_2').setAttribute('opacity', '0.2');
-        document.getElementById('signExd').setAttribute('opacity', '0.2');
-        document.getElementById('text435').setAttribute('opacity', '0.2');
-        document.getElementById('text447').setAttribute('opacity', '0.2');
-        document.getElementById('ins2mux1A').setAttribute('opacity', '0.2');
-        document.getElementById('mux1').setAttribute('opacity', '0.2');
-        document.getElementById('mux1toreg').setAttribute('opacity', '0.2');
-        document.getElementById('text445').setAttribute('opacity', '0.2');
-        document.getElementById('ins2ctl').setAttribute('opacity', '0.2');
-        document.getElementById('ctl').setAttribute('opacity', '0.2');
-        document.getElementById('circle389').setAttribute('opacity', '0.2');
-        document.getElementById('circle391').setAttribute('opacity', '0.2');
-        document.getElementById('circle395').setAttribute('opacity', '0.2');
-        document.getElementById('circle387').setAttribute('opacity', '0.2');
-        document.getElementById('circle409').setAttribute('opacity', '0.2');
-        document.getElementById('circle411').setAttribute('opacity', '0.2');
-        document.getElementById('circle405').setAttribute('opacity', '0.2');
 
         if(sequenceFlag == 1){
             addiStep3();
@@ -235,38 +190,6 @@ function addiStep2(){
     });
     $('#fw').css("pointer-events", "none");
     $('#fw').css("color", "grey");
-    document.getElementById('use455').setAttribute('opacity', '1');
-    $('#instructionTable').css('opacity', '1');
-    document.getElementById('insMem2reg_1').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_2').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_3').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_4').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_5').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_6').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_7').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_8').setAttribute('opacity', '1');
-    document.getElementById('insMem2reg_10').setAttribute('opacity', '1');
-    document.getElementById('use457').setAttribute('opacity', '1');
-    $('#registerTable').css('opacity', '1');
-    document.getElementById('text443').setAttribute('opacity', '1');
-    document.getElementById('ins2mux2_1').setAttribute('opacity', '1');
-    document.getElementById('ins2mux2_2').setAttribute('opacity', '1');
-    document.getElementById('signExd').setAttribute('opacity', '1');
-    document.getElementById('text435').setAttribute('opacity', '1');
-    document.getElementById('text447').setAttribute('opacity', '1');
-    document.getElementById('ins2mux1A').setAttribute('opacity', '1');
-    document.getElementById('mux1').setAttribute('opacity', '1');
-    document.getElementById('mux1toreg').setAttribute('opacity', '1');
-    document.getElementById('text445').setAttribute('opacity', '1');
-    document.getElementById('ins2ctl').setAttribute('opacity', '1');
-    document.getElementById('ctl').setAttribute('opacity', '1');
-    document.getElementById('circle389').setAttribute('opacity', '1');
-    document.getElementById('circle391').setAttribute('opacity', '1');
-    document.getElementById('circle395').setAttribute('opacity', '1');
-    document.getElementById('circle387').setAttribute('opacity', '1');
-    document.getElementById('circle409').setAttribute('opacity', '1');
-    document.getElementById('circle411').setAttribute('opacity', '1');
-    document.getElementById('circle405').setAttribute('opacity', '1');
 
     $('#data4').css({"animation":"pathing4 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -298,27 +221,7 @@ function addiStep3(){
         $('#fw').css("color", "blue");
         $('#pause').css("pointer-events", "none");
         $('#pause').css("color", "grey");
-        document.getElementById('use457').setAttribute('opacity', '0.2');
-        $('#registerTable').css('opacity', '0.2');
-        document.getElementById('adder1').setAttribute('opacity', '0.2');
-        document.getElementById('adder1toadder2_0').setAttribute('opacity', '0.2');
-        document.getElementById('adder1toadder2_1').setAttribute('opacity', '0.2');
-        document.getElementById('adder1tomux4').setAttribute('opacity', '0.2');
-        document.getElementById('mux4').setAttribute('opacity', '0.2');
-        document.getElementById('regRD1toAluSrcA').setAttribute('opacity', '0.2');
-        document.getElementById('use459').setAttribute('opacity', '0.2');
-        document.getElementById('signExd').setAttribute('opacity', '0.2');
-        document.getElementById('text449').setAttribute('opacity', '0.2');
-        document.getElementById('ins2mux2_3').setAttribute('opacity', '0.2');
-        document.getElementById('ins2mux2_4').setAttribute('opacity', '0.2');
-        document.getElementById('mux2').setAttribute('opacity', '0.2');
-        document.getElementById('mux2toAluSrcB').setAttribute('opacity', '0.2');
-        document.getElementById('circle403').setAttribute('opacity', '0.2');
-        document.getElementById('circle407').setAttribute('opacity', '0.2');
-        document.getElementById('circle413').setAttribute('opacity', '0.2');
-        document.getElementById('mux5').setAttribute('opacity', '0.2');
-        document.getElementById('mux4tomux5').setAttribute('opacity', '0.2');
-        if(sequenceFlag == 1){
+                if(sequenceFlag == 1){
             addiStep4();
         }
     });
@@ -336,27 +239,7 @@ function addiStep3(){
     });
     $('#fw').css("pointer-events", "none");
     $('#fw').css("color", "grey");
-    document.getElementById('use457').setAttribute('opacity', '1');
-    $('#registerTable').css('opacity', '1');
-    document.getElementById('adder1').setAttribute('opacity', '1');
-    document.getElementById('adder1toadder2_0').setAttribute('opacity', '1');
-    document.getElementById('adder1toadder2_1').setAttribute('opacity', '1');
-    document.getElementById('adder1tomux4').setAttribute('opacity', '1');
-    document.getElementById('mux4').setAttribute('opacity', '1');
-    document.getElementById('regRD1toAluSrcA').setAttribute('opacity', '1');
-    document.getElementById('use459').setAttribute('opacity', '1');
-    document.getElementById('signExd').setAttribute('opacity', '1');
-    document.getElementById('text449').setAttribute('opacity', '1');
-    document.getElementById('ins2mux2_3').setAttribute('opacity', '1');
-    document.getElementById('ins2mux2_4').setAttribute('opacity', '1');
-    document.getElementById('mux2').setAttribute('opacity', '1');
-    document.getElementById('mux2toAluSrcB').setAttribute('opacity', '1');
-    document.getElementById('circle403').setAttribute('opacity', '1');
-    document.getElementById('circle407').setAttribute('opacity', '1');
-    document.getElementById('circle413').setAttribute('opacity', '1');
-    document.getElementById('mux5').setAttribute('opacity', '1');
-    document.getElementById('mux4tomux5').setAttribute('opacity', '1');
-    $('#data8_0').css({"animation":"pathing8_0 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
+        $('#data8_0').css({"animation":"pathing8_0 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data8').css({"animation":"pathing8 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data21_0').css({"animation":"pathing21_0 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data21').css({"animation":"pathing21 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
@@ -403,18 +286,7 @@ function addiStep4(){
     });
     $('#fw').css("pointer-events", "none");
     $('#fw').css("color", "grey");
-    document.getElementById('use453').setAttribute('opacity', '1');
-    document.getElementById('use459').setAttribute('opacity', '1');
-    document.getElementById('mux5').setAttribute('opacity', '1');
-    document.getElementById('mux5toPc').setAttribute('opacity', '1');
-    document.getElementById('use457').setAttribute('opacity', '1');
-    $('#registerTable').css('opacity', '1');
-    document.getElementById('alu2DMAddr_0').setAttribute('opacity', '1');
-    document.getElementById('alu2mux3').setAttribute('opacity', '1');
-    document.getElementById('mux3').setAttribute('opacity', '1');
-    document.getElementById('mux3toRegWD').setAttribute('opacity', '1');
-    document.getElementById('circle399').setAttribute('opacity', '1');
-
+    
     $('#data11_0').css({"animation":"pathing11_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data11').css({"animation":"pathing11 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data12_0').css({"animation":"pathing12_0 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});

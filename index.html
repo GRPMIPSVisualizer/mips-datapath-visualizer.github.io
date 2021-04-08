@@ -80,15 +80,6 @@
         <!--<div class="container" style="overflow: hidden;height: 100%;width:100%;">-->
             <div class="row" style="">
                 <div id="leftUp" class="card col-sm-9 col-md-10 col-lg-10" style="height: 63vh;" v-html="log">
-                    <div class="card-body" style="position:absolute;bottom:7px;left:0px;" scroll="no">
-                          <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
-                        <a type="button" id="play" class="fas fa-play-circle" title="play" style="z-index:999;"></a>
-                        <a type="button" id="pause" class="fas fa-pause pause" title="pause" style="z-index:999;"></a>
-                        <a type="button" id="terminate" class="far fa-stop-circle" title=" terminate" style="z-index:999;"></a>
-                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px" style="z-index:999;">0.5 x</a>
-                        <input id="playSpeed" style="text-align: center; width: 10%; background: rgba(255,255,255,0)" readonly style="z-index:999;">
-                        <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed" style="z-index:999;">2.0 x</a>
-                    </div>
                     <div style="overflow: scroll;width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
                                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                               <svg
@@ -101,7 +92,7 @@
                                       xmlns:xlink="http://www.w3.org/1999/xlink"
                                       xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
                                       xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                      style=" display: inline-block;max-width: 200%;max-height: 200%;min-width: 100%;min-height:100%"
+                                      style=" display: inline-block;max-width: 200%;max-height: 200%;min-width: 100%;min-height:100%; z-index: 997"
                                       width="720"
                                       height="429"
                                       viewBox="0 0 1000 1000"
@@ -2026,9 +2017,9 @@
                                           r="7.810112" />
                                   <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
                                       <body xmlns= "http://www.w3.org/1999/xhtml">
-                                      <div id="instructionTable" style="width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
+                                      <div id="instructionTable" style="position: fixed; width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; z-index: 997">
                                           <table id="IMTable" bgcolor="white">
-                                              <thead>
+                                              <thead style="z-index: 995">
                                               <tr>
                                                   <th width="38%">Address</th>
                                                   <th>Machine Code</th>
@@ -2231,7 +2222,15 @@
                                   </foreignObject>
                               </svg>
                           </div>
-
+                    <div class="card-body" style="position:absolute;bottom:7px;left:0px;" scroll="no">
+                        <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
+                        <a type="button" id="play" class="fas fa-play-circle" title="play" style="z-index:999;"></a>
+                        <a type="button" id="pause" class="fas fa-pause pause" title="pause" style="z-index:999;"></a>
+                        <a type="button" id="terminate" class="far fa-stop-circle" title=" terminate" style="z-index:999;"></a>
+                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px" style="z-index:999;">0.5 x</a>
+                        <input id="playSpeed" style="text-align: center; width: 10%; background: rgba(255,255,255,0)" readonly style="z-index:999;">
+                        <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed" style="z-index:999;">2.0 x</a>
+                    </div>
                 </div>
                 <div id="rightUp" class="card col-sm-9 col-md-2 col-lg-2" style="height: 63vh;text-align:center;" v-html="log">
                         <div class="card-body">
@@ -2429,7 +2428,7 @@
                         if(instructionList[address] == "00000000000000000000000000001100"){
                             if(cpu.StdOut != ""){
                                 document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                                let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n";
+                                let temp = $("#displayArea").val() + "System call output:\n" +cpu.StdOut + "\n";
                                 $("#displayArea").val(temp);
                             }
                             continueToPlay();
@@ -2517,7 +2516,7 @@
             if(instructionList[address] == "00000000000000000000000000001100"){
                 if(cpu.StdOut != ""){
                     document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                    let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n";
+                    let temp = $("#displayArea").val() + "System call output:\n" +cpu.StdOut + "\n";
                     $("#displayArea").val(temp);
                 }
                 continueToPlay();
@@ -2808,7 +2807,7 @@
                   if(instructionList[address] == "00000000000000000000000000001100"){
                       if(cpu.StdOut != ""){
                           document.getElementById("displayArea").scrollTop = document.getElementById("displayArea").scrollHeight;
-                          let temp = $("#displayArea").val() + "The output is: " + cpu.StdOut + "\n";
+                          let temp = $("#displayArea").val() + "System call output:\n" +cpu.StdOut + "\n";
                           $("#displayArea").val(temp);
                       }
                   }
@@ -3336,7 +3335,7 @@
          });
 
          */
-
+         $('#rightUp').resizable
 
 
     </script>
