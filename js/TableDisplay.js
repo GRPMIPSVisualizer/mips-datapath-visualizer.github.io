@@ -74,11 +74,6 @@ function refreshDM(){
     clearTable("DMTable");
     let data = cpu.getDynamicData();
     let table = document.getElementById("DMTable");
-    let theRow = table.insertRow(-1);
-    let cell1 = theRow.insertCell(0);
-    cell1.innerHTML = "STACK POINTER ↓";
-    cell1.colSpan = 2;
-    cell1.bgColor = 'yellowgreen';
     for(let a=0; a<data.length; a++){
         let row = table.insertRow(-1);
         let cell1 = row.insertCell(0);
@@ -107,13 +102,16 @@ function initializeSM(){
 
 function initializeDM(){
     deleteALLRows("DMTable");
+    //Codes to set frame pointer and stack pointer.
+    //This functionality is abandoned
+    /*
     let table = document.getElementById("DMTable");
     let row = table.insertRow(-1);
     let cell1 = row.insertCell(0);
     cell1.innerHTML = "STACK POINTER ↓";
     cell1.colSpan = 2;
     cell1.bgColor = 'yellowgreen';
-    /*
+
     let row_ = table.insertRow(-1);
     let cell2 = row_.insertCell(0);
     cell2.innerHTML = "FRAME POINTER ↑";
